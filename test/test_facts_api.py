@@ -1,8 +1,11 @@
+from __future__ import absolute_import
+
 import string
 import random
 import unittest
 
-from OAuthUtils import OAuthUtils
+
+from .OAuthUtils import OAuthUtils
 
 from factern_client import FactsApi
 from factern_client import ApiClient

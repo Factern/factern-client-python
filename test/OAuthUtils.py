@@ -1,7 +1,6 @@
 import json
 import os
-import urllib
-import urllib2
+import requests
 
 
 class OAuthUtils:
@@ -20,17 +19,14 @@ class OAuthUtils:
 
     def get_auth_token(self):
 
-        get_auth_request = urllib2.Request(
+        resp = requests.post(
             self.url,
             data=json.dumps(self.data),
             headers=self.headers
         )
 
-        get_auth_response = urllib2.urlopen(get_auth_request)
-
-        return json.loads(get_auth_response.read())['access_token']
-
+        return json.loads(resp.text)['access_token']
 
 if __name__ == '__main__':
     oauth = OAuthUtils()
-    print oauth.get_auth_token()
+    print(oauth.get_auth_token())
