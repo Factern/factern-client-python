@@ -42,5 +42,5 @@ setup(
     install_requires=REQUIRES,
     packages=find_packages(),
     include_package_data=True,
-    data_files = [("", ["LICENSE.txt"])],
+    license='MIT',
 )
