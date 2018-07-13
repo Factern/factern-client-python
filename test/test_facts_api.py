@@ -4,7 +4,6 @@ import string
 import random
 import unittest
 
-
 from .OAuthUtils import OAuthUtils
 
 from factern_client import FactsApi
@@ -423,8 +422,8 @@ class FactsApiTest(unittest.TestCase):
             login=self.loginId
         )
 
-        self.assertIsNotNone(self.facts_api.delete_node(
-            body=DeleteRequest(node_id=entity_id, template_id=[field_id]),
+        self.assertIsNotNone(self.facts_api.delete(
+            body=DeleteRequest(node_id=entity_id, template=[field_id]),
             login=self.loginId
         ))
 

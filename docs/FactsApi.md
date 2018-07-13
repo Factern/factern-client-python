@@ -1016,7 +1016,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete**
-> ReadResponse delete(login=login, representing=representing, body=body)
+> DeleteResponse delete(login=login, representing=representing, body=body)
 
 Deleting
 
@@ -1056,7 +1056,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ReadResponse**](ReadResponse.md)
+[**DeleteResponse**](DeleteResponse.md)
 
 ### Authorization
 
