@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**deleted** | **bool** |  | [optional] 
 **timestamp** | **float** |  | [optional] 
 **node_id** | **str** |  | [optional] 
 **agent** | [**Agent**](Agent.md) |  | [optional] 

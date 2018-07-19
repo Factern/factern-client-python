@@ -44,7 +44,7 @@ Method | HTTP request | Description
 
 
 # **add_member**
-> CreateMemberResponse add_member(login=login, representing=representing, body=body)
+> CreateMemberResponse add_member(body, login=login, representing=representing)
 
 Create Member
 
@@ -62,13 +62,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.CreateMemberRequest() # CreateMemberRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.CreateMemberRequest() # CreateMemberRequest |  (optional)
 
 try:
     # Create Member
-    api_response = api_instance.add_member(login=login, representing=representing, body=body)
+    api_response = api_instance.add_member(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->add_member: %s\n" % e)
@@ -78,9 +78,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**CreateMemberRequest**](CreateMemberRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**CreateMemberRequest**](CreateMemberRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -98,7 +98,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **bid**
-> StandardNodeResponse bid(login=login, representing=representing, body=body)
+> StandardNodeResponse bid(body, login=login, representing=representing)
 
 Create Bid
 
@@ -116,13 +116,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.CreateBidRequest() # CreateBidRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.CreateBidRequest() # CreateBidRequest |  (optional)
 
 try:
     # Create Bid
-    api_response = api_instance.bid(login=login, representing=representing, body=body)
+    api_response = api_instance.bid(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->bid: %s\n" % e)
@@ -132,9 +132,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**CreateBidRequest**](CreateBidRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**CreateBidRequest**](CreateBidRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_alias**
-> CreateAliasResponse create_alias(login=login, representing=representing, body=body)
+> CreateAliasResponse create_alias(body, login=login, representing=representing)
 
 Create Alias
 
@@ -170,13 +170,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.CreateAliasRequest() # CreateAliasRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.CreateAliasRequest() # CreateAliasRequest |  (optional)
 
 try:
     # Create Alias
-    api_response = api_instance.create_alias(login=login, representing=representing, body=body)
+    api_response = api_instance.create_alias(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->create_alias: %s\n" % e)
@@ -186,9 +186,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**CreateAliasRequest**](CreateAliasRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**CreateAliasRequest**](CreateAliasRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -206,7 +206,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_application**
-> CreateApplicationResponse create_application(login=login, representing=representing, body=body)
+> CreateApplicationResponse create_application(body, login=login, representing=representing)
 
 Create Application
 
@@ -224,13 +224,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.CreateApplicationRequest() # CreateApplicationRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.CreateApplicationRequest() # CreateApplicationRequest |  (optional)
 
 try:
     # Create Application
-    api_response = api_instance.create_application(login=login, representing=representing, body=body)
+    api_response = api_instance.create_application(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->create_application: %s\n" % e)
@@ -240,9 +240,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**CreateApplicationRequest**](CreateApplicationRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**CreateApplicationRequest**](CreateApplicationRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -260,7 +260,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_domain**
-> CreateDomainResponse create_domain(login=login, representing=representing, body=body)
+> CreateDomainResponse create_domain(body, login=login, representing=representing)
 
 Create Domain
 
@@ -278,13 +278,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.CreateDomainRequest() # CreateDomainRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.CreateDomainRequest() # CreateDomainRequest |  (optional)
 
 try:
     # Create Domain
-    api_response = api_instance.create_domain(login=login, representing=representing, body=body)
+    api_response = api_instance.create_domain(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->create_domain: %s\n" % e)
@@ -294,9 +294,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**CreateDomainRequest**](CreateDomainRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**CreateDomainRequest**](CreateDomainRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -314,7 +314,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_entity**
-> CreateEntityResponse create_entity(login=login, representing=representing, body=body)
+> CreateEntityResponse create_entity(body, login=login, representing=representing)
 
 Create Entity
 
@@ -332,13 +332,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.CreateEntityRequest() # CreateEntityRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.CreateEntityRequest() # CreateEntityRequest |  (optional)
 
 try:
     # Create Entity
-    api_response = api_instance.create_entity(login=login, representing=representing, body=body)
+    api_response = api_instance.create_entity(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->create_entity: %s\n" % e)
@@ -348,9 +348,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**CreateEntityRequest**](CreateEntityRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**CreateEntityRequest**](CreateEntityRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -368,7 +368,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_field**
-> CreateFieldResponse create_field(login=login, representing=representing, body=body)
+> CreateFieldResponse create_field(body, login=login, representing=representing)
 
 Create Field
 
@@ -386,13 +386,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.CreateFieldRequest() # CreateFieldRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.CreateFieldRequest() # CreateFieldRequest |  (optional)
 
 try:
     # Create Field
-    api_response = api_instance.create_field(login=login, representing=representing, body=body)
+    api_response = api_instance.create_field(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->create_field: %s\n" % e)
@@ -402,9 +402,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**CreateFieldRequest**](CreateFieldRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**CreateFieldRequest**](CreateFieldRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -422,7 +422,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_filter**
-> CreateFilterResponse create_filter(login=login, representing=representing, body=body)
+> CreateFilterResponse create_filter(body, login=login, representing=representing)
 
 Create Filter
 
@@ -440,13 +440,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.CreateFilterRequest() # CreateFilterRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.CreateFilterRequest() # CreateFilterRequest |  (optional)
 
 try:
     # Create Filter
-    api_response = api_instance.create_filter(login=login, representing=representing, body=body)
+    api_response = api_instance.create_filter(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->create_filter: %s\n" % e)
@@ -456,9 +456,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**CreateFilterRequest**](CreateFilterRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**CreateFilterRequest**](CreateFilterRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -476,7 +476,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_group**
-> CreateGroupResponse create_group(login=login, representing=representing, body=body)
+> CreateGroupResponse create_group(body, login=login, representing=representing)
 
 Create Group
 
@@ -494,13 +494,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.CreateGroupRequest() # CreateGroupRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.CreateGroupRequest() # CreateGroupRequest |  (optional)
 
 try:
     # Create Group
-    api_response = api_instance.create_group(login=login, representing=representing, body=body)
+    api_response = api_instance.create_group(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->create_group: %s\n" % e)
@@ -510,9 +510,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**CreateGroupRequest**](CreateGroupRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**CreateGroupRequest**](CreateGroupRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -530,7 +530,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_information**
-> CreateInformationResponse create_information(login=login, representing=representing, body=body)
+> CreateInformationResponse create_information(body, login=login, representing=representing)
 
 Create Information
 
@@ -548,13 +548,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.CreateInformationRequest() # CreateInformationRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.CreateInformationRequest() # CreateInformationRequest |  (optional)
 
 try:
     # Create Information
-    api_response = api_instance.create_information(login=login, representing=representing, body=body)
+    api_response = api_instance.create_information(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->create_information: %s\n" % e)
@@ -564,9 +564,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**CreateInformationRequest**](CreateInformationRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**CreateInformationRequest**](CreateInformationRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -584,7 +584,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_interface**
-> CreateInterfaceResponse create_interface(login=login, representing=representing, body=body)
+> CreateInterfaceResponse create_interface(body, login=login, representing=representing)
 
 Create Interface
 
@@ -602,13 +602,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.CreateInterfaceRequest() # CreateInterfaceRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.CreateInterfaceRequest() # CreateInterfaceRequest |  (optional)
 
 try:
     # Create Interface
-    api_response = api_instance.create_interface(login=login, representing=representing, body=body)
+    api_response = api_instance.create_interface(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->create_interface: %s\n" % e)
@@ -618,9 +618,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**CreateInterfaceRequest**](CreateInterfaceRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**CreateInterfaceRequest**](CreateInterfaceRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -638,7 +638,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_label_list**
-> CreateLabelListResponse create_label_list(login=login, representing=representing, body=body)
+> CreateLabelListResponse create_label_list(body, login=login, representing=representing)
 
 Create Label List
 
@@ -656,13 +656,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.CreateLabelListRequest() # CreateLabelListRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.CreateLabelListRequest() # CreateLabelListRequest |  (optional)
 
 try:
     # Create Label List
-    api_response = api_instance.create_label_list(login=login, representing=representing, body=body)
+    api_response = api_instance.create_label_list(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->create_label_list: %s\n" % e)
@@ -672,9 +672,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**CreateLabelListRequest**](CreateLabelListRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**CreateLabelListRequest**](CreateLabelListRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -692,7 +692,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_login**
-> CreateLoginResponse create_login(login=login, representing=representing, body=body)
+> CreateLoginResponse create_login(body, login=login, representing=representing)
 
 Create Login
 
@@ -710,13 +710,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.CreateLoginRequest() # CreateLoginRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.CreateLoginRequest() # CreateLoginRequest |  (optional)
 
 try:
     # Create Login
-    api_response = api_instance.create_login(login=login, representing=representing, body=body)
+    api_response = api_instance.create_login(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->create_login: %s\n" % e)
@@ -726,9 +726,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**CreateLoginRequest**](CreateLoginRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**CreateLoginRequest**](CreateLoginRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -746,7 +746,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_mirror**
-> CreateMirrorResponse create_mirror(login=login, representing=representing, body=body)
+> CreateMirrorResponse create_mirror(body, login=login, representing=representing)
 
 Create Mirror
 
@@ -764,13 +764,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.CreateMirrorRequest() # CreateMirrorRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.CreateMirrorRequest() # CreateMirrorRequest |  (optional)
 
 try:
     # Create Mirror
-    api_response = api_instance.create_mirror(login=login, representing=representing, body=body)
+    api_response = api_instance.create_mirror(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->create_mirror: %s\n" % e)
@@ -780,9 +780,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**CreateMirrorRequest**](CreateMirrorRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**CreateMirrorRequest**](CreateMirrorRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -800,7 +800,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_price**
-> CreatePriceResponse create_price(login=login, representing=representing, body=body)
+> CreatePriceResponse create_price(body, login=login, representing=representing)
 
 Create Price
 
@@ -818,13 +818,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.CreatePriceRequest() # CreatePriceRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.CreatePriceRequest() # CreatePriceRequest |  (optional)
 
 try:
     # Create Price
-    api_response = api_instance.create_price(login=login, representing=representing, body=body)
+    api_response = api_instance.create_price(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->create_price: %s\n" % e)
@@ -834,9 +834,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**CreatePriceRequest**](CreatePriceRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**CreatePriceRequest**](CreatePriceRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -854,7 +854,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_scope**
-> CreateScopeResponse create_scope(login=login, representing=representing, body=body)
+> CreateScopeResponse create_scope(body, login=login, representing=representing)
 
 Create Scope
 
@@ -872,13 +872,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.CreateScopeRequest() # CreateScopeRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.CreateScopeRequest() # CreateScopeRequest |  (optional)
 
 try:
     # Create Scope
-    api_response = api_instance.create_scope(login=login, representing=representing, body=body)
+    api_response = api_instance.create_scope(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->create_scope: %s\n" % e)
@@ -888,9 +888,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**CreateScopeRequest**](CreateScopeRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**CreateScopeRequest**](CreateScopeRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -908,7 +908,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_statement**
-> AddStatementResponse create_statement(login=login, representing=representing, body=body)
+> AddStatementResponse create_statement(body, login=login, representing=representing)
 
 Create Statement
 
@@ -926,13 +926,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.AddStatementRequest() # AddStatementRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.AddStatementRequest() # AddStatementRequest |  (optional)
 
 try:
     # Create Statement
-    api_response = api_instance.create_statement(login=login, representing=representing, body=body)
+    api_response = api_instance.create_statement(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->create_statement: %s\n" % e)
@@ -942,9 +942,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**AddStatementRequest**](AddStatementRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**AddStatementRequest**](AddStatementRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -962,7 +962,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_template**
-> CreateTemplateResponse create_template(login=login, representing=representing, body=body)
+> CreateTemplateResponse create_template(body, login=login, representing=representing)
 
 Create Template
 
@@ -980,13 +980,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.CreateTemplateRequest() # CreateTemplateRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.CreateTemplateRequest() # CreateTemplateRequest |  (optional)
 
 try:
     # Create Template
-    api_response = api_instance.create_template(login=login, representing=representing, body=body)
+    api_response = api_instance.create_template(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->create_template: %s\n" % e)
@@ -996,9 +996,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**CreateTemplateRequest**](CreateTemplateRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**CreateTemplateRequest**](CreateTemplateRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -1016,7 +1016,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete**
-> DeleteResponse delete(login=login, representing=representing, body=body)
+> DeleteResponse delete(body, login=login, representing=representing)
 
 Deleting
 
@@ -1034,13 +1034,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.DeleteRequest() # DeleteRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.DeleteRequest() # DeleteRequest |  (optional)
 
 try:
     # Deleting
-    api_response = api_instance.delete(login=login, representing=representing, body=body)
+    api_response = api_instance.delete(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->delete: %s\n" % e)
@@ -1050,9 +1050,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**DeleteRequest**](DeleteRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**DeleteRequest**](DeleteRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -1070,7 +1070,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_node**
-> StandardNodeResponse delete_node(login=login, representing=representing, body=body)
+> StandardNodeResponse delete_node(body, login=login, representing=representing)
 
 Delete Node
 
@@ -1088,13 +1088,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.NodeIdRequest() # NodeIdRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.NodeIdRequest() # NodeIdRequest |  (optional)
 
 try:
     # Delete Node
-    api_response = api_instance.delete_node(login=login, representing=representing, body=body)
+    api_response = api_instance.delete_node(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->delete_node: %s\n" % e)
@@ -1104,9 +1104,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**NodeIdRequest**](NodeIdRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**NodeIdRequest**](NodeIdRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -1124,7 +1124,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **describe**
-> DescribeResponse describe(login=login, representing=representing, body=body)
+> DescribeResponse describe(body, login=login, representing=representing)
 
 Describe
 
@@ -1142,13 +1142,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.DescribeRequest() # DescribeRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.DescribeRequest() # DescribeRequest |  (optional)
 
 try:
     # Describe
-    api_response = api_instance.describe(login=login, representing=representing, body=body)
+    api_response = api_instance.describe(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->describe: %s\n" % e)
@@ -1158,9 +1158,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**DescribeRequest**](DescribeRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**DescribeRequest**](DescribeRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -1178,7 +1178,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **history**
-> NodeListing history(login=login, representing=representing, body=body)
+> NodeListing history(body, login=login, representing=representing)
 
 History
 
@@ -1196,13 +1196,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.NodeIdRequest() # NodeIdRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.NodeIdRequest() # NodeIdRequest |  (optional)
 
 try:
     # History
-    api_response = api_instance.history(login=login, representing=representing, body=body)
+    api_response = api_instance.history(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->history: %s\n" % e)
@@ -1212,9 +1212,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**NodeIdRequest**](NodeIdRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**NodeIdRequest**](NodeIdRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -1232,7 +1232,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **label**
-> AddLabelResponse label(login=login, representing=representing, body=body)
+> AddLabelResponse label(body, login=login, representing=representing)
 
 Label a Node
 
@@ -1250,13 +1250,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.AddLabelRequest() # AddLabelRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.AddLabelRequest() # AddLabelRequest |  (optional)
 
 try:
     # Label a Node
-    api_response = api_instance.label(login=login, representing=representing, body=body)
+    api_response = api_instance.label(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->label: %s\n" % e)
@@ -1266,9 +1266,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**AddLabelRequest**](AddLabelRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**AddLabelRequest**](AddLabelRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -1286,7 +1286,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **obliterate**
-> StandardNodeResponse obliterate(login=login, representing=representing, body=body)
+> StandardNodeResponse obliterate(body, login=login, representing=representing)
 
 Obliterating Information Nodes
 
@@ -1304,13 +1304,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.NodeIdRequest() # NodeIdRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.NodeIdRequest() # NodeIdRequest |  (optional)
 
 try:
     # Obliterating Information Nodes
-    api_response = api_instance.obliterate(login=login, representing=representing, body=body)
+    api_response = api_instance.obliterate(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->obliterate: %s\n" % e)
@@ -1320,9 +1320,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**NodeIdRequest**](NodeIdRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**NodeIdRequest**](NodeIdRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -1340,7 +1340,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **permission**
-> CreatePermissionResponse permission(login=login, representing=representing, body=body)
+> CreatePermissionResponse permission(body, login=login, representing=representing)
 
 Create Permission
 
@@ -1358,13 +1358,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.CreatePermissionRequest() # CreatePermissionRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.CreatePermissionRequest() # CreatePermissionRequest |  (optional)
 
 try:
     # Create Permission
-    api_response = api_instance.permission(login=login, representing=representing, body=body)
+    api_response = api_instance.permission(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->permission: %s\n" % e)
@@ -1374,9 +1374,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**CreatePermissionRequest**](CreatePermissionRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**CreatePermissionRequest**](CreatePermissionRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -1394,7 +1394,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **read**
-> ReadResponse read(login=login, representing=representing, body=body)
+> ReadResponse read(body, login=login, representing=representing)
 
 Reading
 
@@ -1412,13 +1412,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.ReadRequest() # ReadRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.ReadRequest() # ReadRequest |  (optional)
 
 try:
     # Reading
-    api_response = api_instance.read(login=login, representing=representing, body=body)
+    api_response = api_instance.read(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->read: %s\n" % e)
@@ -1428,9 +1428,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**ReadRequest**](ReadRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**ReadRequest**](ReadRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -1448,7 +1448,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **read_information**
-> ReadInformationResponse read_information(login=login, representing=representing, body=body)
+> ReadInformationResponse read_information(body, login=login, representing=representing)
 
 Read Information
 
@@ -1466,13 +1466,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.ReadInformationRequest() # ReadInformationRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.ReadInformationRequest() # ReadInformationRequest |  (optional)
 
 try:
     # Read Information
-    api_response = api_instance.read_information(login=login, representing=representing, body=body)
+    api_response = api_instance.read_information(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->read_information: %s\n" % e)
@@ -1482,9 +1482,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**ReadInformationRequest**](ReadInformationRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**ReadInformationRequest**](ReadInformationRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -1502,7 +1502,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **replace_information**
-> Information replace_information(login=login, representing=representing, body=body)
+> Information replace_information(body, login=login, representing=representing)
 
 Replace
 
@@ -1520,13 +1520,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.ReplaceFieldRequest() # ReplaceFieldRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.ReplaceFieldRequest() # ReplaceFieldRequest |  (optional)
 
 try:
     # Replace
-    api_response = api_instance.replace_information(login=login, representing=representing, body=body)
+    api_response = api_instance.replace_information(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->replace_information: %s\n" % e)
@@ -1536,9 +1536,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**ReplaceFieldRequest**](ReplaceFieldRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**ReplaceFieldRequest**](ReplaceFieldRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -1556,7 +1556,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **request_permission**
-> StandardNodeResponse request_permission(login=login, representing=representing, body=body)
+> StandardNodeResponse request_permission(body, login=login, representing=representing)
 
 Request Permission
 
@@ -1574,13 +1574,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.NodeIdRequest() # NodeIdRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.NodeIdRequest() # NodeIdRequest |  (optional)
 
 try:
     # Request Permission
-    api_response = api_instance.request_permission(login=login, representing=representing, body=body)
+    api_response = api_instance.request_permission(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->request_permission: %s\n" % e)
@@ -1590,9 +1590,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**NodeIdRequest**](NodeIdRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**NodeIdRequest**](NodeIdRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -1610,7 +1610,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reset_login**
-> ResetLoginResponse reset_login(login=login, representing=representing, body=body)
+> ResetLoginResponse reset_login(body, login=login, representing=representing)
 
 Changing Login Password
 
@@ -1628,13 +1628,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.ResetLoginCredentialsRequest() # ResetLoginCredentialsRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.ResetLoginCredentialsRequest() # ResetLoginCredentialsRequest |  (optional)
 
 try:
     # Changing Login Password
-    api_response = api_instance.reset_login(login=login, representing=representing, body=body)
+    api_response = api_instance.reset_login(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->reset_login: %s\n" % e)
@@ -1644,9 +1644,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**ResetLoginCredentialsRequest**](ResetLoginCredentialsRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**ResetLoginCredentialsRequest**](ResetLoginCredentialsRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -1664,7 +1664,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_alias**
-> SearchAliasResponse search_alias(login=login, representing=representing, body=body)
+> SearchAliasResponse search_alias(body, login=login, representing=representing)
 
 Search For Alias
 
@@ -1682,13 +1682,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.SearchAliasRequest() # SearchAliasRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.SearchAliasRequest() # SearchAliasRequest |  (optional)
 
 try:
     # Search For Alias
-    api_response = api_instance.search_alias(login=login, representing=representing, body=body)
+    api_response = api_instance.search_alias(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->search_alias: %s\n" % e)
@@ -1698,9 +1698,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**SearchAliasRequest**](SearchAliasRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**SearchAliasRequest**](SearchAliasRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -1718,7 +1718,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **search_entity**
-> EntityListResponse search_entity(login=login, representing=representing, body=body)
+> EntityListResponse search_entity(body, login=login, representing=representing)
 
 Search For Entity
 
@@ -1736,13 +1736,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.SearchEntityRequest() # SearchEntityRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.SearchEntityRequest() # SearchEntityRequest |  (optional)
 
 try:
     # Search For Entity
-    api_response = api_instance.search_entity(login=login, representing=representing, body=body)
+    api_response = api_instance.search_entity(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->search_entity: %s\n" % e)
@@ -1752,9 +1752,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**SearchEntityRequest**](SearchEntityRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**SearchEntityRequest**](SearchEntityRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -1772,7 +1772,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **settle_account**
-> SettleAccountResponse settle_account(login=login, representing=representing, body=body)
+> SettleAccountResponse settle_account(body, login=login, representing=representing)
 
 Settle Account
 
@@ -1790,13 +1790,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.SettleAccountRequest() # SettleAccountRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.SettleAccountRequest() # SettleAccountRequest |  (optional)
 
 try:
     # Settle Account
-    api_response = api_instance.settle_account(login=login, representing=representing, body=body)
+    api_response = api_instance.settle_account(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->settle_account: %s\n" % e)
@@ -1806,9 +1806,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**SettleAccountRequest**](SettleAccountRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**SettleAccountRequest**](SettleAccountRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -1826,7 +1826,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_application**
-> UpdateApplicationResponse update_application(login=login, representing=representing, body=body)
+> UpdateApplicationResponse update_application(body, login=login, representing=representing)
 
 Resetting Application Secret
 
@@ -1844,13 +1844,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.UpdateApplicationRequest() # UpdateApplicationRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.UpdateApplicationRequest() # UpdateApplicationRequest |  (optional)
 
 try:
     # Resetting Application Secret
-    api_response = api_instance.update_application(login=login, representing=representing, body=body)
+    api_response = api_instance.update_application(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->update_application: %s\n" % e)
@@ -1860,9 +1860,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateApplicationRequest**](UpdateApplicationRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**UpdateApplicationRequest**](UpdateApplicationRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -1880,7 +1880,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_status**
-> StandardNodeResponse update_status(login=login, representing=representing, body=body)
+> StandardNodeResponse update_status(body, login=login, representing=representing)
 
 Enabling/Disabling Nodes
 
@@ -1898,13 +1898,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.UpdateStatusRequest() # UpdateStatusRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.UpdateStatusRequest() # UpdateStatusRequest |  (optional)
 
 try:
     # Enabling/Disabling Nodes
-    api_response = api_instance.update_status(login=login, representing=representing, body=body)
+    api_response = api_instance.update_status(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->update_status: %s\n" % e)
@@ -1914,9 +1914,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateStatusRequest**](UpdateStatusRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**UpdateStatusRequest**](UpdateStatusRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -1934,7 +1934,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **watch**
-> CreateWatchResponse watch(login=login, representing=representing, body=body)
+> CreateWatchResponse watch(body, login=login, representing=representing)
 
 Create Watch Trigger
 
@@ -1952,13 +1952,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.CreateWatchRequest() # CreateWatchRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.CreateWatchRequest() # CreateWatchRequest |  (optional)
 
 try:
     # Create Watch Trigger
-    api_response = api_instance.watch(login=login, representing=representing, body=body)
+    api_response = api_instance.watch(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->watch: %s\n" % e)
@@ -1968,9 +1968,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**CreateWatchRequest**](CreateWatchRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**CreateWatchRequest**](CreateWatchRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -1988,7 +1988,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **write**
-> WriteResponse write(login=login, representing=representing, body=body)
+> WriteResponse write(body, login=login, representing=representing)
 
 Writing by Template
 
@@ -2006,13 +2006,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+body = factern_client.WriteRequest() # WriteRequest | 
 login = 'login_example' # str |  (optional)
 representing = 'representing_example' # str |  (optional)
-body = factern_client.WriteRequest() # WriteRequest |  (optional)
 
 try:
     # Writing by Template
-    api_response = api_instance.write(login=login, representing=representing, body=body)
+    api_response = api_instance.write(body, login=login, representing=representing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FactsApi->write: %s\n" % e)
@@ -2022,9 +2022,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**WriteRequest**](WriteRequest.md)|  | 
  **login** | **str**|  | [optional] 
  **representing** | **str**|  | [optional] 
- **body** | [**WriteRequest**](WriteRequest.md)|  | [optional] 
 
 ### Return type
 
