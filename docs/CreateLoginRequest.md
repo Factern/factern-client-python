@@ -1,15 +1,23 @@
+
+
 # CreateLoginRequest
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**include_summary** | **bool** |  | [optional] 
-**password** | **str** |  | [optional] 
-**domain_id** | **str** |  | [optional] 
-**email** | **str** |  | 
-**workflow** | **str** |  | 
-**redirect_uri** | **str** |  | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+Name | Type | Required
+-------- | -------- | --------
+domain_id | str | optional
+email | str | required
+password | str | optional
+redirect_uri | str | optional
+workflow | str | required
+include_summary | bool | optional
 
 
+
+
+## Inheritance hierarchy
+
+
+* [CreateLoginRequest](CreateLoginRequest.md)
+    * [BaseRequest](BaseRequest.md)

@@ -1,11 +1,18 @@
+
+
 # HttpHeader
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**value** | **str** |  | 
-**key** | **str** |  | 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+Name | Type | Required
+-------- | -------- | --------
+key | str | required
+value | str | required
 
 
+
+
+## Inheritance hierarchy
+
+
+* [HttpHeader](HttpHeader.md)

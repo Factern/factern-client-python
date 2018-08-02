@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,38 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class AddStatementRequest(object):
+
+
+parent_name = "BaseRequest"
+def get_parent():
+    # Lazy importing of parent means that loading the classes happens
+    # in the correct order.
+    if get_parent.cache is None:
+        parent_fname = "factern_client.com.factern.model.%s" % re.sub("([a-z])([A-Z])", "\\1_\\2", "BaseRequest").lower()
+        parent = importlib.import_module(parent_fname).BaseRequest
+        get_parent.cache = parent
+    return get_parent.cache
+get_parent.cache = None
+
+
+class AddStatementRequest(get_parent()):
+
+    @staticmethod
+    def get_parent():
+        return get_parent()
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
+
+        get_parent().compute_parent_updates()
+
+        AddStatementRequest.swagger_types.update(get_parent().swagger_types)
+        AddStatementRequest.attribute_map.update(get_parent().attribute_map)
+
 
     """
     Attributes:
@@ -25,99 +50,40 @@ class AddStatementRequest(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'include_summary': 'bool',
-        'target_node_id': 'str',
+        'action_id': 'str',
         'action_qualifier_id': 'str',
-        'action_id': 'str'
+        'target_node_id': 'str'
     }
 
     attribute_map = {
-        'include_summary': 'includeSummary',
-        'target_node_id': 'targetNodeId',
+        'action_id': 'actionId',
         'action_qualifier_id': 'actionQualifierId',
-        'action_id': 'actionId'
+        'target_node_id': 'targetNodeId'
     }
 
-    def __init__(self, include_summary=None, target_node_id=None, action_qualifier_id=None, action_id=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """AddStatementRequest - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("AddStatementRequest got unexpected argument '%s'" % k)
+        get_parent().__init__(self, **kwargs)
 
-        self._include_summary = None
-        self._target_node_id = None
-        self._action_qualifier_id = None
         self._action_id = None
-        self.discriminator = None
-
-        if include_summary is not None:
-            self.include_summary = include_summary
-        self.target_node_id = target_node_id
-        if action_qualifier_id is not None:
-            self.action_qualifier_id = action_qualifier_id
-        self.action_id = action_id
-
-    @property
-    def include_summary(self):
-        """Gets the include_summary of this AddStatementRequest.  # noqa: E501
+        self._action_qualifier_id = None
+        self._target_node_id = None
 
 
-        :return: The include_summary of this AddStatementRequest.  # noqa: E501
-        :rtype: bool
-        """
-        return self._include_summary
+        if "action_id" not in kwargs:
+            raise ValueError("AddStatementRequest missing required argument: action_id")
+        self._action_id = kwargs["action_id"]
 
-    @include_summary.setter
-    def include_summary(self, include_summary):
-        """Sets the include_summary of this AddStatementRequest.
+        if "action_qualifier_id" in kwargs:
+            self.action_qualifier_id = kwargs["action_qualifier_id"]
+        if "target_node_id" not in kwargs:
+            raise ValueError("AddStatementRequest missing required argument: target_node_id")
+        self._target_node_id = kwargs["target_node_id"]
 
-
-        :param include_summary: The include_summary of this AddStatementRequest.  # noqa: E501
-        :type: bool
-        """
-
-        self._include_summary = include_summary
-
-    @property
-    def target_node_id(self):
-        """Gets the target_node_id of this AddStatementRequest.  # noqa: E501
-
-
-        :return: The target_node_id of this AddStatementRequest.  # noqa: E501
-        :rtype: str
-        """
-        return self._target_node_id
-
-    @target_node_id.setter
-    def target_node_id(self, target_node_id):
-        """Sets the target_node_id of this AddStatementRequest.
-
-
-        :param target_node_id: The target_node_id of this AddStatementRequest.  # noqa: E501
-        :type: str
-        """
-        if target_node_id is None:
-            raise ValueError("Invalid value for `target_node_id`, must not be `None`")  # noqa: E501
-
-        self._target_node_id = target_node_id
-
-    @property
-    def action_qualifier_id(self):
-        """Gets the action_qualifier_id of this AddStatementRequest.  # noqa: E501
-
-
-        :return: The action_qualifier_id of this AddStatementRequest.  # noqa: E501
-        :rtype: str
-        """
-        return self._action_qualifier_id
-
-    @action_qualifier_id.setter
-    def action_qualifier_id(self, action_qualifier_id):
-        """Sets the action_qualifier_id of this AddStatementRequest.
-
-
-        :param action_qualifier_id: The action_qualifier_id of this AddStatementRequest.  # noqa: E501
-        :type: str
-        """
-
-        self._action_qualifier_id = action_qualifier_id
 
     @property
     def action_id(self):
@@ -141,6 +107,50 @@ class AddStatementRequest(object):
             raise ValueError("Invalid value for `action_id`, must not be `None`")  # noqa: E501
 
         self._action_id = action_id
+
+    @property
+    def action_qualifier_id(self):
+        """Gets the action_qualifier_id of this AddStatementRequest.  # noqa: E501
+
+
+        :return: The action_qualifier_id of this AddStatementRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._action_qualifier_id
+
+    @action_qualifier_id.setter
+    def action_qualifier_id(self, action_qualifier_id):
+        """Sets the action_qualifier_id of this AddStatementRequest.
+
+
+        :param action_qualifier_id: The action_qualifier_id of this AddStatementRequest.  # noqa: E501
+        :type: str
+        """
+
+        self._action_qualifier_id = action_qualifier_id
+
+    @property
+    def target_node_id(self):
+        """Gets the target_node_id of this AddStatementRequest.  # noqa: E501
+
+
+        :return: The target_node_id of this AddStatementRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._target_node_id
+
+    @target_node_id.setter
+    def target_node_id(self, target_node_id):
+        """Sets the target_node_id of this AddStatementRequest.
+
+
+        :param target_node_id: The target_node_id of this AddStatementRequest.  # noqa: E501
+        :type: str
+        """
+        if target_node_id is None:
+            raise ValueError("Invalid value for `target_node_id`, must not be `None`")  # noqa: E501
+
+        self._target_node_id = target_node_id
 
     def to_dict(self):
         """Returns the model properties as a dict"""

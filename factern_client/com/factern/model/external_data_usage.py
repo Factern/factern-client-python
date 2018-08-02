@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,17 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class ExternalDataUsage(object):
+
+
+class ExternalDataUsage():
+
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
 
     """
     Attributes:
@@ -34,15 +38,25 @@ class ExternalDataUsage(object):
         'bytes_written': 'bytesWritten'
     }
 
-    def __init__(self, bytes_read=None, bytes_written=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """ExternalDataUsage - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("ExternalDataUsage got unexpected argument '%s'" % k)
 
         self._bytes_read = None
         self._bytes_written = None
-        self.discriminator = None
 
-        self.bytes_read = bytes_read
-        self.bytes_written = bytes_written
+
+        if "bytes_read" not in kwargs:
+            raise ValueError("ExternalDataUsage missing required argument: bytes_read")
+        self._bytes_read = kwargs["bytes_read"]
+
+        if "bytes_written" not in kwargs:
+            raise ValueError("ExternalDataUsage missing required argument: bytes_written")
+        self._bytes_written = kwargs["bytes_written"]
+
 
     @property
     def bytes_read(self):

@@ -1,18 +1,25 @@
+
+
 # CreateMirrorResponse
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**deleted** | **bool** |  | [optional] 
-**timestamp** | **float** |  | [optional] 
-**node_id** | **str** |  | [optional] 
-**agent** | [**Agent**](Agent.md) |  | [optional] 
-**summary** | [**Summary**](Summary.md) |  | [optional] 
-**batch_id** | **str** |  | [optional] 
-**fact_type** | **str** |  | [optional] 
-**parent_id** | **str** |  | [optional] 
-**enabled** | **bool** |  | 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+Name | Type | Required
+-------- | -------- | --------
+enabled | bool | required
+agent | [Agent](Agent.md) | optional
+batch_id | str | optional
+fact_type | str | optional
+node_id | str | optional
+parent_id | str | optional
+summary | [Summary](Summary.md) | optional
+timestamp | float | optional
 
 
+
+
+## Inheritance hierarchy
+
+
+* [CreateMirrorResponse](CreateMirrorResponse.md)
+    * [BaseResponse](BaseResponse.md)

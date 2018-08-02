@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,38 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class CreatePriceRequest(object):
+
+
+parent_name = "BaseRequest"
+def get_parent():
+    # Lazy importing of parent means that loading the classes happens
+    # in the correct order.
+    if get_parent.cache is None:
+        parent_fname = "factern_client.com.factern.model.%s" % re.sub("([a-z])([A-Z])", "\\1_\\2", "BaseRequest").lower()
+        parent = importlib.import_module(parent_fname).BaseRequest
+        get_parent.cache = parent
+    return get_parent.cache
+get_parent.cache = None
+
+
+class CreatePriceRequest(get_parent()):
+
+    @staticmethod
+    def get_parent():
+        return get_parent()
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
+
+        get_parent().compute_parent_updates()
+
+        CreatePriceRequest.swagger_types.update(get_parent().swagger_types)
+        CreatePriceRequest.attribute_map.update(get_parent().attribute_map)
+
 
     """
     Attributes:
@@ -25,58 +50,49 @@ class CreatePriceRequest(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'include_summary': 'bool',
         'policy': 'PermissionPolicyDocument',
-        'target_node_id': 'str',
         'price_details': 'PriceDetails',
+        'target_node_id': 'str',
         'type': 'str'
     }
 
     attribute_map = {
-        'include_summary': 'includeSummary',
         'policy': 'policy',
-        'target_node_id': 'targetNodeId',
         'price_details': 'priceDetails',
+        'target_node_id': 'targetNodeId',
         'type': 'type'
     }
 
-    def __init__(self, include_summary=None, policy=None, target_node_id=None, price_details=None, type=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """CreatePriceRequest - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("CreatePriceRequest got unexpected argument '%s'" % k)
+        get_parent().__init__(self, **kwargs)
 
-        self._include_summary = None
         self._policy = None
-        self._target_node_id = None
         self._price_details = None
+        self._target_node_id = None
         self._type = None
-        self.discriminator = None
-
-        if include_summary is not None:
-            self.include_summary = include_summary
-        self.policy = policy
-        self.target_node_id = target_node_id
-        self.price_details = price_details
-        self.type = type
-
-    @property
-    def include_summary(self):
-        """Gets the include_summary of this CreatePriceRequest.  # noqa: E501
 
 
-        :return: The include_summary of this CreatePriceRequest.  # noqa: E501
-        :rtype: bool
-        """
-        return self._include_summary
+        if "policy" not in kwargs:
+            raise ValueError("CreatePriceRequest missing required argument: policy")
+        self._policy = kwargs["policy"]
 
-    @include_summary.setter
-    def include_summary(self, include_summary):
-        """Sets the include_summary of this CreatePriceRequest.
+        if "price_details" not in kwargs:
+            raise ValueError("CreatePriceRequest missing required argument: price_details")
+        self._price_details = kwargs["price_details"]
 
+        if "target_node_id" not in kwargs:
+            raise ValueError("CreatePriceRequest missing required argument: target_node_id")
+        self._target_node_id = kwargs["target_node_id"]
 
-        :param include_summary: The include_summary of this CreatePriceRequest.  # noqa: E501
-        :type: bool
-        """
+        if "type" not in kwargs:
+            raise ValueError("CreatePriceRequest missing required argument: type")
+        self._type = kwargs["type"]
 
-        self._include_summary = include_summary
 
     @property
     def policy(self):
@@ -102,29 +118,6 @@ class CreatePriceRequest(object):
         self._policy = policy
 
     @property
-    def target_node_id(self):
-        """Gets the target_node_id of this CreatePriceRequest.  # noqa: E501
-
-
-        :return: The target_node_id of this CreatePriceRequest.  # noqa: E501
-        :rtype: str
-        """
-        return self._target_node_id
-
-    @target_node_id.setter
-    def target_node_id(self, target_node_id):
-        """Sets the target_node_id of this CreatePriceRequest.
-
-
-        :param target_node_id: The target_node_id of this CreatePriceRequest.  # noqa: E501
-        :type: str
-        """
-        if target_node_id is None:
-            raise ValueError("Invalid value for `target_node_id`, must not be `None`")  # noqa: E501
-
-        self._target_node_id = target_node_id
-
-    @property
     def price_details(self):
         """Gets the price_details of this CreatePriceRequest.  # noqa: E501
 
@@ -146,6 +139,29 @@ class CreatePriceRequest(object):
             raise ValueError("Invalid value for `price_details`, must not be `None`")  # noqa: E501
 
         self._price_details = price_details
+
+    @property
+    def target_node_id(self):
+        """Gets the target_node_id of this CreatePriceRequest.  # noqa: E501
+
+
+        :return: The target_node_id of this CreatePriceRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._target_node_id
+
+    @target_node_id.setter
+    def target_node_id(self, target_node_id):
+        """Sets the target_node_id of this CreatePriceRequest.
+
+
+        :param target_node_id: The target_node_id of this CreatePriceRequest.  # noqa: E501
+        :type: str
+        """
+        if target_node_id is None:
+            raise ValueError("Invalid value for `target_node_id`, must not be `None`")  # noqa: E501
+
+        self._target_node_id = target_node_id
 
     @property
     def type(self):

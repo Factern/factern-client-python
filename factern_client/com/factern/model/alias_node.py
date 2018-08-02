@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,17 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class AliasNode(object):
+
+
+class AliasNode():
+
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
 
     """
     Attributes:
@@ -25,51 +29,37 @@ class AliasNode(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'local': 'bool',
         'description': 'str',
+        'local': 'bool',
         'name': 'str'
     }
 
     attribute_map = {
-        'local': 'local',
         'description': 'description',
+        'local': 'local',
         'name': 'name'
     }
 
-    def __init__(self, local=None, description=None, name=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """AliasNode - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("AliasNode got unexpected argument '%s'" % k)
 
-        self._local = None
         self._description = None
+        self._local = None
         self._name = None
-        self.discriminator = None
-
-        if local is not None:
-            self.local = local
-        if description is not None:
-            self.description = description
-        self.name = name
-
-    @property
-    def local(self):
-        """Gets the local of this AliasNode.  # noqa: E501
 
 
-        :return: The local of this AliasNode.  # noqa: E501
-        :rtype: bool
-        """
-        return self._local
+        if "description" in kwargs:
+            self.description = kwargs["description"]
+        if "local" in kwargs:
+            self.local = kwargs["local"]
+        if "name" not in kwargs:
+            raise ValueError("AliasNode missing required argument: name")
+        self._name = kwargs["name"]
 
-    @local.setter
-    def local(self, local):
-        """Sets the local of this AliasNode.
-
-
-        :param local: The local of this AliasNode.  # noqa: E501
-        :type: bool
-        """
-
-        self._local = local
 
     @property
     def description(self):
@@ -91,6 +81,27 @@ class AliasNode(object):
         """
 
         self._description = description
+
+    @property
+    def local(self):
+        """Gets the local of this AliasNode.  # noqa: E501
+
+
+        :return: The local of this AliasNode.  # noqa: E501
+        :rtype: bool
+        """
+        return self._local
+
+    @local.setter
+    def local(self, local):
+        """Sets the local of this AliasNode.
+
+
+        :param local: The local of this AliasNode.  # noqa: E501
+        :type: bool
+        """
+
+        self._local = local
 
     @property
     def name(self):

@@ -1,12 +1,37 @@
+
+
 # UpdateStatusRequest
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**include_summary** | **bool** |  | [optional] 
-**node_id** | **str** |  | 
-**status** | **str** |  | 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+Name | Type | Required
+-------- | -------- | --------
+status | [StatusEnum](#StatusEnum) | required
+node_id | str | required
+include_summary | bool | optional
 
 
+
+
+## Enums
+
+
+<a name="StatusEnum"></a>
+### StatusEnum
+
+Name | Value
+---- | -----
+ENABLED | &quot;enabled&quot;
+DISABLED | &quot;disabled&quot;
+
+
+
+
+
+
+## Inheritance hierarchy
+
+
+* [UpdateStatusRequest](UpdateStatusRequest.md)
+    * [NodeIdRequest](NodeIdRequest.md)
+        * [BaseRequest](BaseRequest.md)

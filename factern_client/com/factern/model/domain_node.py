@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,17 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class DomainNode(object):
+
+
+class DomainNode():
+
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
 
     """
     Attributes:
@@ -25,52 +29,32 @@ class DomainNode(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'node_id': 'str',
         'description': 'str',
         'name': 'str'
     }
 
     attribute_map = {
-        'node_id': 'nodeId',
         'description': 'description',
         'name': 'name'
     }
 
-    def __init__(self, node_id=None, description=None, name=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """DomainNode - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("DomainNode got unexpected argument '%s'" % k)
 
-        self._node_id = None
         self._description = None
         self._name = None
-        self.discriminator = None
-
-        self.node_id = node_id
-        if description is not None:
-            self.description = description
-        self.name = name
-
-    @property
-    def node_id(self):
-        """Gets the node_id of this DomainNode.  # noqa: E501
 
 
-        :return: The node_id of this DomainNode.  # noqa: E501
-        :rtype: str
-        """
-        return self._node_id
+        if "description" in kwargs:
+            self.description = kwargs["description"]
+        if "name" not in kwargs:
+            raise ValueError("DomainNode missing required argument: name")
+        self._name = kwargs["name"]
 
-    @node_id.setter
-    def node_id(self, node_id):
-        """Sets the node_id of this DomainNode.
-
-
-        :param node_id: The node_id of this DomainNode.  # noqa: E501
-        :type: str
-        """
-        if node_id is None:
-            raise ValueError("Invalid value for `node_id`, must not be `None`")  # noqa: E501
-
-        self._node_id = node_id
 
     @property
     def description(self):

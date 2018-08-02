@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,17 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class Account(object):
+
+
+class Account():
+
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
 
     """
     Attributes:
@@ -32,13 +36,20 @@ class Account(object):
         'balance': 'balance'
     }
 
-    def __init__(self, balance=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """Account - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("Account got unexpected argument '%s'" % k)
 
         self._balance = None
-        self.discriminator = None
 
-        self.balance = balance
+
+        if "balance" not in kwargs:
+            raise ValueError("Account missing required argument: balance")
+        self._balance = kwargs["balance"]
+
 
     @property
     def balance(self):

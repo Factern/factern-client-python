@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,17 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class ApiEndpoint(object):
+
+
+class ApiEndpoint():
+
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
 
     """
     Attributes:
@@ -26,44 +30,51 @@ class ApiEndpoint(object):
     """
     swagger_types = {
         'body': 'str',
-        'url': 'str',
-        'response_transform': 'list[TransformElement]',
         'headers': 'list[HttpHeader]',
+        'method': 'str',
+        'response_transform': 'list[TransformElement]',
         'type': 'str',
-        'method': 'str'
+        'url': 'str'
     }
 
     attribute_map = {
         'body': 'body',
-        'url': 'url',
-        'response_transform': 'responseTransform',
         'headers': 'headers',
+        'method': 'method',
+        'response_transform': 'responseTransform',
         'type': 'type',
-        'method': 'method'
+        'url': 'url'
     }
 
-    def __init__(self, body=None, url=None, response_transform=None, headers=None, type=None, method=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """ApiEndpoint - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("ApiEndpoint got unexpected argument '%s'" % k)
 
         self._body = None
-        self._url = None
-        self._response_transform = None
         self._headers = None
-        self._type = None
         self._method = None
-        self.discriminator = None
+        self._response_transform = None
+        self._type = None
+        self._url = None
 
-        if body is not None:
-            self.body = body
-        self.url = url
-        if response_transform is not None:
-            self.response_transform = response_transform
-        if headers is not None:
-            self.headers = headers
-        if type is not None:
-            self.type = type
-        if method is not None:
-            self.method = method
+
+        if "body" in kwargs:
+            self.body = kwargs["body"]
+        if "headers" in kwargs:
+            self.headers = kwargs["headers"]
+        if "method" in kwargs:
+            self.method = kwargs["method"]
+        if "response_transform" in kwargs:
+            self.response_transform = kwargs["response_transform"]
+        if "type" in kwargs:
+            self.type = kwargs["type"]
+        if "url" not in kwargs:
+            raise ValueError("ApiEndpoint missing required argument: url")
+        self._url = kwargs["url"]
+
 
     @property
     def body(self):
@@ -87,27 +98,52 @@ class ApiEndpoint(object):
         self._body = body
 
     @property
-    def url(self):
-        """Gets the url of this ApiEndpoint.  # noqa: E501
+    def headers(self):
+        """Gets the headers of this ApiEndpoint.  # noqa: E501
 
 
-        :return: The url of this ApiEndpoint.  # noqa: E501
+        :return: The headers of this ApiEndpoint.  # noqa: E501
+        :rtype: list[HttpHeader]
+        """
+        return self._headers
+
+    @headers.setter
+    def headers(self, headers):
+        """Sets the headers of this ApiEndpoint.
+
+
+        :param headers: The headers of this ApiEndpoint.  # noqa: E501
+        :type: list[HttpHeader]
+        """
+
+        self._headers = headers
+
+    @property
+    def method(self):
+        """Gets the method of this ApiEndpoint.  # noqa: E501
+
+
+        :return: The method of this ApiEndpoint.  # noqa: E501
         :rtype: str
         """
-        return self._url
+        return self._method
 
-    @url.setter
-    def url(self, url):
-        """Sets the url of this ApiEndpoint.
+    @method.setter
+    def method(self, method):
+        """Sets the method of this ApiEndpoint.
 
 
-        :param url: The url of this ApiEndpoint.  # noqa: E501
+        :param method: The method of this ApiEndpoint.  # noqa: E501
         :type: str
         """
-        if url is None:
-            raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
+        allowed_values = ["GET", "POST", "PUT"]  # noqa: E501
+        if method not in allowed_values:
+            raise ValueError(
+                "Invalid value for `method` ({0}), must be one of {1}"  # noqa: E501
+                .format(method, allowed_values)
+            )
 
-        self._url = url
+        self._method = method
 
     @property
     def response_transform(self):
@@ -129,27 +165,6 @@ class ApiEndpoint(object):
         """
 
         self._response_transform = response_transform
-
-    @property
-    def headers(self):
-        """Gets the headers of this ApiEndpoint.  # noqa: E501
-
-
-        :return: The headers of this ApiEndpoint.  # noqa: E501
-        :rtype: list[HttpHeader]
-        """
-        return self._headers
-
-    @headers.setter
-    def headers(self, headers):
-        """Sets the headers of this ApiEndpoint.
-
-
-        :param headers: The headers of this ApiEndpoint.  # noqa: E501
-        :type: list[HttpHeader]
-        """
-
-        self._headers = headers
 
     @property
     def type(self):
@@ -179,31 +194,27 @@ class ApiEndpoint(object):
         self._type = type
 
     @property
-    def method(self):
-        """Gets the method of this ApiEndpoint.  # noqa: E501
+    def url(self):
+        """Gets the url of this ApiEndpoint.  # noqa: E501
 
 
-        :return: The method of this ApiEndpoint.  # noqa: E501
+        :return: The url of this ApiEndpoint.  # noqa: E501
         :rtype: str
         """
-        return self._method
+        return self._url
 
-    @method.setter
-    def method(self, method):
-        """Sets the method of this ApiEndpoint.
+    @url.setter
+    def url(self, url):
+        """Sets the url of this ApiEndpoint.
 
 
-        :param method: The method of this ApiEndpoint.  # noqa: E501
+        :param url: The url of this ApiEndpoint.  # noqa: E501
         :type: str
         """
-        allowed_values = ["GET", "POST", "PUT"]  # noqa: E501
-        if method not in allowed_values:
-            raise ValueError(
-                "Invalid value for `method` ({0}), must be one of {1}"  # noqa: E501
-                .format(method, allowed_values)
-            )
+        if url is None:
+            raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
 
-        self._method = method
+        self._url = url
 
     def to_dict(self):
         """Returns the model properties as a dict"""

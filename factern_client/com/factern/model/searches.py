@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,17 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class Searches(object):
+
+
+class Searches():
+
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
 
     """
     Attributes:
@@ -25,78 +29,48 @@ class Searches(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'searches': 'float',
-        'reindexing_calls': 'float',
         'hits': 'float',
-        'reindexed_nodes': 'float'
+        'reindexed_nodes': 'float',
+        'reindexing_calls': 'float',
+        'searches': 'float'
     }
 
     attribute_map = {
-        'searches': 'searches',
-        'reindexing_calls': 'reindexingCalls',
         'hits': 'hits',
-        'reindexed_nodes': 'reindexedNodes'
+        'reindexed_nodes': 'reindexedNodes',
+        'reindexing_calls': 'reindexingCalls',
+        'searches': 'searches'
     }
 
-    def __init__(self, searches=None, reindexing_calls=None, hits=None, reindexed_nodes=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """Searches - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("Searches got unexpected argument '%s'" % k)
 
-        self._searches = None
-        self._reindexing_calls = None
         self._hits = None
         self._reindexed_nodes = None
-        self.discriminator = None
-
-        self.searches = searches
-        self.reindexing_calls = reindexing_calls
-        self.hits = hits
-        self.reindexed_nodes = reindexed_nodes
-
-    @property
-    def searches(self):
-        """Gets the searches of this Searches.  # noqa: E501
+        self._reindexing_calls = None
+        self._searches = None
 
 
-        :return: The searches of this Searches.  # noqa: E501
-        :rtype: float
-        """
-        return self._searches
+        if "hits" not in kwargs:
+            raise ValueError("Searches missing required argument: hits")
+        self._hits = kwargs["hits"]
 
-    @searches.setter
-    def searches(self, searches):
-        """Sets the searches of this Searches.
+        if "reindexed_nodes" not in kwargs:
+            raise ValueError("Searches missing required argument: reindexed_nodes")
+        self._reindexed_nodes = kwargs["reindexed_nodes"]
 
+        if "reindexing_calls" not in kwargs:
+            raise ValueError("Searches missing required argument: reindexing_calls")
+        self._reindexing_calls = kwargs["reindexing_calls"]
 
-        :param searches: The searches of this Searches.  # noqa: E501
-        :type: float
-        """
-        if searches is None:
-            raise ValueError("Invalid value for `searches`, must not be `None`")  # noqa: E501
+        if "searches" not in kwargs:
+            raise ValueError("Searches missing required argument: searches")
+        self._searches = kwargs["searches"]
 
-        self._searches = searches
-
-    @property
-    def reindexing_calls(self):
-        """Gets the reindexing_calls of this Searches.  # noqa: E501
-
-
-        :return: The reindexing_calls of this Searches.  # noqa: E501
-        :rtype: float
-        """
-        return self._reindexing_calls
-
-    @reindexing_calls.setter
-    def reindexing_calls(self, reindexing_calls):
-        """Sets the reindexing_calls of this Searches.
-
-
-        :param reindexing_calls: The reindexing_calls of this Searches.  # noqa: E501
-        :type: float
-        """
-        if reindexing_calls is None:
-            raise ValueError("Invalid value for `reindexing_calls`, must not be `None`")  # noqa: E501
-
-        self._reindexing_calls = reindexing_calls
 
     @property
     def hits(self):
@@ -143,6 +117,52 @@ class Searches(object):
             raise ValueError("Invalid value for `reindexed_nodes`, must not be `None`")  # noqa: E501
 
         self._reindexed_nodes = reindexed_nodes
+
+    @property
+    def reindexing_calls(self):
+        """Gets the reindexing_calls of this Searches.  # noqa: E501
+
+
+        :return: The reindexing_calls of this Searches.  # noqa: E501
+        :rtype: float
+        """
+        return self._reindexing_calls
+
+    @reindexing_calls.setter
+    def reindexing_calls(self, reindexing_calls):
+        """Sets the reindexing_calls of this Searches.
+
+
+        :param reindexing_calls: The reindexing_calls of this Searches.  # noqa: E501
+        :type: float
+        """
+        if reindexing_calls is None:
+            raise ValueError("Invalid value for `reindexing_calls`, must not be `None`")  # noqa: E501
+
+        self._reindexing_calls = reindexing_calls
+
+    @property
+    def searches(self):
+        """Gets the searches of this Searches.  # noqa: E501
+
+
+        :return: The searches of this Searches.  # noqa: E501
+        :rtype: float
+        """
+        return self._searches
+
+    @searches.setter
+    def searches(self, searches):
+        """Sets the searches of this Searches.
+
+
+        :param searches: The searches of this Searches.  # noqa: E501
+        :type: float
+        """
+        if searches is None:
+            raise ValueError("Invalid value for `searches`, must not be `None`")  # noqa: E501
+
+        self._searches = searches
 
     def to_dict(self):
         """Returns the model properties as a dict"""

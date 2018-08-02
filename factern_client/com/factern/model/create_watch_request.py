@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,38 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class CreateWatchRequest(object):
+
+
+parent_name = "BaseRequest"
+def get_parent():
+    # Lazy importing of parent means that loading the classes happens
+    # in the correct order.
+    if get_parent.cache is None:
+        parent_fname = "factern_client.com.factern.model.%s" % re.sub("([a-z])([A-Z])", "\\1_\\2", "BaseRequest").lower()
+        parent = importlib.import_module(parent_fname).BaseRequest
+        get_parent.cache = parent
+    return get_parent.cache
+get_parent.cache = None
+
+
+class CreateWatchRequest(get_parent()):
+
+    @staticmethod
+    def get_parent():
+        return get_parent()
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
+
+        get_parent().compute_parent_updates()
+
+        CreateWatchRequest.swagger_types.update(get_parent().swagger_types)
+        CreateWatchRequest.attribute_map.update(get_parent().attribute_map)
+
 
     """
     Attributes:
@@ -25,56 +50,59 @@ class CreateWatchRequest(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'include_summary': 'bool',
-        'target_node_id': 'str',
         'filter_id': 'str',
+        'target_node_id': 'str',
         'watch_interface_id': 'str'
     }
 
     attribute_map = {
-        'include_summary': 'includeSummary',
-        'target_node_id': 'targetNodeId',
         'filter_id': 'filterId',
+        'target_node_id': 'targetNodeId',
         'watch_interface_id': 'watchInterfaceId'
     }
 
-    def __init__(self, include_summary=None, target_node_id=None, filter_id=None, watch_interface_id=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """CreateWatchRequest - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("CreateWatchRequest got unexpected argument '%s'" % k)
+        get_parent().__init__(self, **kwargs)
 
-        self._include_summary = None
-        self._target_node_id = None
         self._filter_id = None
+        self._target_node_id = None
         self._watch_interface_id = None
-        self.discriminator = None
 
-        if include_summary is not None:
-            self.include_summary = include_summary
-        self.target_node_id = target_node_id
-        if filter_id is not None:
-            self.filter_id = filter_id
-        if watch_interface_id is not None:
-            self.watch_interface_id = watch_interface_id
+
+        if "filter_id" in kwargs:
+            self.filter_id = kwargs["filter_id"]
+        if "target_node_id" not in kwargs:
+            raise ValueError("CreateWatchRequest missing required argument: target_node_id")
+        self._target_node_id = kwargs["target_node_id"]
+
+        if "watch_interface_id" in kwargs:
+            self.watch_interface_id = kwargs["watch_interface_id"]
 
     @property
-    def include_summary(self):
-        """Gets the include_summary of this CreateWatchRequest.  # noqa: E501
+    def filter_id(self):
+        """Gets the filter_id of this CreateWatchRequest.  # noqa: E501
 
 
-        :return: The include_summary of this CreateWatchRequest.  # noqa: E501
-        :rtype: bool
+        :return: The filter_id of this CreateWatchRequest.  # noqa: E501
+        :rtype: str
         """
-        return self._include_summary
+        return self._filter_id
 
-    @include_summary.setter
-    def include_summary(self, include_summary):
-        """Sets the include_summary of this CreateWatchRequest.
+    @filter_id.setter
+    def filter_id(self, filter_id):
+        """Sets the filter_id of this CreateWatchRequest.
 
 
-        :param include_summary: The include_summary of this CreateWatchRequest.  # noqa: E501
-        :type: bool
+        :param filter_id: The filter_id of this CreateWatchRequest.  # noqa: E501
+        :type: str
         """
 
-        self._include_summary = include_summary
+        self._filter_id = filter_id
 
     @property
     def target_node_id(self):
@@ -98,27 +126,6 @@ class CreateWatchRequest(object):
             raise ValueError("Invalid value for `target_node_id`, must not be `None`")  # noqa: E501
 
         self._target_node_id = target_node_id
-
-    @property
-    def filter_id(self):
-        """Gets the filter_id of this CreateWatchRequest.  # noqa: E501
-
-
-        :return: The filter_id of this CreateWatchRequest.  # noqa: E501
-        :rtype: str
-        """
-        return self._filter_id
-
-    @filter_id.setter
-    def filter_id(self, filter_id):
-        """Sets the filter_id of this CreateWatchRequest.
-
-
-        :param filter_id: The filter_id of this CreateWatchRequest.  # noqa: E501
-        :type: str
-        """
-
-        self._filter_id = filter_id
 
     @property
     def watch_interface_id(self):

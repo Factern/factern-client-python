@@ -1,11 +1,19 @@
+
+
 # ReadInformationRequest
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**include_summary** | **bool** |  | [optional] 
-**node_id** | **str** |  | 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+Name | Type | Required
+-------- | -------- | --------
+node_id | str | required
+include_summary | bool | optional
 
 
+
+
+## Inheritance hierarchy
+
+
+* [ReadInformationRequest](ReadInformationRequest.md)
+    * [BaseRequest](BaseRequest.md)

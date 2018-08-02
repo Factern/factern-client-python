@@ -1,17 +1,43 @@
+
+
 # SearchEntityRequest
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**include_summary** | **bool** |  | [optional] 
-**term** | **str** |  | [optional] 
-**max_results** | **float** |  | [optional] 
-**restrict_to** | **str** |  | [optional] 
-**operator** | **str** |  | [optional] 
-**query** | **object** |  | [optional] 
-**next_token** | **str** |  | [optional] 
-**field_id** | **str** |  | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+Name | Type | Required
+-------- | -------- | --------
+field_id | str | optional
+max_results | float | optional
+next_token | str | optional
+operator | [OperatorEnum](#OperatorEnum) | optional
+query | object | optional
+restrict_to | str | optional
+term | str | optional
+include_summary | bool | optional
 
 
+
+
+## Enums
+
+
+<a name="OperatorEnum"></a>
+### OperatorEnum
+
+Name | Value
+---- | -----
+EQUALS | &quot;equals&quot;
+STARTSWITH | &quot;startsWith&quot;
+CONTAINS | &quot;contains&quot;
+ELASTICSEARCH | &quot;elasticsearch&quot;
+
+
+
+
+
+
+## Inheritance hierarchy
+
+
+* [SearchEntityRequest](SearchEntityRequest.md)
+    * [BaseRequest](BaseRequest.md)

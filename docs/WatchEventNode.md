@@ -1,10 +1,17 @@
+
+
 # WatchEventNode
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**source** | [**StandardNode**](StandardNode.md) |  | 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+Name | Type | Required
+-------- | -------- | --------
+source | [StandardNode](StandardNode.md) | required
 
 
+
+
+## Inheritance hierarchy
+
+
+* [WatchEventNode](WatchEventNode.md)

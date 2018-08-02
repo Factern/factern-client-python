@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,12 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class PermissionAction(object):
+
+
+class PermissionAction():
 
     """
     allowed enum values
@@ -25,6 +24,11 @@ class PermissionAction(object):
     APPLICATION = "Application"
     CREATE = "Create"
     DESCRIBE = "Describe"
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
+
     """
     Attributes:
       swagger_types (dict): The key is attribute name
@@ -38,9 +42,14 @@ class PermissionAction(object):
     attribute_map = {
     }
 
-    def __init__(self):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """PermissionAction - a model defined in Swagger"""  # noqa: E501
-        self.discriminator = None
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("PermissionAction got unexpected argument '%s'" % k)
+
+
 
     def to_dict(self):
         """Returns the model properties as a dict"""

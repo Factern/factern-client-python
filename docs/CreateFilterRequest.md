@@ -1,14 +1,24 @@
+
+
 # CreateFilterRequest
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**include_summary** | **bool** |  | [optional] 
-**parent_id** | **str** |  | [optional] 
-**description** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
-**statements** | [**list[FilterStatement]**](FilterStatement.md) |  | 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+Name | Type | Required
+-------- | -------- | --------
+statements | [list[FilterStatement]](FilterStatement.md) | required
+description | str | optional
+name | str | optional
+parent_id | str | optional
+include_summary | bool | optional
 
 
+
+
+## Inheritance hierarchy
+
+
+* [CreateFilterRequest](CreateFilterRequest.md)
+    * [CreateNamedRequest](CreateNamedRequest.md)
+        * [CreateChildRequest](CreateChildRequest.md)
+            * [BaseRequest](BaseRequest.md)

@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,38 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class DescribeRequest(object):
+
+
+parent_name = "BaseRequest"
+def get_parent():
+    # Lazy importing of parent means that loading the classes happens
+    # in the correct order.
+    if get_parent.cache is None:
+        parent_fname = "factern_client.com.factern.model.%s" % re.sub("([a-z])([A-Z])", "\\1_\\2", "BaseRequest").lower()
+        parent = importlib.import_module(parent_fname).BaseRequest
+        get_parent.cache = parent
+    return get_parent.cache
+get_parent.cache = None
+
+
+class DescribeRequest(get_parent()):
+
+    @staticmethod
+    def get_parent():
+        return get_parent()
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
+
+        get_parent().compute_parent_updates()
+
+        DescribeRequest.swagger_types.update(get_parent().swagger_types)
+        DescribeRequest.attribute_map.update(get_parent().attribute_map)
+
 
     """
     Attributes:
@@ -25,56 +50,59 @@ class DescribeRequest(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'include_summary': 'bool',
+        'generate_template': 'bool',
         'list_children': 'ListCriteria',
-        'node_id': 'str',
-        'generate_template': 'bool'
+        'node_id': 'str'
     }
 
     attribute_map = {
-        'include_summary': 'includeSummary',
+        'generate_template': 'generateTemplate',
         'list_children': 'listChildren',
-        'node_id': 'nodeId',
-        'generate_template': 'generateTemplate'
+        'node_id': 'nodeId'
     }
 
-    def __init__(self, include_summary=None, list_children=None, node_id=None, generate_template=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """DescribeRequest - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("DescribeRequest got unexpected argument '%s'" % k)
+        get_parent().__init__(self, **kwargs)
 
-        self._include_summary = None
+        self._generate_template = None
         self._list_children = None
         self._node_id = None
-        self._generate_template = None
-        self.discriminator = None
 
-        if include_summary is not None:
-            self.include_summary = include_summary
-        if list_children is not None:
-            self.list_children = list_children
-        self.node_id = node_id
-        if generate_template is not None:
-            self.generate_template = generate_template
+
+        if "generate_template" in kwargs:
+            self.generate_template = kwargs["generate_template"]
+        if "list_children" in kwargs:
+            self.list_children = kwargs["list_children"]
+        if "node_id" not in kwargs:
+            raise ValueError("DescribeRequest missing required argument: node_id")
+        self._node_id = kwargs["node_id"]
+
 
     @property
-    def include_summary(self):
-        """Gets the include_summary of this DescribeRequest.  # noqa: E501
+    def generate_template(self):
+        """Gets the generate_template of this DescribeRequest.  # noqa: E501
 
 
-        :return: The include_summary of this DescribeRequest.  # noqa: E501
+        :return: The generate_template of this DescribeRequest.  # noqa: E501
         :rtype: bool
         """
-        return self._include_summary
+        return self._generate_template
 
-    @include_summary.setter
-    def include_summary(self, include_summary):
-        """Sets the include_summary of this DescribeRequest.
+    @generate_template.setter
+    def generate_template(self, generate_template):
+        """Sets the generate_template of this DescribeRequest.
 
 
-        :param include_summary: The include_summary of this DescribeRequest.  # noqa: E501
+        :param generate_template: The generate_template of this DescribeRequest.  # noqa: E501
         :type: bool
         """
 
-        self._include_summary = include_summary
+        self._generate_template = generate_template
 
     @property
     def list_children(self):
@@ -119,27 +147,6 @@ class DescribeRequest(object):
             raise ValueError("Invalid value for `node_id`, must not be `None`")  # noqa: E501
 
         self._node_id = node_id
-
-    @property
-    def generate_template(self):
-        """Gets the generate_template of this DescribeRequest.  # noqa: E501
-
-
-        :return: The generate_template of this DescribeRequest.  # noqa: E501
-        :rtype: bool
-        """
-        return self._generate_template
-
-    @generate_template.setter
-    def generate_template(self, generate_template):
-        """Sets the generate_template of this DescribeRequest.
-
-
-        :param generate_template: The generate_template of this DescribeRequest.  # noqa: E501
-        :type: bool
-        """
-
-        self._generate_template = generate_template
 
     def to_dict(self):
         """Returns the model properties as a dict"""

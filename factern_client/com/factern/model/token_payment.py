@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,17 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class TokenPayment(object):
+
+
+class TokenPayment():
+
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
 
     """
     Attributes:
@@ -26,27 +30,40 @@ class TokenPayment(object):
     """
     swagger_types = {
         'publickey': 'str',
-        'value': 'str',
-        'signature': 'str'
+        'signature': 'str',
+        'value': 'str'
     }
 
     attribute_map = {
         'publickey': 'publickey',
-        'value': 'value',
-        'signature': 'signature'
+        'signature': 'signature',
+        'value': 'value'
     }
 
-    def __init__(self, publickey=None, value=None, signature=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """TokenPayment - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("TokenPayment got unexpected argument '%s'" % k)
 
         self._publickey = None
-        self._value = None
         self._signature = None
-        self.discriminator = None
+        self._value = None
 
-        self.publickey = publickey
-        self.value = value
-        self.signature = signature
+
+        if "publickey" not in kwargs:
+            raise ValueError("TokenPayment missing required argument: publickey")
+        self._publickey = kwargs["publickey"]
+
+        if "signature" not in kwargs:
+            raise ValueError("TokenPayment missing required argument: signature")
+        self._signature = kwargs["signature"]
+
+        if "value" not in kwargs:
+            raise ValueError("TokenPayment missing required argument: value")
+        self._value = kwargs["value"]
+
 
     @property
     def publickey(self):
@@ -72,29 +89,6 @@ class TokenPayment(object):
         self._publickey = publickey
 
     @property
-    def value(self):
-        """Gets the value of this TokenPayment.  # noqa: E501
-
-
-        :return: The value of this TokenPayment.  # noqa: E501
-        :rtype: str
-        """
-        return self._value
-
-    @value.setter
-    def value(self, value):
-        """Sets the value of this TokenPayment.
-
-
-        :param value: The value of this TokenPayment.  # noqa: E501
-        :type: str
-        """
-        if value is None:
-            raise ValueError("Invalid value for `value`, must not be `None`")  # noqa: E501
-
-        self._value = value
-
-    @property
     def signature(self):
         """Gets the signature of this TokenPayment.  # noqa: E501
 
@@ -116,6 +110,29 @@ class TokenPayment(object):
             raise ValueError("Invalid value for `signature`, must not be `None`")  # noqa: E501
 
         self._signature = signature
+
+    @property
+    def value(self):
+        """Gets the value of this TokenPayment.  # noqa: E501
+
+
+        :return: The value of this TokenPayment.  # noqa: E501
+        :rtype: str
+        """
+        return self._value
+
+    @value.setter
+    def value(self, value):
+        """Sets the value of this TokenPayment.
+
+
+        :param value: The value of this TokenPayment.  # noqa: E501
+        :type: str
+        """
+        if value is None:
+            raise ValueError("Invalid value for `value`, must not be `None`")  # noqa: E501
+
+        self._value = value
 
     def to_dict(self):
         """Returns the model properties as a dict"""

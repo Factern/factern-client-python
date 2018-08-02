@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,38 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class CreateMemberRequest(object):
+
+
+parent_name = "CreateChildRequest"
+def get_parent():
+    # Lazy importing of parent means that loading the classes happens
+    # in the correct order.
+    if get_parent.cache is None:
+        parent_fname = "factern_client.com.factern.model.%s" % re.sub("([a-z])([A-Z])", "\\1_\\2", "CreateChildRequest").lower()
+        parent = importlib.import_module(parent_fname).CreateChildRequest
+        get_parent.cache = parent
+    return get_parent.cache
+get_parent.cache = None
+
+
+class CreateMemberRequest(get_parent()):
+
+    @staticmethod
+    def get_parent():
+        return get_parent()
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
+
+        get_parent().compute_parent_updates()
+
+        CreateMemberRequest.swagger_types.update(get_parent().swagger_types)
+        CreateMemberRequest.attribute_map.update(get_parent().attribute_map)
+
 
     """
     Attributes:
@@ -25,72 +50,28 @@ class CreateMemberRequest(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'include_summary': 'bool',
-        'parent_id': 'str',
         'member_id': 'str'
     }
 
     attribute_map = {
-        'include_summary': 'includeSummary',
-        'parent_id': 'parentId',
         'member_id': 'memberId'
     }
 
-    def __init__(self, include_summary=None, parent_id=None, member_id=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """CreateMemberRequest - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("CreateMemberRequest got unexpected argument '%s'" % k)
+        get_parent().__init__(self, **kwargs)
 
-        self._include_summary = None
-        self._parent_id = None
         self._member_id = None
-        self.discriminator = None
-
-        if include_summary is not None:
-            self.include_summary = include_summary
-        if parent_id is not None:
-            self.parent_id = parent_id
-        self.member_id = member_id
-
-    @property
-    def include_summary(self):
-        """Gets the include_summary of this CreateMemberRequest.  # noqa: E501
 
 
-        :return: The include_summary of this CreateMemberRequest.  # noqa: E501
-        :rtype: bool
-        """
-        return self._include_summary
+        if "member_id" not in kwargs:
+            raise ValueError("CreateMemberRequest missing required argument: member_id")
+        self._member_id = kwargs["member_id"]
 
-    @include_summary.setter
-    def include_summary(self, include_summary):
-        """Sets the include_summary of this CreateMemberRequest.
-
-
-        :param include_summary: The include_summary of this CreateMemberRequest.  # noqa: E501
-        :type: bool
-        """
-
-        self._include_summary = include_summary
-
-    @property
-    def parent_id(self):
-        """Gets the parent_id of this CreateMemberRequest.  # noqa: E501
-
-
-        :return: The parent_id of this CreateMemberRequest.  # noqa: E501
-        :rtype: str
-        """
-        return self._parent_id
-
-    @parent_id.setter
-    def parent_id(self, parent_id):
-        """Sets the parent_id of this CreateMemberRequest.
-
-
-        :param parent_id: The parent_id of this CreateMemberRequest.  # noqa: E501
-        :type: str
-        """
-
-        self._parent_id = parent_id
 
     @property
     def member_id(self):

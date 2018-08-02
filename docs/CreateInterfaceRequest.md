@@ -1,16 +1,26 @@
+
+
 # CreateInterfaceRequest
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**include_summary** | **bool** |  | [optional] 
-**parent_id** | **str** |  | [optional] 
-**description** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
-**delete_data** | [**ApiEndpoint**](ApiEndpoint.md) |  | [optional] 
-**get_data** | [**ApiEndpoint**](ApiEndpoint.md) |  | [optional] 
-**add_data** | [**ApiEndpoint**](ApiEndpoint.md) |  | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+Name | Type | Required
+-------- | -------- | --------
+add_data | [ApiEndpoint](ApiEndpoint.md) | optional
+delete_data | [ApiEndpoint](ApiEndpoint.md) | optional
+get_data | [ApiEndpoint](ApiEndpoint.md) | optional
+description | str | optional
+name | str | optional
+parent_id | str | optional
+include_summary | bool | optional
 
 
+
+
+## Inheritance hierarchy
+
+
+* [CreateInterfaceRequest](CreateInterfaceRequest.md)
+    * [CreateNamedRequest](CreateNamedRequest.md)
+        * [CreateChildRequest](CreateChildRequest.md)
+            * [BaseRequest](BaseRequest.md)

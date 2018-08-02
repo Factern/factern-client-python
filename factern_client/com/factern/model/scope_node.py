@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,17 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class ScopeNode(object):
+
+
+class ScopeNode():
+
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
 
     """
     Attributes:
@@ -26,28 +30,38 @@ class ScopeNode(object):
     """
     swagger_types = {
         'description': 'str',
-        'name': 'str',
-        'member_ids': 'list[str]'
+        'member_ids': 'list[str]',
+        'name': 'str'
     }
 
     attribute_map = {
         'description': 'description',
-        'name': 'name',
-        'member_ids': 'memberIds'
+        'member_ids': 'memberIds',
+        'name': 'name'
     }
 
-    def __init__(self, description=None, name=None, member_ids=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """ScopeNode - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("ScopeNode got unexpected argument '%s'" % k)
 
         self._description = None
-        self._name = None
         self._member_ids = None
-        self.discriminator = None
+        self._name = None
 
-        if description is not None:
-            self.description = description
-        self.name = name
-        self.member_ids = member_ids
+
+        if "description" in kwargs:
+            self.description = kwargs["description"]
+        if "member_ids" not in kwargs:
+            raise ValueError("ScopeNode missing required argument: member_ids")
+        self._member_ids = kwargs["member_ids"]
+
+        if "name" not in kwargs:
+            raise ValueError("ScopeNode missing required argument: name")
+        self._name = kwargs["name"]
+
 
     @property
     def description(self):
@@ -71,29 +85,6 @@ class ScopeNode(object):
         self._description = description
 
     @property
-    def name(self):
-        """Gets the name of this ScopeNode.  # noqa: E501
-
-
-        :return: The name of this ScopeNode.  # noqa: E501
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this ScopeNode.
-
-
-        :param name: The name of this ScopeNode.  # noqa: E501
-        :type: str
-        """
-        if name is None:
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
-
-        self._name = name
-
-    @property
     def member_ids(self):
         """Gets the member_ids of this ScopeNode.  # noqa: E501
 
@@ -115,6 +106,29 @@ class ScopeNode(object):
             raise ValueError("Invalid value for `member_ids`, must not be `None`")  # noqa: E501
 
         self._member_ids = member_ids
+
+    @property
+    def name(self):
+        """Gets the name of this ScopeNode.  # noqa: E501
+
+
+        :return: The name of this ScopeNode.  # noqa: E501
+        :rtype: str
+        """
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        """Sets the name of this ScopeNode.
+
+
+        :param name: The name of this ScopeNode.  # noqa: E501
+        :type: str
+        """
+        if name is None:
+            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+
+        self._name = name
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,17 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class BaseRequest(object):
+
+
+class BaseRequest():
+
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
 
     """
     Attributes:
@@ -32,14 +36,18 @@ class BaseRequest(object):
         'include_summary': 'includeSummary'
     }
 
-    def __init__(self, include_summary=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """BaseRequest - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("BaseRequest got unexpected argument '%s'" % k)
 
         self._include_summary = None
-        self.discriminator = None
 
-        if include_summary is not None:
-            self.include_summary = include_summary
+
+        if "include_summary" in kwargs:
+            self.include_summary = kwargs["include_summary"]
 
     @property
     def include_summary(self):

@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,17 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class EntityListResponse(object):
+
+
+class EntityListResponse():
+
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
 
     """
     Attributes:
@@ -25,35 +29,63 @@ class EntityListResponse(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'nodes': 'list[Entity]',
         'next_token': 'str',
-        'total_results': 'float',
-        'summary': 'Summary'
+        'nodes': 'list[Entity]',
+        'summary': 'Summary',
+        'total_results': 'float'
     }
 
     attribute_map = {
-        'nodes': 'nodes',
         'next_token': 'nextToken',
-        'total_results': 'totalResults',
-        'summary': 'summary'
+        'nodes': 'nodes',
+        'summary': 'summary',
+        'total_results': 'totalResults'
     }
 
-    def __init__(self, nodes=None, next_token=None, total_results=None, summary=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """EntityListResponse - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("EntityListResponse got unexpected argument '%s'" % k)
 
-        self._nodes = None
         self._next_token = None
-        self._total_results = None
+        self._nodes = None
         self._summary = None
-        self.discriminator = None
+        self._total_results = None
 
-        self.nodes = nodes
-        if next_token is not None:
-            self.next_token = next_token
-        if total_results is not None:
-            self.total_results = total_results
-        if summary is not None:
-            self.summary = summary
+
+        if "next_token" in kwargs:
+            self.next_token = kwargs["next_token"]
+        if "nodes" not in kwargs:
+            raise ValueError("EntityListResponse missing required argument: nodes")
+        self._nodes = kwargs["nodes"]
+
+        if "summary" in kwargs:
+            self.summary = kwargs["summary"]
+        if "total_results" in kwargs:
+            self.total_results = kwargs["total_results"]
+
+    @property
+    def next_token(self):
+        """Gets the next_token of this EntityListResponse.  # noqa: E501
+
+
+        :return: The next_token of this EntityListResponse.  # noqa: E501
+        :rtype: str
+        """
+        return self._next_token
+
+    @next_token.setter
+    def next_token(self, next_token):
+        """Sets the next_token of this EntityListResponse.
+
+
+        :param next_token: The next_token of this EntityListResponse.  # noqa: E501
+        :type: str
+        """
+
+        self._next_token = next_token
 
     @property
     def nodes(self):
@@ -79,25 +111,25 @@ class EntityListResponse(object):
         self._nodes = nodes
 
     @property
-    def next_token(self):
-        """Gets the next_token of this EntityListResponse.  # noqa: E501
+    def summary(self):
+        """Gets the summary of this EntityListResponse.  # noqa: E501
 
 
-        :return: The next_token of this EntityListResponse.  # noqa: E501
-        :rtype: str
+        :return: The summary of this EntityListResponse.  # noqa: E501
+        :rtype: Summary
         """
-        return self._next_token
+        return self._summary
 
-    @next_token.setter
-    def next_token(self, next_token):
-        """Sets the next_token of this EntityListResponse.
+    @summary.setter
+    def summary(self, summary):
+        """Sets the summary of this EntityListResponse.
 
 
-        :param next_token: The next_token of this EntityListResponse.  # noqa: E501
-        :type: str
+        :param summary: The summary of this EntityListResponse.  # noqa: E501
+        :type: Summary
         """
 
-        self._next_token = next_token
+        self._summary = summary
 
     @property
     def total_results(self):
@@ -119,27 +151,6 @@ class EntityListResponse(object):
         """
 
         self._total_results = total_results
-
-    @property
-    def summary(self):
-        """Gets the summary of this EntityListResponse.  # noqa: E501
-
-
-        :return: The summary of this EntityListResponse.  # noqa: E501
-        :rtype: Summary
-        """
-        return self._summary
-
-    @summary.setter
-    def summary(self, summary):
-        """Sets the summary of this EntityListResponse.
-
-
-        :param summary: The summary of this EntityListResponse.  # noqa: E501
-        :type: Summary
-        """
-
-        self._summary = summary
 
     def to_dict(self):
         """Returns the model properties as a dict"""

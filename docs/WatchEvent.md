@@ -1,17 +1,25 @@
+
+
 # WatchEvent
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**deleted** | **bool** |  | [optional] 
-**timestamp** | **float** |  | 
-**node_id** | **str** |  | 
-**agent** | [**Agent**](Agent.md) |  | 
-**batch_id** | **str** |  | 
-**fact_type** | **str** |  | 
-**parent_id** | **str** |  | 
-**source** | [**StandardNode**](StandardNode.md) |  | 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+Name | Type | Required
+-------- | -------- | --------
+source | [StandardNode](StandardNode.md) | required
+agent | [Agent](Agent.md) | required
+batch_id | str | required
+deleted | bool | optional
+fact_type | str | required
+node_id | str | required
+parent_id | str | required
+timestamp | float | required
 
 
+
+
+## Inheritance hierarchy
+
+
+* [WatchEvent](WatchEvent.md)
+    * [StandardNode](StandardNode.md)

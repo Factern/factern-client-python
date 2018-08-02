@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,38 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class ReadRequest(object):
+
+
+parent_name = "BaseRequest"
+def get_parent():
+    # Lazy importing of parent means that loading the classes happens
+    # in the correct order.
+    if get_parent.cache is None:
+        parent_fname = "factern_client.com.factern.model.%s" % re.sub("([a-z])([A-Z])", "\\1_\\2", "BaseRequest").lower()
+        parent = importlib.import_module(parent_fname).BaseRequest
+        get_parent.cache = parent
+    return get_parent.cache
+get_parent.cache = None
+
+
+class ReadRequest(get_parent()):
+
+    @staticmethod
+    def get_parent():
+        return get_parent()
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
+
+        get_parent().compute_parent_updates()
+
+        ReadRequest.swagger_types.update(get_parent().swagger_types)
+        ReadRequest.attribute_map.update(get_parent().attribute_map)
+
 
     """
     Attributes:
@@ -25,71 +50,74 @@ class ReadRequest(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'include_summary': 'bool',
-        'default_storage_id': 'str',
-        'transform': 'list[TransformElement]',
-        'node_id': 'str',
         'callback': 'str',
+        'default_storage_id': 'str',
+        'node_id': 'str',
         'template': 'list[object]',
-        'template_id': 'str'
+        'template_id': 'str',
+        'transform': 'list[TransformElement]'
     }
 
     attribute_map = {
-        'include_summary': 'includeSummary',
-        'default_storage_id': 'defaultStorageId',
-        'transform': 'transform',
-        'node_id': 'nodeId',
         'callback': 'callback',
+        'default_storage_id': 'defaultStorageId',
+        'node_id': 'nodeId',
         'template': 'template',
-        'template_id': 'templateId'
+        'template_id': 'templateId',
+        'transform': 'transform'
     }
 
-    def __init__(self, include_summary=None, default_storage_id=None, transform=None, node_id=None, callback=None, template=None, template_id=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """ReadRequest - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("ReadRequest got unexpected argument '%s'" % k)
+        get_parent().__init__(self, **kwargs)
 
-        self._include_summary = None
-        self._default_storage_id = None
-        self._transform = None
-        self._node_id = None
         self._callback = None
+        self._default_storage_id = None
+        self._node_id = None
         self._template = None
         self._template_id = None
-        self.discriminator = None
+        self._transform = None
 
-        if include_summary is not None:
-            self.include_summary = include_summary
-        if default_storage_id is not None:
-            self.default_storage_id = default_storage_id
-        if transform is not None:
-            self.transform = transform
-        self.node_id = node_id
-        if callback is not None:
-            self.callback = callback
-        if template is not None:
-            self.template = template
-        if template_id is not None:
-            self.template_id = template_id
+
+        if "callback" in kwargs:
+            self.callback = kwargs["callback"]
+        if "default_storage_id" in kwargs:
+            self.default_storage_id = kwargs["default_storage_id"]
+        if "node_id" not in kwargs:
+            raise ValueError("ReadRequest missing required argument: node_id")
+        self._node_id = kwargs["node_id"]
+
+        if "template" in kwargs:
+            self.template = kwargs["template"]
+        if "template_id" in kwargs:
+            self.template_id = kwargs["template_id"]
+        if "transform" in kwargs:
+            self.transform = kwargs["transform"]
 
     @property
-    def include_summary(self):
-        """Gets the include_summary of this ReadRequest.  # noqa: E501
+    def callback(self):
+        """Gets the callback of this ReadRequest.  # noqa: E501
 
 
-        :return: The include_summary of this ReadRequest.  # noqa: E501
-        :rtype: bool
+        :return: The callback of this ReadRequest.  # noqa: E501
+        :rtype: str
         """
-        return self._include_summary
+        return self._callback
 
-    @include_summary.setter
-    def include_summary(self, include_summary):
-        """Sets the include_summary of this ReadRequest.
+    @callback.setter
+    def callback(self, callback):
+        """Sets the callback of this ReadRequest.
 
 
-        :param include_summary: The include_summary of this ReadRequest.  # noqa: E501
-        :type: bool
+        :param callback: The callback of this ReadRequest.  # noqa: E501
+        :type: str
         """
 
-        self._include_summary = include_summary
+        self._callback = callback
 
     @property
     def default_storage_id(self):
@@ -113,27 +141,6 @@ class ReadRequest(object):
         self._default_storage_id = default_storage_id
 
     @property
-    def transform(self):
-        """Gets the transform of this ReadRequest.  # noqa: E501
-
-
-        :return: The transform of this ReadRequest.  # noqa: E501
-        :rtype: list[TransformElement]
-        """
-        return self._transform
-
-    @transform.setter
-    def transform(self, transform):
-        """Sets the transform of this ReadRequest.
-
-
-        :param transform: The transform of this ReadRequest.  # noqa: E501
-        :type: list[TransformElement]
-        """
-
-        self._transform = transform
-
-    @property
     def node_id(self):
         """Gets the node_id of this ReadRequest.  # noqa: E501
 
@@ -155,27 +162,6 @@ class ReadRequest(object):
             raise ValueError("Invalid value for `node_id`, must not be `None`")  # noqa: E501
 
         self._node_id = node_id
-
-    @property
-    def callback(self):
-        """Gets the callback of this ReadRequest.  # noqa: E501
-
-
-        :return: The callback of this ReadRequest.  # noqa: E501
-        :rtype: str
-        """
-        return self._callback
-
-    @callback.setter
-    def callback(self, callback):
-        """Sets the callback of this ReadRequest.
-
-
-        :param callback: The callback of this ReadRequest.  # noqa: E501
-        :type: str
-        """
-
-        self._callback = callback
 
     @property
     def template(self):
@@ -218,6 +204,27 @@ class ReadRequest(object):
         """
 
         self._template_id = template_id
+
+    @property
+    def transform(self):
+        """Gets the transform of this ReadRequest.  # noqa: E501
+
+
+        :return: The transform of this ReadRequest.  # noqa: E501
+        :rtype: list[TransformElement]
+        """
+        return self._transform
+
+    @transform.setter
+    def transform(self, transform):
+        """Sets the transform of this ReadRequest.
+
+
+        :param transform: The transform of this ReadRequest.  # noqa: E501
+        :type: list[TransformElement]
+        """
+
+        self._transform = transform
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,17 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class WatchEventNode(object):
+
+
+class WatchEventNode():
+
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
 
     """
     Attributes:
@@ -32,13 +36,20 @@ class WatchEventNode(object):
         'source': 'source'
     }
 
-    def __init__(self, source=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """WatchEventNode - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("WatchEventNode got unexpected argument '%s'" % k)
 
         self._source = None
-        self.discriminator = None
 
-        self.source = source
+
+        if "source" not in kwargs:
+            raise ValueError("WatchEventNode missing required argument: source")
+        self._source = kwargs["source"]
+
 
     @property
     def source(self):

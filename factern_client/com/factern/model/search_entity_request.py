@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,38 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class SearchEntityRequest(object):
+
+
+parent_name = "BaseRequest"
+def get_parent():
+    # Lazy importing of parent means that loading the classes happens
+    # in the correct order.
+    if get_parent.cache is None:
+        parent_fname = "factern_client.com.factern.model.%s" % re.sub("([a-z])([A-Z])", "\\1_\\2", "BaseRequest").lower()
+        parent = importlib.import_module(parent_fname).BaseRequest
+        get_parent.cache = parent
+    return get_parent.cache
+get_parent.cache = None
+
+
+class SearchEntityRequest(get_parent()):
+
+    @staticmethod
+    def get_parent():
+        return get_parent()
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
+
+        get_parent().compute_parent_updates()
+
+        SearchEntityRequest.swagger_types.update(get_parent().swagger_types)
+        SearchEntityRequest.attribute_map.update(get_parent().attribute_map)
+
 
     """
     Attributes:
@@ -25,98 +50,77 @@ class SearchEntityRequest(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'include_summary': 'bool',
-        'term': 'str',
+        'field_id': 'str',
         'max_results': 'float',
-        'restrict_to': 'str',
+        'next_token': 'str',
         'operator': 'str',
         'query': 'object',
-        'next_token': 'str',
-        'field_id': 'str'
+        'restrict_to': 'str',
+        'term': 'str'
     }
 
     attribute_map = {
-        'include_summary': 'includeSummary',
-        'term': 'term',
+        'field_id': 'fieldId',
         'max_results': 'maxResults',
-        'restrict_to': 'restrictTo',
+        'next_token': 'nextToken',
         'operator': 'operator',
         'query': 'query',
-        'next_token': 'nextToken',
-        'field_id': 'fieldId'
+        'restrict_to': 'restrictTo',
+        'term': 'term'
     }
 
-    def __init__(self, include_summary=None, term=None, max_results=None, restrict_to=None, operator=None, query=None, next_token=None, field_id=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """SearchEntityRequest - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("SearchEntityRequest got unexpected argument '%s'" % k)
+        get_parent().__init__(self, **kwargs)
 
-        self._include_summary = None
-        self._term = None
+        self._field_id = None
         self._max_results = None
-        self._restrict_to = None
+        self._next_token = None
         self._operator = None
         self._query = None
-        self._next_token = None
-        self._field_id = None
-        self.discriminator = None
+        self._restrict_to = None
+        self._term = None
 
-        if include_summary is not None:
-            self.include_summary = include_summary
-        if term is not None:
-            self.term = term
-        if max_results is not None:
-            self.max_results = max_results
-        if restrict_to is not None:
-            self.restrict_to = restrict_to
-        if operator is not None:
-            self.operator = operator
-        if query is not None:
-            self.query = query
-        if next_token is not None:
-            self.next_token = next_token
-        if field_id is not None:
-            self.field_id = field_id
+
+        if "field_id" in kwargs:
+            self.field_id = kwargs["field_id"]
+        if "max_results" in kwargs:
+            self.max_results = kwargs["max_results"]
+        if "next_token" in kwargs:
+            self.next_token = kwargs["next_token"]
+        if "operator" in kwargs:
+            self.operator = kwargs["operator"]
+        if "query" in kwargs:
+            self.query = kwargs["query"]
+        if "restrict_to" in kwargs:
+            self.restrict_to = kwargs["restrict_to"]
+        if "term" in kwargs:
+            self.term = kwargs["term"]
 
     @property
-    def include_summary(self):
-        """Gets the include_summary of this SearchEntityRequest.  # noqa: E501
+    def field_id(self):
+        """Gets the field_id of this SearchEntityRequest.  # noqa: E501
 
 
-        :return: The include_summary of this SearchEntityRequest.  # noqa: E501
-        :rtype: bool
-        """
-        return self._include_summary
-
-    @include_summary.setter
-    def include_summary(self, include_summary):
-        """Sets the include_summary of this SearchEntityRequest.
-
-
-        :param include_summary: The include_summary of this SearchEntityRequest.  # noqa: E501
-        :type: bool
-        """
-
-        self._include_summary = include_summary
-
-    @property
-    def term(self):
-        """Gets the term of this SearchEntityRequest.  # noqa: E501
-
-
-        :return: The term of this SearchEntityRequest.  # noqa: E501
+        :return: The field_id of this SearchEntityRequest.  # noqa: E501
         :rtype: str
         """
-        return self._term
+        return self._field_id
 
-    @term.setter
-    def term(self, term):
-        """Sets the term of this SearchEntityRequest.
+    @field_id.setter
+    def field_id(self, field_id):
+        """Sets the field_id of this SearchEntityRequest.
 
 
-        :param term: The term of this SearchEntityRequest.  # noqa: E501
+        :param field_id: The field_id of this SearchEntityRequest.  # noqa: E501
         :type: str
         """
 
-        self._term = term
+        self._field_id = field_id
 
     @property
     def max_results(self):
@@ -140,25 +144,25 @@ class SearchEntityRequest(object):
         self._max_results = max_results
 
     @property
-    def restrict_to(self):
-        """Gets the restrict_to of this SearchEntityRequest.  # noqa: E501
+    def next_token(self):
+        """Gets the next_token of this SearchEntityRequest.  # noqa: E501
 
 
-        :return: The restrict_to of this SearchEntityRequest.  # noqa: E501
+        :return: The next_token of this SearchEntityRequest.  # noqa: E501
         :rtype: str
         """
-        return self._restrict_to
+        return self._next_token
 
-    @restrict_to.setter
-    def restrict_to(self, restrict_to):
-        """Sets the restrict_to of this SearchEntityRequest.
+    @next_token.setter
+    def next_token(self, next_token):
+        """Sets the next_token of this SearchEntityRequest.
 
 
-        :param restrict_to: The restrict_to of this SearchEntityRequest.  # noqa: E501
+        :param next_token: The next_token of this SearchEntityRequest.  # noqa: E501
         :type: str
         """
 
-        self._restrict_to = restrict_to
+        self._next_token = next_token
 
     @property
     def operator(self):
@@ -209,46 +213,46 @@ class SearchEntityRequest(object):
         self._query = query
 
     @property
-    def next_token(self):
-        """Gets the next_token of this SearchEntityRequest.  # noqa: E501
+    def restrict_to(self):
+        """Gets the restrict_to of this SearchEntityRequest.  # noqa: E501
 
 
-        :return: The next_token of this SearchEntityRequest.  # noqa: E501
+        :return: The restrict_to of this SearchEntityRequest.  # noqa: E501
         :rtype: str
         """
-        return self._next_token
+        return self._restrict_to
 
-    @next_token.setter
-    def next_token(self, next_token):
-        """Sets the next_token of this SearchEntityRequest.
+    @restrict_to.setter
+    def restrict_to(self, restrict_to):
+        """Sets the restrict_to of this SearchEntityRequest.
 
 
-        :param next_token: The next_token of this SearchEntityRequest.  # noqa: E501
+        :param restrict_to: The restrict_to of this SearchEntityRequest.  # noqa: E501
         :type: str
         """
 
-        self._next_token = next_token
+        self._restrict_to = restrict_to
 
     @property
-    def field_id(self):
-        """Gets the field_id of this SearchEntityRequest.  # noqa: E501
+    def term(self):
+        """Gets the term of this SearchEntityRequest.  # noqa: E501
 
 
-        :return: The field_id of this SearchEntityRequest.  # noqa: E501
+        :return: The term of this SearchEntityRequest.  # noqa: E501
         :rtype: str
         """
-        return self._field_id
+        return self._term
 
-    @field_id.setter
-    def field_id(self, field_id):
-        """Sets the field_id of this SearchEntityRequest.
+    @term.setter
+    def term(self, term):
+        """Sets the term of this SearchEntityRequest.
 
 
-        :param field_id: The field_id of this SearchEntityRequest.  # noqa: E501
+        :param term: The term of this SearchEntityRequest.  # noqa: E501
         :type: str
         """
 
-        self._field_id = field_id
+        self._term = term
 
     def to_dict(self):
         """Returns the model properties as a dict"""

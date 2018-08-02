@@ -1,15 +1,49 @@
+
+
 # ApiEndpoint
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**body** | **str** |  | [optional] 
-**url** | **str** |  | 
-**response_transform** | [**list[TransformElement]**](TransformElement.md) |  | [optional] 
-**headers** | [**list[HttpHeader]**](HttpHeader.md) |  | [optional] 
-**type** | **str** |  | [optional] 
-**method** | **str** |  | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+Name | Type | Required
+-------- | -------- | --------
+body | str | optional
+headers | [list[HttpHeader]](HttpHeader.md) | optional
+method | [MethodEnum](#MethodEnum) | optional
+response_transform | [list[TransformElement]](TransformElement.md) | optional
+type | [TypeEnum](#TypeEnum) | optional
+url | str | required
 
 
+
+
+## Enums
+
+
+<a name="MethodEnum"></a>
+### MethodEnum
+
+Name | Value
+---- | -----
+GET | &quot;GET&quot;
+POST | &quot;POST&quot;
+PUT | &quot;PUT&quot;
+
+
+
+<a name="TypeEnum"></a>
+### TypeEnum
+
+Name | Value
+---- | -----
+DIRECT | &quot;Direct&quot;
+INDIRECT | &quot;Indirect&quot;
+
+
+
+
+
+
+## Inheritance hierarchy
+
+
+* [ApiEndpoint](ApiEndpoint.md)

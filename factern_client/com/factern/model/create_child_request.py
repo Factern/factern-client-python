@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,38 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class CreateChildRequest(object):
+
+
+parent_name = "BaseRequest"
+def get_parent():
+    # Lazy importing of parent means that loading the classes happens
+    # in the correct order.
+    if get_parent.cache is None:
+        parent_fname = "factern_client.com.factern.model.%s" % re.sub("([a-z])([A-Z])", "\\1_\\2", "BaseRequest").lower()
+        parent = importlib.import_module(parent_fname).BaseRequest
+        get_parent.cache = parent
+    return get_parent.cache
+get_parent.cache = None
+
+
+class CreateChildRequest(get_parent()):
+
+    @staticmethod
+    def get_parent():
+        return get_parent()
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
+
+        get_parent().compute_parent_updates()
+
+        CreateChildRequest.swagger_types.update(get_parent().swagger_types)
+        CreateChildRequest.attribute_map.update(get_parent().attribute_map)
+
 
     """
     Attributes:
@@ -25,47 +50,26 @@ class CreateChildRequest(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'include_summary': 'bool',
         'parent_id': 'str'
     }
 
     attribute_map = {
-        'include_summary': 'includeSummary',
         'parent_id': 'parentId'
     }
 
-    def __init__(self, include_summary=None, parent_id=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """CreateChildRequest - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("CreateChildRequest got unexpected argument '%s'" % k)
+        get_parent().__init__(self, **kwargs)
 
-        self._include_summary = None
         self._parent_id = None
-        self.discriminator = None
-
-        if include_summary is not None:
-            self.include_summary = include_summary
-        if parent_id is not None:
-            self.parent_id = parent_id
-
-    @property
-    def include_summary(self):
-        """Gets the include_summary of this CreateChildRequest.  # noqa: E501
 
 
-        :return: The include_summary of this CreateChildRequest.  # noqa: E501
-        :rtype: bool
-        """
-        return self._include_summary
-
-    @include_summary.setter
-    def include_summary(self, include_summary):
-        """Sets the include_summary of this CreateChildRequest.
-
-
-        :param include_summary: The include_summary of this CreateChildRequest.  # noqa: E501
-        :type: bool
-        """
-
-        self._include_summary = include_summary
+        if "parent_id" in kwargs:
+            self.parent_id = kwargs["parent_id"]
 
     @property
     def parent_id(self):

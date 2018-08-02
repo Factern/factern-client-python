@@ -1,12 +1,19 @@
+
+
 # AliasNode
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**local** | **bool** |  | [optional] 
-**description** | **str** |  | [optional] 
-**name** | **str** |  | 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+Name | Type | Required
+-------- | -------- | --------
+description | str | optional
+local | bool | optional
+name | str | required
 
 
+
+
+## Inheritance hierarchy
+
+
+* [AliasNode](AliasNode.md)

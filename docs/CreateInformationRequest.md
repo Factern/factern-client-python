@@ -1,14 +1,23 @@
+
+
 # CreateInformationRequest
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**include_summary** | **bool** |  | [optional] 
-**parent_id** | **str** |  | [optional] 
-**field_id** | **str** |  | 
-**data** | **str** |  | 
-**storage_id** | **str** |  | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+Name | Type | Required
+-------- | -------- | --------
+data | str | required
+field_id | str | required
+storage_id | str | optional
+parent_id | str | optional
+include_summary | bool | optional
 
 
+
+
+## Inheritance hierarchy
+
+
+* [CreateInformationRequest](CreateInformationRequest.md)
+    * [CreateChildRequest](CreateChildRequest.md)
+        * [BaseRequest](BaseRequest.md)

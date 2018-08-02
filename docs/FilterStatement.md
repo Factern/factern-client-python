@@ -1,11 +1,41 @@
+
+
 # FilterStatement
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**field** | **str** |  | [optional] 
-**arguments** | **list[str]** |  | 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+Name | Type | Required
+-------- | -------- | --------
+arguments | list[str] | required
+field | [FieldEnum](#FieldEnum) | optional
 
 
+
+
+## Enums
+
+
+<a name="FieldEnum"></a>
+### FieldEnum
+
+Name | Value
+---- | -----
+TARGET | &quot;Target&quot;
+ACTION | &quot;Action&quot;
+ACTIONQUALIFIER | &quot;ActionQualifier&quot;
+ENTITY | &quot;Entity&quot;
+ID | &quot;Id&quot;
+BATCHID | &quot;BatchId&quot;
+LOGIN | &quot;Login&quot;
+APPLICATION | &quot;Application&quot;
+ONBEHALFOF | &quot;OnBehalfOf&quot;
+
+
+
+
+
+
+## Inheritance hierarchy
+
+
+* [FilterStatement](FilterStatement.md)

@@ -1,11 +1,18 @@
+
+
 # ReadResponse
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**items** | [**list[ReadStatusItem]**](ReadStatusItem.md) |  | [optional] 
-**summary** | [**Summary**](Summary.md) |  | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+Name | Type | Required
+-------- | -------- | --------
+items | [list[ReadStatusItem]](ReadStatusItem.md) | optional
+summary | [Summary](Summary.md) | optional
 
 
+
+
+## Inheritance hierarchy
+
+
+* [ReadResponse](ReadResponse.md)

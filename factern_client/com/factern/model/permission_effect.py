@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,15 +9,23 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class PermissionEffect(object):
+
+
+class PermissionEffect():
 
     """
     allowed enum values
     """
     ALLOW = "Allow"
     DENY = "Deny"
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
+
     """
     Attributes:
       swagger_types (dict): The key is attribute name
@@ -35,9 +39,14 @@ class PermissionEffect(object):
     attribute_map = {
     }
 
-    def __init__(self):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """PermissionEffect - a model defined in Swagger"""  # noqa: E501
-        self.discriminator = None
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("PermissionEffect got unexpected argument '%s'" % k)
+
+
 
     def to_dict(self):
         """Returns the model properties as a dict"""

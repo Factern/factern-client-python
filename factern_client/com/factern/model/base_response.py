@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,17 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class BaseResponse(object):
+
+
+class BaseResponse():
+
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
 
     """
     Attributes:
@@ -25,119 +29,55 @@ class BaseResponse(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'deleted': 'bool',
-        'timestamp': 'float',
-        'node_id': 'str',
         'agent': 'Agent',
-        'summary': 'Summary',
         'batch_id': 'str',
         'fact_type': 'str',
-        'parent_id': 'str'
+        'node_id': 'str',
+        'parent_id': 'str',
+        'summary': 'Summary',
+        'timestamp': 'float'
     }
 
     attribute_map = {
-        'deleted': 'deleted',
-        'timestamp': 'timestamp',
-        'node_id': 'nodeId',
         'agent': 'agent',
-        'summary': 'summary',
         'batch_id': 'batchId',
         'fact_type': 'factType',
-        'parent_id': 'parentId'
+        'node_id': 'nodeId',
+        'parent_id': 'parentId',
+        'summary': 'summary',
+        'timestamp': 'timestamp'
     }
 
-    def __init__(self, deleted=None, timestamp=None, node_id=None, agent=None, summary=None, batch_id=None, fact_type=None, parent_id=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """BaseResponse - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("BaseResponse got unexpected argument '%s'" % k)
 
-        self._deleted = None
-        self._timestamp = None
-        self._node_id = None
         self._agent = None
-        self._summary = None
         self._batch_id = None
         self._fact_type = None
+        self._node_id = None
         self._parent_id = None
-        self.discriminator = None
-
-        if deleted is not None:
-            self.deleted = deleted
-        if timestamp is not None:
-            self.timestamp = timestamp
-        if node_id is not None:
-            self.node_id = node_id
-        if agent is not None:
-            self.agent = agent
-        if summary is not None:
-            self.summary = summary
-        if batch_id is not None:
-            self.batch_id = batch_id
-        if fact_type is not None:
-            self.fact_type = fact_type
-        if parent_id is not None:
-            self.parent_id = parent_id
-
-    @property
-    def deleted(self):
-        """Gets the deleted of this BaseResponse.  # noqa: E501
+        self._summary = None
+        self._timestamp = None
 
 
-        :return: The deleted of this BaseResponse.  # noqa: E501
-        :rtype: bool
-        """
-        return self._deleted
-
-    @deleted.setter
-    def deleted(self, deleted):
-        """Sets the deleted of this BaseResponse.
-
-
-        :param deleted: The deleted of this BaseResponse.  # noqa: E501
-        :type: bool
-        """
-
-        self._deleted = deleted
-
-    @property
-    def timestamp(self):
-        """Gets the timestamp of this BaseResponse.  # noqa: E501
-
-
-        :return: The timestamp of this BaseResponse.  # noqa: E501
-        :rtype: float
-        """
-        return self._timestamp
-
-    @timestamp.setter
-    def timestamp(self, timestamp):
-        """Sets the timestamp of this BaseResponse.
-
-
-        :param timestamp: The timestamp of this BaseResponse.  # noqa: E501
-        :type: float
-        """
-
-        self._timestamp = timestamp
-
-    @property
-    def node_id(self):
-        """Gets the node_id of this BaseResponse.  # noqa: E501
-
-
-        :return: The node_id of this BaseResponse.  # noqa: E501
-        :rtype: str
-        """
-        return self._node_id
-
-    @node_id.setter
-    def node_id(self, node_id):
-        """Sets the node_id of this BaseResponse.
-
-
-        :param node_id: The node_id of this BaseResponse.  # noqa: E501
-        :type: str
-        """
-
-        self._node_id = node_id
+        if "agent" in kwargs:
+            self.agent = kwargs["agent"]
+        if "batch_id" in kwargs:
+            self.batch_id = kwargs["batch_id"]
+        if "fact_type" in kwargs:
+            self.fact_type = kwargs["fact_type"]
+        if "node_id" in kwargs:
+            self.node_id = kwargs["node_id"]
+        if "parent_id" in kwargs:
+            self.parent_id = kwargs["parent_id"]
+        if "summary" in kwargs:
+            self.summary = kwargs["summary"]
+        if "timestamp" in kwargs:
+            self.timestamp = kwargs["timestamp"]
 
     @property
     def agent(self):
@@ -159,27 +99,6 @@ class BaseResponse(object):
         """
 
         self._agent = agent
-
-    @property
-    def summary(self):
-        """Gets the summary of this BaseResponse.  # noqa: E501
-
-
-        :return: The summary of this BaseResponse.  # noqa: E501
-        :rtype: Summary
-        """
-        return self._summary
-
-    @summary.setter
-    def summary(self, summary):
-        """Sets the summary of this BaseResponse.
-
-
-        :param summary: The summary of this BaseResponse.  # noqa: E501
-        :type: Summary
-        """
-
-        self._summary = summary
 
     @property
     def batch_id(self):
@@ -224,6 +143,27 @@ class BaseResponse(object):
         self._fact_type = fact_type
 
     @property
+    def node_id(self):
+        """Gets the node_id of this BaseResponse.  # noqa: E501
+
+
+        :return: The node_id of this BaseResponse.  # noqa: E501
+        :rtype: str
+        """
+        return self._node_id
+
+    @node_id.setter
+    def node_id(self, node_id):
+        """Sets the node_id of this BaseResponse.
+
+
+        :param node_id: The node_id of this BaseResponse.  # noqa: E501
+        :type: str
+        """
+
+        self._node_id = node_id
+
+    @property
     def parent_id(self):
         """Gets the parent_id of this BaseResponse.  # noqa: E501
 
@@ -243,6 +183,48 @@ class BaseResponse(object):
         """
 
         self._parent_id = parent_id
+
+    @property
+    def summary(self):
+        """Gets the summary of this BaseResponse.  # noqa: E501
+
+
+        :return: The summary of this BaseResponse.  # noqa: E501
+        :rtype: Summary
+        """
+        return self._summary
+
+    @summary.setter
+    def summary(self, summary):
+        """Sets the summary of this BaseResponse.
+
+
+        :param summary: The summary of this BaseResponse.  # noqa: E501
+        :type: Summary
+        """
+
+        self._summary = summary
+
+    @property
+    def timestamp(self):
+        """Gets the timestamp of this BaseResponse.  # noqa: E501
+
+
+        :return: The timestamp of this BaseResponse.  # noqa: E501
+        :rtype: float
+        """
+        return self._timestamp
+
+    @timestamp.setter
+    def timestamp(self, timestamp):
+        """Sets the timestamp of this BaseResponse.
+
+
+        :param timestamp: The timestamp of this BaseResponse.  # noqa: E501
+        :type: float
+        """
+
+        self._timestamp = timestamp
 
     def to_dict(self):
         """Returns the model properties as a dict"""

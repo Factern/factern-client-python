@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,38 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class CreateNamedRequest(object):
+
+
+parent_name = "CreateChildRequest"
+def get_parent():
+    # Lazy importing of parent means that loading the classes happens
+    # in the correct order.
+    if get_parent.cache is None:
+        parent_fname = "factern_client.com.factern.model.%s" % re.sub("([a-z])([A-Z])", "\\1_\\2", "CreateChildRequest").lower()
+        parent = importlib.import_module(parent_fname).CreateChildRequest
+        get_parent.cache = parent
+    return get_parent.cache
+get_parent.cache = None
+
+
+class CreateNamedRequest(get_parent()):
+
+    @staticmethod
+    def get_parent():
+        return get_parent()
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
+
+        get_parent().compute_parent_updates()
+
+        CreateNamedRequest.swagger_types.update(get_parent().swagger_types)
+        CreateNamedRequest.attribute_map.update(get_parent().attribute_map)
+
 
     """
     Attributes:
@@ -25,78 +50,31 @@ class CreateNamedRequest(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'include_summary': 'bool',
-        'parent_id': 'str',
         'description': 'str',
         'name': 'str'
     }
 
     attribute_map = {
-        'include_summary': 'includeSummary',
-        'parent_id': 'parentId',
         'description': 'description',
         'name': 'name'
     }
 
-    def __init__(self, include_summary=None, parent_id=None, description=None, name=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """CreateNamedRequest - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("CreateNamedRequest got unexpected argument '%s'" % k)
+        get_parent().__init__(self, **kwargs)
 
-        self._include_summary = None
-        self._parent_id = None
         self._description = None
         self._name = None
-        self.discriminator = None
-
-        if include_summary is not None:
-            self.include_summary = include_summary
-        if parent_id is not None:
-            self.parent_id = parent_id
-        if description is not None:
-            self.description = description
-        if name is not None:
-            self.name = name
-
-    @property
-    def include_summary(self):
-        """Gets the include_summary of this CreateNamedRequest.  # noqa: E501
 
 
-        :return: The include_summary of this CreateNamedRequest.  # noqa: E501
-        :rtype: bool
-        """
-        return self._include_summary
-
-    @include_summary.setter
-    def include_summary(self, include_summary):
-        """Sets the include_summary of this CreateNamedRequest.
-
-
-        :param include_summary: The include_summary of this CreateNamedRequest.  # noqa: E501
-        :type: bool
-        """
-
-        self._include_summary = include_summary
-
-    @property
-    def parent_id(self):
-        """Gets the parent_id of this CreateNamedRequest.  # noqa: E501
-
-
-        :return: The parent_id of this CreateNamedRequest.  # noqa: E501
-        :rtype: str
-        """
-        return self._parent_id
-
-    @parent_id.setter
-    def parent_id(self, parent_id):
-        """Sets the parent_id of this CreateNamedRequest.
-
-
-        :param parent_id: The parent_id of this CreateNamedRequest.  # noqa: E501
-        :type: str
-        """
-
-        self._parent_id = parent_id
+        if "description" in kwargs:
+            self.description = kwargs["description"]
+        if "name" in kwargs:
+            self.name = kwargs["name"]
 
     @property
     def description(self):

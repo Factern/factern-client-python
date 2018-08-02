@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,38 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class Template(object):
+
+
+parent_name = "StandardNode"
+def get_parent():
+    # Lazy importing of parent means that loading the classes happens
+    # in the correct order.
+    if get_parent.cache is None:
+        parent_fname = "factern_client.com.factern.model.%s" % re.sub("([a-z])([A-Z])", "\\1_\\2", "StandardNode").lower()
+        parent = importlib.import_module(parent_fname).StandardNode
+        get_parent.cache = parent
+    return get_parent.cache
+get_parent.cache = None
+
+
+class Template(get_parent()):
+
+    @staticmethod
+    def get_parent():
+        return get_parent()
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
+
+        get_parent().compute_parent_updates()
+
+        Template.swagger_types.update(get_parent().swagger_types)
+        Template.attribute_map.update(get_parent().attribute_map)
+
 
     """
     Attributes:
@@ -25,213 +50,33 @@ class Template(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'deleted': 'bool',
-        'timestamp': 'float',
-        'node_id': 'str',
-        'agent': 'Agent',
-        'batch_id': 'str',
-        'fact_type': 'str',
-        'parent_id': 'str',
         'description': 'str',
         'name': 'str'
     }
 
     attribute_map = {
-        'deleted': 'deleted',
-        'timestamp': 'timestamp',
-        'node_id': 'nodeId',
-        'agent': 'agent',
-        'batch_id': 'batchId',
-        'fact_type': 'factType',
-        'parent_id': 'parentId',
         'description': 'description',
         'name': 'name'
     }
 
-    def __init__(self, deleted=None, timestamp=None, node_id=None, agent=None, batch_id=None, fact_type=None, parent_id=None, description=None, name=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """Template - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("Template got unexpected argument '%s'" % k)
+        get_parent().__init__(self, **kwargs)
 
-        self._deleted = None
-        self._timestamp = None
-        self._node_id = None
-        self._agent = None
-        self._batch_id = None
-        self._fact_type = None
-        self._parent_id = None
         self._description = None
         self._name = None
-        self.discriminator = None
-
-        if deleted is not None:
-            self.deleted = deleted
-        self.timestamp = timestamp
-        self.node_id = node_id
-        self.agent = agent
-        self.batch_id = batch_id
-        self.fact_type = fact_type
-        self.parent_id = parent_id
-        if description is not None:
-            self.description = description
-        self.name = name
-
-    @property
-    def deleted(self):
-        """Gets the deleted of this Template.  # noqa: E501
 
 
-        :return: The deleted of this Template.  # noqa: E501
-        :rtype: bool
-        """
-        return self._deleted
+        if "description" in kwargs:
+            self.description = kwargs["description"]
+        if "name" not in kwargs:
+            raise ValueError("Template missing required argument: name")
+        self._name = kwargs["name"]
 
-    @deleted.setter
-    def deleted(self, deleted):
-        """Sets the deleted of this Template.
-
-
-        :param deleted: The deleted of this Template.  # noqa: E501
-        :type: bool
-        """
-
-        self._deleted = deleted
-
-    @property
-    def timestamp(self):
-        """Gets the timestamp of this Template.  # noqa: E501
-
-
-        :return: The timestamp of this Template.  # noqa: E501
-        :rtype: float
-        """
-        return self._timestamp
-
-    @timestamp.setter
-    def timestamp(self, timestamp):
-        """Sets the timestamp of this Template.
-
-
-        :param timestamp: The timestamp of this Template.  # noqa: E501
-        :type: float
-        """
-        if timestamp is None:
-            raise ValueError("Invalid value for `timestamp`, must not be `None`")  # noqa: E501
-
-        self._timestamp = timestamp
-
-    @property
-    def node_id(self):
-        """Gets the node_id of this Template.  # noqa: E501
-
-
-        :return: The node_id of this Template.  # noqa: E501
-        :rtype: str
-        """
-        return self._node_id
-
-    @node_id.setter
-    def node_id(self, node_id):
-        """Sets the node_id of this Template.
-
-
-        :param node_id: The node_id of this Template.  # noqa: E501
-        :type: str
-        """
-        if node_id is None:
-            raise ValueError("Invalid value for `node_id`, must not be `None`")  # noqa: E501
-
-        self._node_id = node_id
-
-    @property
-    def agent(self):
-        """Gets the agent of this Template.  # noqa: E501
-
-
-        :return: The agent of this Template.  # noqa: E501
-        :rtype: Agent
-        """
-        return self._agent
-
-    @agent.setter
-    def agent(self, agent):
-        """Sets the agent of this Template.
-
-
-        :param agent: The agent of this Template.  # noqa: E501
-        :type: Agent
-        """
-        if agent is None:
-            raise ValueError("Invalid value for `agent`, must not be `None`")  # noqa: E501
-
-        self._agent = agent
-
-    @property
-    def batch_id(self):
-        """Gets the batch_id of this Template.  # noqa: E501
-
-
-        :return: The batch_id of this Template.  # noqa: E501
-        :rtype: str
-        """
-        return self._batch_id
-
-    @batch_id.setter
-    def batch_id(self, batch_id):
-        """Sets the batch_id of this Template.
-
-
-        :param batch_id: The batch_id of this Template.  # noqa: E501
-        :type: str
-        """
-        if batch_id is None:
-            raise ValueError("Invalid value for `batch_id`, must not be `None`")  # noqa: E501
-
-        self._batch_id = batch_id
-
-    @property
-    def fact_type(self):
-        """Gets the fact_type of this Template.  # noqa: E501
-
-
-        :return: The fact_type of this Template.  # noqa: E501
-        :rtype: str
-        """
-        return self._fact_type
-
-    @fact_type.setter
-    def fact_type(self, fact_type):
-        """Sets the fact_type of this Template.
-
-
-        :param fact_type: The fact_type of this Template.  # noqa: E501
-        :type: str
-        """
-        if fact_type is None:
-            raise ValueError("Invalid value for `fact_type`, must not be `None`")  # noqa: E501
-
-        self._fact_type = fact_type
-
-    @property
-    def parent_id(self):
-        """Gets the parent_id of this Template.  # noqa: E501
-
-
-        :return: The parent_id of this Template.  # noqa: E501
-        :rtype: str
-        """
-        return self._parent_id
-
-    @parent_id.setter
-    def parent_id(self, parent_id):
-        """Sets the parent_id of this Template.
-
-
-        :param parent_id: The parent_id of this Template.  # noqa: E501
-        :type: str
-        """
-        if parent_id is None:
-            raise ValueError("Invalid value for `parent_id`, must not be `None`")  # noqa: E501
-
-        self._parent_id = parent_id
 
     @property
     def description(self):

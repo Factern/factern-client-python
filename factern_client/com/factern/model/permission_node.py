@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,17 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class PermissionNode(object):
+
+
+class PermissionNode():
+
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
 
     """
     Attributes:
@@ -25,31 +29,56 @@ class PermissionNode(object):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'permission_interface_id': 'str',
         'policy': 'PermissionPolicyDocument',
-        'target_node_id': 'str',
-        'permission_interface_id': 'str'
+        'target_node_id': 'str'
     }
 
     attribute_map = {
+        'permission_interface_id': 'permissionInterfaceId',
         'policy': 'policy',
-        'target_node_id': 'targetNodeId',
-        'permission_interface_id': 'permissionInterfaceId'
+        'target_node_id': 'targetNodeId'
     }
 
-    def __init__(self, policy=None, target_node_id=None, permission_interface_id=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """PermissionNode - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("PermissionNode got unexpected argument '%s'" % k)
 
+        self._permission_interface_id = None
         self._policy = None
         self._target_node_id = None
-        self._permission_interface_id = None
-        self.discriminator = None
 
-        if policy is not None:
-            self.policy = policy
-        if target_node_id is not None:
-            self.target_node_id = target_node_id
-        if permission_interface_id is not None:
-            self.permission_interface_id = permission_interface_id
+
+        if "permission_interface_id" in kwargs:
+            self.permission_interface_id = kwargs["permission_interface_id"]
+        if "policy" in kwargs:
+            self.policy = kwargs["policy"]
+        if "target_node_id" in kwargs:
+            self.target_node_id = kwargs["target_node_id"]
+
+    @property
+    def permission_interface_id(self):
+        """Gets the permission_interface_id of this PermissionNode.  # noqa: E501
+
+
+        :return: The permission_interface_id of this PermissionNode.  # noqa: E501
+        :rtype: str
+        """
+        return self._permission_interface_id
+
+    @permission_interface_id.setter
+    def permission_interface_id(self, permission_interface_id):
+        """Sets the permission_interface_id of this PermissionNode.
+
+
+        :param permission_interface_id: The permission_interface_id of this PermissionNode.  # noqa: E501
+        :type: str
+        """
+
+        self._permission_interface_id = permission_interface_id
 
     @property
     def policy(self):
@@ -92,27 +121,6 @@ class PermissionNode(object):
         """
 
         self._target_node_id = target_node_id
-
-    @property
-    def permission_interface_id(self):
-        """Gets the permission_interface_id of this PermissionNode.  # noqa: E501
-
-
-        :return: The permission_interface_id of this PermissionNode.  # noqa: E501
-        :rtype: str
-        """
-        return self._permission_interface_id
-
-    @permission_interface_id.setter
-    def permission_interface_id(self, permission_interface_id):
-        """Sets the permission_interface_id of this PermissionNode.
-
-
-        :param permission_interface_id: The permission_interface_id of this PermissionNode.  # noqa: E501
-        :type: str
-        """
-
-        self._permission_interface_id = permission_interface_id
 
     def to_dict(self):
         """Returns the model properties as a dict"""

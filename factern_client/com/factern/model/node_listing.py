@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,17 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class NodeListing(object):
+
+
+class NodeListing():
+
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
 
     """
     Attributes:
@@ -25,52 +29,35 @@ class NodeListing(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'nodes': 'list[StandardNode]',
         'next_token': 'str',
+        'nodes': 'list[StandardNode]',
         'total_results': 'float'
     }
 
     attribute_map = {
-        'nodes': 'nodes',
         'next_token': 'nextToken',
+        'nodes': 'nodes',
         'total_results': 'totalResults'
     }
 
-    def __init__(self, nodes=None, next_token=None, total_results=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """NodeListing - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("NodeListing got unexpected argument '%s'" % k)
 
-        self._nodes = None
         self._next_token = None
+        self._nodes = None
         self._total_results = None
-        self.discriminator = None
-
-        if nodes is not None:
-            self.nodes = nodes
-        if next_token is not None:
-            self.next_token = next_token
-        if total_results is not None:
-            self.total_results = total_results
-
-    @property
-    def nodes(self):
-        """Gets the nodes of this NodeListing.  # noqa: E501
 
 
-        :return: The nodes of this NodeListing.  # noqa: E501
-        :rtype: list[StandardNode]
-        """
-        return self._nodes
-
-    @nodes.setter
-    def nodes(self, nodes):
-        """Sets the nodes of this NodeListing.
-
-
-        :param nodes: The nodes of this NodeListing.  # noqa: E501
-        :type: list[StandardNode]
-        """
-
-        self._nodes = nodes
+        if "next_token" in kwargs:
+            self.next_token = kwargs["next_token"]
+        if "nodes" in kwargs:
+            self.nodes = kwargs["nodes"]
+        if "total_results" in kwargs:
+            self.total_results = kwargs["total_results"]
 
     @property
     def next_token(self):
@@ -92,6 +79,27 @@ class NodeListing(object):
         """
 
         self._next_token = next_token
+
+    @property
+    def nodes(self):
+        """Gets the nodes of this NodeListing.  # noqa: E501
+
+
+        :return: The nodes of this NodeListing.  # noqa: E501
+        :rtype: list[StandardNode]
+        """
+        return self._nodes
+
+    @nodes.setter
+    def nodes(self, nodes):
+        """Sets the nodes of this NodeListing.
+
+
+        :param nodes: The nodes of this NodeListing.  # noqa: E501
+        :type: list[StandardNode]
+        """
+
+        self._nodes = nodes
 
     @property
     def total_results(self):
