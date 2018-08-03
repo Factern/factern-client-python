@@ -12,7 +12,7 @@ with open("README.md", "r") as fh:
 LONG_DESCRIPTION_CONTENT_TYPE = "text/markdown"
 NAME = "factern-client"
 URL = "https://github.com/Factern/factern-client-python"
-VERSION = "1.0.5"
+VERSION = "1.0.6"
 # To install the library, run the following
 #
 # python setup.py install

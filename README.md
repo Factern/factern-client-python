@@ -4,7 +4,7 @@
 ## Python Client for Factern API v2
 
 - API version: 2.0.0
-- Package version: 1.0.4
+- Package version: 1.0.6
 For more information, please visit [https://next.factern.com/company/contact](https://next.factern.com/company/contact)
 
 ## Requirements.
