@@ -1,13 +1,21 @@
+
+
 # ReplaceFieldRequest
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**include_summary** | **bool** |  | [optional] 
-**storage_interface_id** | **str** |  | [optional] 
-**data** | **str** |  | 
-**node_id** | **str** |  | 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+Name | Type | Required
+-------- | -------- | --------
+data | str | required
+node_id | str | required
+storage_interface_id | str | optional
+include_summary | bool | optional
 
 
+
+
+## Inheritance hierarchy
+
+
+* [ReplaceFieldRequest](ReplaceFieldRequest.md)
+    * [BaseRequest](BaseRequest.md)

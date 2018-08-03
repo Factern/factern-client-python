@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,38 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class CreateLoginRequest(object):
+
+
+parent_name = "BaseRequest"
+def get_parent():
+    # Lazy importing of parent means that loading the classes happens
+    # in the correct order.
+    if get_parent.cache is None:
+        parent_fname = "factern_client.com.factern.model.%s" % re.sub("([a-z])([A-Z])", "\\1_\\2", "BaseRequest").lower()
+        parent = importlib.import_module(parent_fname).BaseRequest
+        get_parent.cache = parent
+    return get_parent.cache
+get_parent.cache = None
+
+
+class CreateLoginRequest(get_parent()):
+
+    @staticmethod
+    def get_parent():
+        return get_parent()
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
+
+        get_parent().compute_parent_updates()
+
+        CreateLoginRequest.swagger_types.update(get_parent().swagger_types)
+        CreateLoginRequest.attribute_map.update(get_parent().attribute_map)
+
 
     """
     Attributes:
@@ -25,86 +50,50 @@ class CreateLoginRequest(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'include_summary': 'bool',
-        'password': 'str',
         'domain_id': 'str',
         'email': 'str',
-        'workflow': 'str',
-        'redirect_uri': 'str'
+        'password': 'str',
+        'redirect_uri': 'str',
+        'workflow': 'str'
     }
 
     attribute_map = {
-        'include_summary': 'includeSummary',
-        'password': 'password',
         'domain_id': 'domainId',
         'email': 'email',
-        'workflow': 'workflow',
-        'redirect_uri': 'redirectUri'
+        'password': 'password',
+        'redirect_uri': 'redirectUri',
+        'workflow': 'workflow'
     }
 
-    def __init__(self, include_summary=None, password=None, domain_id=None, email=None, workflow=None, redirect_uri=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """CreateLoginRequest - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("CreateLoginRequest got unexpected argument '%s'" % k)
+        get_parent().__init__(self, **kwargs)
 
-        self._include_summary = None
-        self._password = None
         self._domain_id = None
         self._email = None
-        self._workflow = None
+        self._password = None
         self._redirect_uri = None
-        self.discriminator = None
-
-        if include_summary is not None:
-            self.include_summary = include_summary
-        if password is not None:
-            self.password = password
-        if domain_id is not None:
-            self.domain_id = domain_id
-        self.email = email
-        self.workflow = workflow
-        if redirect_uri is not None:
-            self.redirect_uri = redirect_uri
-
-    @property
-    def include_summary(self):
-        """Gets the include_summary of this CreateLoginRequest.  # noqa: E501
+        self._workflow = None
 
 
-        :return: The include_summary of this CreateLoginRequest.  # noqa: E501
-        :rtype: bool
-        """
-        return self._include_summary
+        if "domain_id" in kwargs:
+            self.domain_id = kwargs["domain_id"]
+        if "email" not in kwargs:
+            raise ValueError("CreateLoginRequest missing required argument: email")
+        self._email = kwargs["email"]
 
-    @include_summary.setter
-    def include_summary(self, include_summary):
-        """Sets the include_summary of this CreateLoginRequest.
+        if "password" in kwargs:
+            self.password = kwargs["password"]
+        if "redirect_uri" in kwargs:
+            self.redirect_uri = kwargs["redirect_uri"]
+        if "workflow" not in kwargs:
+            raise ValueError("CreateLoginRequest missing required argument: workflow")
+        self._workflow = kwargs["workflow"]
 
-
-        :param include_summary: The include_summary of this CreateLoginRequest.  # noqa: E501
-        :type: bool
-        """
-
-        self._include_summary = include_summary
-
-    @property
-    def password(self):
-        """Gets the password of this CreateLoginRequest.  # noqa: E501
-
-
-        :return: The password of this CreateLoginRequest.  # noqa: E501
-        :rtype: str
-        """
-        return self._password
-
-    @password.setter
-    def password(self, password):
-        """Sets the password of this CreateLoginRequest.
-
-
-        :param password: The password of this CreateLoginRequest.  # noqa: E501
-        :type: str
-        """
-
-        self._password = password
 
     @property
     def domain_id(self):
@@ -151,27 +140,25 @@ class CreateLoginRequest(object):
         self._email = email
 
     @property
-    def workflow(self):
-        """Gets the workflow of this CreateLoginRequest.  # noqa: E501
+    def password(self):
+        """Gets the password of this CreateLoginRequest.  # noqa: E501
 
 
-        :return: The workflow of this CreateLoginRequest.  # noqa: E501
+        :return: The password of this CreateLoginRequest.  # noqa: E501
         :rtype: str
         """
-        return self._workflow
+        return self._password
 
-    @workflow.setter
-    def workflow(self, workflow):
-        """Sets the workflow of this CreateLoginRequest.
+    @password.setter
+    def password(self, password):
+        """Sets the password of this CreateLoginRequest.
 
 
-        :param workflow: The workflow of this CreateLoginRequest.  # noqa: E501
+        :param password: The password of this CreateLoginRequest.  # noqa: E501
         :type: str
         """
-        if workflow is None:
-            raise ValueError("Invalid value for `workflow`, must not be `None`")  # noqa: E501
 
-        self._workflow = workflow
+        self._password = password
 
     @property
     def redirect_uri(self):
@@ -193,6 +180,29 @@ class CreateLoginRequest(object):
         """
 
         self._redirect_uri = redirect_uri
+
+    @property
+    def workflow(self):
+        """Gets the workflow of this CreateLoginRequest.  # noqa: E501
+
+
+        :return: The workflow of this CreateLoginRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._workflow
+
+    @workflow.setter
+    def workflow(self, workflow):
+        """Sets the workflow of this CreateLoginRequest.
+
+
+        :param workflow: The workflow of this CreateLoginRequest.  # noqa: E501
+        :type: str
+        """
+        if workflow is None:
+            raise ValueError("Invalid value for `workflow`, must not be `None`")  # noqa: E501
+
+        self._workflow = workflow
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,38 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class CreateLoginResponse(object):
+
+
+parent_name = "BaseResponse"
+def get_parent():
+    # Lazy importing of parent means that loading the classes happens
+    # in the correct order.
+    if get_parent.cache is None:
+        parent_fname = "factern_client.com.factern.model.%s" % re.sub("([a-z])([A-Z])", "\\1_\\2", "BaseResponse").lower()
+        parent = importlib.import_module(parent_fname).BaseResponse
+        get_parent.cache = parent
+    return get_parent.cache
+get_parent.cache = None
+
+
+class CreateLoginResponse(get_parent()):
+
+    @staticmethod
+    def get_parent():
+        return get_parent()
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
+
+        get_parent().compute_parent_updates()
+
+        CreateLoginResponse.swagger_types.update(get_parent().swagger_types)
+        CreateLoginResponse.attribute_map.update(get_parent().attribute_map)
+
 
     """
     Attributes:
@@ -25,232 +50,35 @@ class CreateLoginResponse(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'deleted': 'bool',
-        'timestamp': 'float',
-        'node_id': 'str',
-        'agent': 'Agent',
-        'summary': 'Summary',
-        'batch_id': 'str',
-        'fact_type': 'str',
-        'parent_id': 'str',
         'data_root_node': 'str',
         'status': 'str'
     }
 
     attribute_map = {
-        'deleted': 'deleted',
-        'timestamp': 'timestamp',
-        'node_id': 'nodeId',
-        'agent': 'agent',
-        'summary': 'summary',
-        'batch_id': 'batchId',
-        'fact_type': 'factType',
-        'parent_id': 'parentId',
         'data_root_node': 'dataRootNode',
         'status': 'status'
     }
 
-    def __init__(self, deleted=None, timestamp=None, node_id=None, agent=None, summary=None, batch_id=None, fact_type=None, parent_id=None, data_root_node=None, status=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """CreateLoginResponse - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("CreateLoginResponse got unexpected argument '%s'" % k)
+        get_parent().__init__(self, **kwargs)
 
-        self._deleted = None
-        self._timestamp = None
-        self._node_id = None
-        self._agent = None
-        self._summary = None
-        self._batch_id = None
-        self._fact_type = None
-        self._parent_id = None
         self._data_root_node = None
         self._status = None
-        self.discriminator = None
-
-        if deleted is not None:
-            self.deleted = deleted
-        if timestamp is not None:
-            self.timestamp = timestamp
-        if node_id is not None:
-            self.node_id = node_id
-        if agent is not None:
-            self.agent = agent
-        if summary is not None:
-            self.summary = summary
-        if batch_id is not None:
-            self.batch_id = batch_id
-        if fact_type is not None:
-            self.fact_type = fact_type
-        if parent_id is not None:
-            self.parent_id = parent_id
-        self.data_root_node = data_root_node
-        self.status = status
-
-    @property
-    def deleted(self):
-        """Gets the deleted of this CreateLoginResponse.  # noqa: E501
 
 
-        :return: The deleted of this CreateLoginResponse.  # noqa: E501
-        :rtype: bool
-        """
-        return self._deleted
+        if "data_root_node" not in kwargs:
+            raise ValueError("CreateLoginResponse missing required argument: data_root_node")
+        self._data_root_node = kwargs["data_root_node"]
 
-    @deleted.setter
-    def deleted(self, deleted):
-        """Sets the deleted of this CreateLoginResponse.
+        if "status" not in kwargs:
+            raise ValueError("CreateLoginResponse missing required argument: status")
+        self._status = kwargs["status"]
 
-
-        :param deleted: The deleted of this CreateLoginResponse.  # noqa: E501
-        :type: bool
-        """
-
-        self._deleted = deleted
-
-    @property
-    def timestamp(self):
-        """Gets the timestamp of this CreateLoginResponse.  # noqa: E501
-
-
-        :return: The timestamp of this CreateLoginResponse.  # noqa: E501
-        :rtype: float
-        """
-        return self._timestamp
-
-    @timestamp.setter
-    def timestamp(self, timestamp):
-        """Sets the timestamp of this CreateLoginResponse.
-
-
-        :param timestamp: The timestamp of this CreateLoginResponse.  # noqa: E501
-        :type: float
-        """
-
-        self._timestamp = timestamp
-
-    @property
-    def node_id(self):
-        """Gets the node_id of this CreateLoginResponse.  # noqa: E501
-
-
-        :return: The node_id of this CreateLoginResponse.  # noqa: E501
-        :rtype: str
-        """
-        return self._node_id
-
-    @node_id.setter
-    def node_id(self, node_id):
-        """Sets the node_id of this CreateLoginResponse.
-
-
-        :param node_id: The node_id of this CreateLoginResponse.  # noqa: E501
-        :type: str
-        """
-
-        self._node_id = node_id
-
-    @property
-    def agent(self):
-        """Gets the agent of this CreateLoginResponse.  # noqa: E501
-
-
-        :return: The agent of this CreateLoginResponse.  # noqa: E501
-        :rtype: Agent
-        """
-        return self._agent
-
-    @agent.setter
-    def agent(self, agent):
-        """Sets the agent of this CreateLoginResponse.
-
-
-        :param agent: The agent of this CreateLoginResponse.  # noqa: E501
-        :type: Agent
-        """
-
-        self._agent = agent
-
-    @property
-    def summary(self):
-        """Gets the summary of this CreateLoginResponse.  # noqa: E501
-
-
-        :return: The summary of this CreateLoginResponse.  # noqa: E501
-        :rtype: Summary
-        """
-        return self._summary
-
-    @summary.setter
-    def summary(self, summary):
-        """Sets the summary of this CreateLoginResponse.
-
-
-        :param summary: The summary of this CreateLoginResponse.  # noqa: E501
-        :type: Summary
-        """
-
-        self._summary = summary
-
-    @property
-    def batch_id(self):
-        """Gets the batch_id of this CreateLoginResponse.  # noqa: E501
-
-
-        :return: The batch_id of this CreateLoginResponse.  # noqa: E501
-        :rtype: str
-        """
-        return self._batch_id
-
-    @batch_id.setter
-    def batch_id(self, batch_id):
-        """Sets the batch_id of this CreateLoginResponse.
-
-
-        :param batch_id: The batch_id of this CreateLoginResponse.  # noqa: E501
-        :type: str
-        """
-
-        self._batch_id = batch_id
-
-    @property
-    def fact_type(self):
-        """Gets the fact_type of this CreateLoginResponse.  # noqa: E501
-
-
-        :return: The fact_type of this CreateLoginResponse.  # noqa: E501
-        :rtype: str
-        """
-        return self._fact_type
-
-    @fact_type.setter
-    def fact_type(self, fact_type):
-        """Sets the fact_type of this CreateLoginResponse.
-
-
-        :param fact_type: The fact_type of this CreateLoginResponse.  # noqa: E501
-        :type: str
-        """
-
-        self._fact_type = fact_type
-
-    @property
-    def parent_id(self):
-        """Gets the parent_id of this CreateLoginResponse.  # noqa: E501
-
-
-        :return: The parent_id of this CreateLoginResponse.  # noqa: E501
-        :rtype: str
-        """
-        return self._parent_id
-
-    @parent_id.setter
-    def parent_id(self, parent_id):
-        """Sets the parent_id of this CreateLoginResponse.
-
-
-        :param parent_id: The parent_id of this CreateLoginResponse.  # noqa: E501
-        :type: str
-        """
-
-        self._parent_id = parent_id
 
     @property
     def data_root_node(self):

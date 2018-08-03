@@ -1,13 +1,22 @@
+
+
 # CreateNamedRequest
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**include_summary** | **bool** |  | [optional] 
-**parent_id** | **str** |  | [optional] 
-**description** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+Name | Type | Required
+-------- | -------- | --------
+description | str | optional
+name | str | optional
+parent_id | str | optional
+include_summary | bool | optional
 
 
+
+
+## Inheritance hierarchy
+
+
+* [CreateNamedRequest](CreateNamedRequest.md)
+    * [CreateChildRequest](CreateChildRequest.md)
+        * [BaseRequest](BaseRequest.md)

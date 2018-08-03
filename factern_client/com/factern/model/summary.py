@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,17 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class Summary(object):
+
+
+class Summary():
+
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
 
     """
     Attributes:
@@ -25,83 +29,45 @@ class Summary(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'facts': 'FactCount',
-        'external_data_usage': 'ExternalDataUsage',
         'account': 'Account',
         'cost': 'Cost',
+        'external_data_usage': 'ExternalDataUsage',
+        'facts': 'FactCount',
         'searches': 'Searches'
     }
 
     attribute_map = {
-        'facts': 'facts',
-        'external_data_usage': 'externalDataUsage',
         'account': 'account',
         'cost': 'cost',
+        'external_data_usage': 'externalDataUsage',
+        'facts': 'facts',
         'searches': 'searches'
     }
 
-    def __init__(self, facts=None, external_data_usage=None, account=None, cost=None, searches=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """Summary - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("Summary got unexpected argument '%s'" % k)
 
-        self._facts = None
-        self._external_data_usage = None
         self._account = None
         self._cost = None
+        self._external_data_usage = None
+        self._facts = None
         self._searches = None
-        self.discriminator = None
-
-        if facts is not None:
-            self.facts = facts
-        if external_data_usage is not None:
-            self.external_data_usage = external_data_usage
-        if account is not None:
-            self.account = account
-        if cost is not None:
-            self.cost = cost
-        if searches is not None:
-            self.searches = searches
-
-    @property
-    def facts(self):
-        """Gets the facts of this Summary.  # noqa: E501
 
 
-        :return: The facts of this Summary.  # noqa: E501
-        :rtype: FactCount
-        """
-        return self._facts
-
-    @facts.setter
-    def facts(self, facts):
-        """Sets the facts of this Summary.
-
-
-        :param facts: The facts of this Summary.  # noqa: E501
-        :type: FactCount
-        """
-
-        self._facts = facts
-
-    @property
-    def external_data_usage(self):
-        """Gets the external_data_usage of this Summary.  # noqa: E501
-
-
-        :return: The external_data_usage of this Summary.  # noqa: E501
-        :rtype: ExternalDataUsage
-        """
-        return self._external_data_usage
-
-    @external_data_usage.setter
-    def external_data_usage(self, external_data_usage):
-        """Sets the external_data_usage of this Summary.
-
-
-        :param external_data_usage: The external_data_usage of this Summary.  # noqa: E501
-        :type: ExternalDataUsage
-        """
-
-        self._external_data_usage = external_data_usage
+        if "account" in kwargs:
+            self.account = kwargs["account"]
+        if "cost" in kwargs:
+            self.cost = kwargs["cost"]
+        if "external_data_usage" in kwargs:
+            self.external_data_usage = kwargs["external_data_usage"]
+        if "facts" in kwargs:
+            self.facts = kwargs["facts"]
+        if "searches" in kwargs:
+            self.searches = kwargs["searches"]
 
     @property
     def account(self):
@@ -144,6 +110,48 @@ class Summary(object):
         """
 
         self._cost = cost
+
+    @property
+    def external_data_usage(self):
+        """Gets the external_data_usage of this Summary.  # noqa: E501
+
+
+        :return: The external_data_usage of this Summary.  # noqa: E501
+        :rtype: ExternalDataUsage
+        """
+        return self._external_data_usage
+
+    @external_data_usage.setter
+    def external_data_usage(self, external_data_usage):
+        """Sets the external_data_usage of this Summary.
+
+
+        :param external_data_usage: The external_data_usage of this Summary.  # noqa: E501
+        :type: ExternalDataUsage
+        """
+
+        self._external_data_usage = external_data_usage
+
+    @property
+    def facts(self):
+        """Gets the facts of this Summary.  # noqa: E501
+
+
+        :return: The facts of this Summary.  # noqa: E501
+        :rtype: FactCount
+        """
+        return self._facts
+
+    @facts.setter
+    def facts(self, facts):
+        """Sets the facts of this Summary.
+
+
+        :param facts: The facts of this Summary.  # noqa: E501
+        :type: FactCount
+        """
+
+        self._facts = facts
 
     @property
     def searches(self):

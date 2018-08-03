@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,17 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class FieldStoreValues(object):
+
+
+class FieldStoreValues():
+
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
 
     """
     Attributes:
@@ -34,16 +38,23 @@ class FieldStoreValues(object):
         'storage_id': 'storageId'
     }
 
-    def __init__(self, data=None, storage_id=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """FieldStoreValues - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("FieldStoreValues got unexpected argument '%s'" % k)
 
         self._data = None
         self._storage_id = None
-        self.discriminator = None
 
-        self.data = data
-        if storage_id is not None:
-            self.storage_id = storage_id
+
+        if "data" not in kwargs:
+            raise ValueError("FieldStoreValues missing required argument: data")
+        self._data = kwargs["data"]
+
+        if "storage_id" in kwargs:
+            self.storage_id = kwargs["storage_id"]
 
     @property
     def data(self):

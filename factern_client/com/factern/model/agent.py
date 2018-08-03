@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,17 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class Agent(object):
+
+
+class Agent():
+
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
 
     """
     Attributes:
@@ -36,17 +40,30 @@ class Agent(object):
         'representing': 'representing'
     }
 
-    def __init__(self, application=None, login=None, representing=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """Agent - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("Agent got unexpected argument '%s'" % k)
 
         self._application = None
         self._login = None
         self._representing = None
-        self.discriminator = None
 
-        self.application = application
-        self.login = login
-        self.representing = representing
+
+        if "application" not in kwargs:
+            raise ValueError("Agent missing required argument: application")
+        self._application = kwargs["application"]
+
+        if "login" not in kwargs:
+            raise ValueError("Agent missing required argument: login")
+        self._login = kwargs["login"]
+
+        if "representing" not in kwargs:
+            raise ValueError("Agent missing required argument: representing")
+        self._representing = kwargs["representing"]
+
 
     @property
     def application(self):

@@ -1,11 +1,18 @@
+
+
 # InformationNode
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**field_id** | **str** |  | 
-**storage_id** | **str** |  | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+Name | Type | Required
+-------- | -------- | --------
+field_id | str | required
+storage_id | str | optional
 
 
+
+
+## Inheritance hierarchy
+
+
+* [InformationNode](InformationNode.md)

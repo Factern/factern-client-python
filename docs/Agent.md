@@ -1,12 +1,19 @@
+
+
 # Agent
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**application** | **str** |  | 
-**login** | **str** |  | 
-**representing** | **str** |  | 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+Name | Type | Required
+-------- | -------- | --------
+application | str | required
+login | str | required
+representing | str | required
 
 
+
+
+## Inheritance hierarchy
+
+
+* [Agent](Agent.md)

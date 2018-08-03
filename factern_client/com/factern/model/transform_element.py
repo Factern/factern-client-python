@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,17 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class TransformElement(object):
+
+
+class TransformElement():
+
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
 
     """
     Attributes:
@@ -34,17 +38,21 @@ class TransformElement(object):
         'spec': 'spec'
     }
 
-    def __init__(self, operation=None, spec=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """TransformElement - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("TransformElement got unexpected argument '%s'" % k)
 
         self._operation = None
         self._spec = None
-        self.discriminator = None
 
-        if operation is not None:
-            self.operation = operation
-        if spec is not None:
-            self.spec = spec
+
+        if "operation" in kwargs:
+            self.operation = kwargs["operation"]
+        if "spec" in kwargs:
+            self.spec = kwargs["spec"]
 
     @property
     def operation(self):

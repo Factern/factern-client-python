@@ -1,16 +1,26 @@
+
+
 # CreateDomainRequest
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**include_summary** | **bool** |  | [optional] 
-**parent_id** | **str** |  | [optional] 
-**description** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
-**add_fact** | [**ApiEndpoint**](ApiEndpoint.md) |  | 
-**get_fact** | [**ApiEndpoint**](ApiEndpoint.md) |  | 
-**query_facts** | [**ApiEndpoint**](ApiEndpoint.md) |  | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+Name | Type | Required
+-------- | -------- | --------
+add_fact | [ApiEndpoint](ApiEndpoint.md) | required
+get_fact | [ApiEndpoint](ApiEndpoint.md) | required
+query_facts | [ApiEndpoint](ApiEndpoint.md) | optional
+description | str | optional
+name | str | optional
+parent_id | str | optional
+include_summary | bool | optional
 
 
+
+
+## Inheritance hierarchy
+
+
+* [CreateDomainRequest](CreateDomainRequest.md)
+    * [CreateNamedRequest](CreateNamedRequest.md)
+        * [CreateChildRequest](CreateChildRequest.md)
+            * [BaseRequest](BaseRequest.md)

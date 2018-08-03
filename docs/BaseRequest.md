@@ -1,10 +1,17 @@
+
+
 # BaseRequest
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**include_summary** | **bool** |  | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+Name | Type | Required
+-------- | -------- | --------
+include_summary | bool | optional
 
 
+
+
+## Inheritance hierarchy
+
+
+* [BaseRequest](BaseRequest.md)

@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,17 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class FactCount(object):
+
+
+class FactCount():
+
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
 
     """
     Attributes:
@@ -34,15 +38,25 @@ class FactCount(object):
         'written': 'written'
     }
 
-    def __init__(self, read=None, written=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """FactCount - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("FactCount got unexpected argument '%s'" % k)
 
         self._read = None
         self._written = None
-        self.discriminator = None
 
-        self.read = read
-        self.written = written
+
+        if "read" not in kwargs:
+            raise ValueError("FactCount missing required argument: read")
+        self._read = kwargs["read"]
+
+        if "written" not in kwargs:
+            raise ValueError("FactCount missing required argument: written")
+        self._written = kwargs["written"]
+
 
     @property
     def read(self):

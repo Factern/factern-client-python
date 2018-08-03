@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,17 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class HttpHeader(object):
+
+
+class HttpHeader():
+
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
 
     """
     Attributes:
@@ -25,47 +29,34 @@ class HttpHeader(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'value': 'str',
-        'key': 'str'
+        'key': 'str',
+        'value': 'str'
     }
 
     attribute_map = {
-        'value': 'value',
-        'key': 'key'
+        'key': 'key',
+        'value': 'value'
     }
 
-    def __init__(self, value=None, key=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """HttpHeader - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("HttpHeader got unexpected argument '%s'" % k)
 
-        self._value = None
         self._key = None
-        self.discriminator = None
-
-        self.value = value
-        self.key = key
-
-    @property
-    def value(self):
-        """Gets the value of this HttpHeader.  # noqa: E501
+        self._value = None
 
 
-        :return: The value of this HttpHeader.  # noqa: E501
-        :rtype: str
-        """
-        return self._value
+        if "key" not in kwargs:
+            raise ValueError("HttpHeader missing required argument: key")
+        self._key = kwargs["key"]
 
-    @value.setter
-    def value(self, value):
-        """Sets the value of this HttpHeader.
+        if "value" not in kwargs:
+            raise ValueError("HttpHeader missing required argument: value")
+        self._value = kwargs["value"]
 
-
-        :param value: The value of this HttpHeader.  # noqa: E501
-        :type: str
-        """
-        if value is None:
-            raise ValueError("Invalid value for `value`, must not be `None`")  # noqa: E501
-
-        self._value = value
 
     @property
     def key(self):
@@ -89,6 +80,29 @@ class HttpHeader(object):
             raise ValueError("Invalid value for `key`, must not be `None`")  # noqa: E501
 
         self._key = key
+
+    @property
+    def value(self):
+        """Gets the value of this HttpHeader.  # noqa: E501
+
+
+        :return: The value of this HttpHeader.  # noqa: E501
+        :rtype: str
+        """
+        return self._value
+
+    @value.setter
+    def value(self, value):
+        """Sets the value of this HttpHeader.
+
+
+        :param value: The value of this HttpHeader.  # noqa: E501
+        :type: str
+        """
+        if value is None:
+            raise ValueError("Invalid value for `value`, must not be `None`")  # noqa: E501
+
+        self._value = value
 
     def to_dict(self):
         """Returns the model properties as a dict"""

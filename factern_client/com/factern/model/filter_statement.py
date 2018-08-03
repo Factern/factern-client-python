@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,17 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class FilterStatement(object):
+
+
+class FilterStatement():
+
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
 
     """
     Attributes:
@@ -25,25 +29,55 @@ class FilterStatement(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'field': 'str',
-        'arguments': 'list[str]'
+        'arguments': 'list[str]',
+        'field': 'str'
     }
 
     attribute_map = {
-        'field': 'field',
-        'arguments': 'arguments'
+        'arguments': 'arguments',
+        'field': 'field'
     }
 
-    def __init__(self, field=None, arguments=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """FilterStatement - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("FilterStatement got unexpected argument '%s'" % k)
 
-        self._field = None
         self._arguments = None
-        self.discriminator = None
+        self._field = None
 
-        if field is not None:
-            self.field = field
-        self.arguments = arguments
+
+        if "arguments" not in kwargs:
+            raise ValueError("FilterStatement missing required argument: arguments")
+        self._arguments = kwargs["arguments"]
+
+        if "field" in kwargs:
+            self.field = kwargs["field"]
+
+    @property
+    def arguments(self):
+        """Gets the arguments of this FilterStatement.  # noqa: E501
+
+
+        :return: The arguments of this FilterStatement.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._arguments
+
+    @arguments.setter
+    def arguments(self, arguments):
+        """Sets the arguments of this FilterStatement.
+
+
+        :param arguments: The arguments of this FilterStatement.  # noqa: E501
+        :type: list[str]
+        """
+        if arguments is None:
+            raise ValueError("Invalid value for `arguments`, must not be `None`")  # noqa: E501
+
+        self._arguments = arguments
 
     @property
     def field(self):
@@ -71,29 +105,6 @@ class FilterStatement(object):
             )
 
         self._field = field
-
-    @property
-    def arguments(self):
-        """Gets the arguments of this FilterStatement.  # noqa: E501
-
-
-        :return: The arguments of this FilterStatement.  # noqa: E501
-        :rtype: list[str]
-        """
-        return self._arguments
-
-    @arguments.setter
-    def arguments(self, arguments):
-        """Sets the arguments of this FilterStatement.
-
-
-        :param arguments: The arguments of this FilterStatement.  # noqa: E501
-        :type: list[str]
-        """
-        if arguments is None:
-            raise ValueError("Invalid value for `arguments`, must not be `None`")  # noqa: E501
-
-        self._arguments = arguments
 
     def to_dict(self):
         """Returns the model properties as a dict"""

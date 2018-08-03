@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,17 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class WriteItem(object):
+
+
+class WriteItem():
+
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
 
     """
     Attributes:
@@ -25,29 +29,60 @@ class WriteItem(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'field_id': 'str',
         'children': 'list[WriteItem]',
+        'field_id': 'str',
         'node_id': 'str'
     }
 
     attribute_map = {
-        'field_id': 'fieldId',
         'children': 'children',
+        'field_id': 'fieldId',
         'node_id': 'nodeId'
     }
 
-    def __init__(self, field_id=None, children=None, node_id=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """WriteItem - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("WriteItem got unexpected argument '%s'" % k)
 
-        self._field_id = None
         self._children = None
+        self._field_id = None
         self._node_id = None
-        self.discriminator = None
 
-        self.field_id = field_id
-        if children is not None:
-            self.children = children
-        self.node_id = node_id
+
+        if "children" in kwargs:
+            self.children = kwargs["children"]
+        if "field_id" not in kwargs:
+            raise ValueError("WriteItem missing required argument: field_id")
+        self._field_id = kwargs["field_id"]
+
+        if "node_id" not in kwargs:
+            raise ValueError("WriteItem missing required argument: node_id")
+        self._node_id = kwargs["node_id"]
+
+
+    @property
+    def children(self):
+        """Gets the children of this WriteItem.  # noqa: E501
+
+
+        :return: The children of this WriteItem.  # noqa: E501
+        :rtype: list[WriteItem]
+        """
+        return self._children
+
+    @children.setter
+    def children(self, children):
+        """Sets the children of this WriteItem.
+
+
+        :param children: The children of this WriteItem.  # noqa: E501
+        :type: list[WriteItem]
+        """
+
+        self._children = children
 
     @property
     def field_id(self):
@@ -71,27 +106,6 @@ class WriteItem(object):
             raise ValueError("Invalid value for `field_id`, must not be `None`")  # noqa: E501
 
         self._field_id = field_id
-
-    @property
-    def children(self):
-        """Gets the children of this WriteItem.  # noqa: E501
-
-
-        :return: The children of this WriteItem.  # noqa: E501
-        :rtype: list[WriteItem]
-        """
-        return self._children
-
-    @children.setter
-    def children(self, children):
-        """Sets the children of this WriteItem.
-
-
-        :param children: The children of this WriteItem.  # noqa: E501
-        :type: list[WriteItem]
-        """
-
-        self._children = children
 
     @property
     def node_id(self):

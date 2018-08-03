@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,17 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class LabelListNode(object):
+
+
+class LabelListNode():
+
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
 
     """
     Attributes:
@@ -36,18 +40,28 @@ class LabelListNode(object):
         'name': 'name'
     }
 
-    def __init__(self, description=None, members=None, name=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """LabelListNode - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("LabelListNode got unexpected argument '%s'" % k)
 
         self._description = None
         self._members = None
         self._name = None
-        self.discriminator = None
 
-        if description is not None:
-            self.description = description
-        self.members = members
-        self.name = name
+
+        if "description" in kwargs:
+            self.description = kwargs["description"]
+        if "members" not in kwargs:
+            raise ValueError("LabelListNode missing required argument: members")
+        self._members = kwargs["members"]
+
+        if "name" not in kwargs:
+            raise ValueError("LabelListNode missing required argument: name")
+        self._name = kwargs["name"]
+
 
     @property
     def description(self):

@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,38 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class CreateScopeRequest(object):
+
+
+parent_name = "CreateNamedRequest"
+def get_parent():
+    # Lazy importing of parent means that loading the classes happens
+    # in the correct order.
+    if get_parent.cache is None:
+        parent_fname = "factern_client.com.factern.model.%s" % re.sub("([a-z])([A-Z])", "\\1_\\2", "CreateNamedRequest").lower()
+        parent = importlib.import_module(parent_fname).CreateNamedRequest
+        get_parent.cache = parent
+    return get_parent.cache
+get_parent.cache = None
+
+
+class CreateScopeRequest(get_parent()):
+
+    @staticmethod
+    def get_parent():
+        return get_parent()
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
+
+        get_parent().compute_parent_updates()
+
+        CreateScopeRequest.swagger_types.update(get_parent().swagger_types)
+        CreateScopeRequest.attribute_map.update(get_parent().attribute_map)
+
 
     """
     Attributes:
@@ -25,128 +50,35 @@ class CreateScopeRequest(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'include_summary': 'bool',
-        'parent_id': 'str',
-        'description': 'str',
-        'name': 'str',
         'filter_ids': 'list[str]',
         'template_ids': 'list[str]'
     }
 
     attribute_map = {
-        'include_summary': 'includeSummary',
-        'parent_id': 'parentId',
-        'description': 'description',
-        'name': 'name',
         'filter_ids': 'filterIds',
         'template_ids': 'templateIds'
     }
 
-    def __init__(self, include_summary=None, parent_id=None, description=None, name=None, filter_ids=None, template_ids=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """CreateScopeRequest - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("CreateScopeRequest got unexpected argument '%s'" % k)
+        get_parent().__init__(self, **kwargs)
 
-        self._include_summary = None
-        self._parent_id = None
-        self._description = None
-        self._name = None
         self._filter_ids = None
         self._template_ids = None
-        self.discriminator = None
-
-        if include_summary is not None:
-            self.include_summary = include_summary
-        if parent_id is not None:
-            self.parent_id = parent_id
-        if description is not None:
-            self.description = description
-        if name is not None:
-            self.name = name
-        self.filter_ids = filter_ids
-        self.template_ids = template_ids
-
-    @property
-    def include_summary(self):
-        """Gets the include_summary of this CreateScopeRequest.  # noqa: E501
 
 
-        :return: The include_summary of this CreateScopeRequest.  # noqa: E501
-        :rtype: bool
-        """
-        return self._include_summary
+        if "filter_ids" not in kwargs:
+            raise ValueError("CreateScopeRequest missing required argument: filter_ids")
+        self._filter_ids = kwargs["filter_ids"]
 
-    @include_summary.setter
-    def include_summary(self, include_summary):
-        """Sets the include_summary of this CreateScopeRequest.
+        if "template_ids" not in kwargs:
+            raise ValueError("CreateScopeRequest missing required argument: template_ids")
+        self._template_ids = kwargs["template_ids"]
 
-
-        :param include_summary: The include_summary of this CreateScopeRequest.  # noqa: E501
-        :type: bool
-        """
-
-        self._include_summary = include_summary
-
-    @property
-    def parent_id(self):
-        """Gets the parent_id of this CreateScopeRequest.  # noqa: E501
-
-
-        :return: The parent_id of this CreateScopeRequest.  # noqa: E501
-        :rtype: str
-        """
-        return self._parent_id
-
-    @parent_id.setter
-    def parent_id(self, parent_id):
-        """Sets the parent_id of this CreateScopeRequest.
-
-
-        :param parent_id: The parent_id of this CreateScopeRequest.  # noqa: E501
-        :type: str
-        """
-
-        self._parent_id = parent_id
-
-    @property
-    def description(self):
-        """Gets the description of this CreateScopeRequest.  # noqa: E501
-
-
-        :return: The description of this CreateScopeRequest.  # noqa: E501
-        :rtype: str
-        """
-        return self._description
-
-    @description.setter
-    def description(self, description):
-        """Sets the description of this CreateScopeRequest.
-
-
-        :param description: The description of this CreateScopeRequest.  # noqa: E501
-        :type: str
-        """
-
-        self._description = description
-
-    @property
-    def name(self):
-        """Gets the name of this CreateScopeRequest.  # noqa: E501
-
-
-        :return: The name of this CreateScopeRequest.  # noqa: E501
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this CreateScopeRequest.
-
-
-        :param name: The name of this CreateScopeRequest.  # noqa: E501
-        :type: str
-        """
-
-        self._name = name
 
     @property
     def filter_ids(self):

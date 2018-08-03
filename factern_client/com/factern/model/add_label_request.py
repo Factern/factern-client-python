@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,38 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class AddLabelRequest(object):
+
+
+parent_name = "BaseRequest"
+def get_parent():
+    # Lazy importing of parent means that loading the classes happens
+    # in the correct order.
+    if get_parent.cache is None:
+        parent_fname = "factern_client.com.factern.model.%s" % re.sub("([a-z])([A-Z])", "\\1_\\2", "BaseRequest").lower()
+        parent = importlib.import_module(parent_fname).BaseRequest
+        get_parent.cache = parent
+    return get_parent.cache
+get_parent.cache = None
+
+
+class AddLabelRequest(get_parent()):
+
+    @staticmethod
+    def get_parent():
+        return get_parent()
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
+
+        get_parent().compute_parent_updates()
+
+        AddLabelRequest.swagger_types.update(get_parent().swagger_types)
+        AddLabelRequest.attribute_map.update(get_parent().attribute_map)
+
 
     """
     Attributes:
@@ -25,73 +50,35 @@ class AddLabelRequest(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'include_summary': 'bool',
-        'target_node_id': 'str',
-        'label_id': 'str'
+        'label_id': 'str',
+        'target_node_id': 'str'
     }
 
     attribute_map = {
-        'include_summary': 'includeSummary',
-        'target_node_id': 'targetNodeId',
-        'label_id': 'labelId'
+        'label_id': 'labelId',
+        'target_node_id': 'targetNodeId'
     }
 
-    def __init__(self, include_summary=None, target_node_id=None, label_id=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """AddLabelRequest - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("AddLabelRequest got unexpected argument '%s'" % k)
+        get_parent().__init__(self, **kwargs)
 
-        self._include_summary = None
-        self._target_node_id = None
         self._label_id = None
-        self.discriminator = None
-
-        if include_summary is not None:
-            self.include_summary = include_summary
-        self.target_node_id = target_node_id
-        self.label_id = label_id
-
-    @property
-    def include_summary(self):
-        """Gets the include_summary of this AddLabelRequest.  # noqa: E501
+        self._target_node_id = None
 
 
-        :return: The include_summary of this AddLabelRequest.  # noqa: E501
-        :rtype: bool
-        """
-        return self._include_summary
+        if "label_id" not in kwargs:
+            raise ValueError("AddLabelRequest missing required argument: label_id")
+        self._label_id = kwargs["label_id"]
 
-    @include_summary.setter
-    def include_summary(self, include_summary):
-        """Sets the include_summary of this AddLabelRequest.
+        if "target_node_id" not in kwargs:
+            raise ValueError("AddLabelRequest missing required argument: target_node_id")
+        self._target_node_id = kwargs["target_node_id"]
 
-
-        :param include_summary: The include_summary of this AddLabelRequest.  # noqa: E501
-        :type: bool
-        """
-
-        self._include_summary = include_summary
-
-    @property
-    def target_node_id(self):
-        """Gets the target_node_id of this AddLabelRequest.  # noqa: E501
-
-
-        :return: The target_node_id of this AddLabelRequest.  # noqa: E501
-        :rtype: str
-        """
-        return self._target_node_id
-
-    @target_node_id.setter
-    def target_node_id(self, target_node_id):
-        """Sets the target_node_id of this AddLabelRequest.
-
-
-        :param target_node_id: The target_node_id of this AddLabelRequest.  # noqa: E501
-        :type: str
-        """
-        if target_node_id is None:
-            raise ValueError("Invalid value for `target_node_id`, must not be `None`")  # noqa: E501
-
-        self._target_node_id = target_node_id
 
     @property
     def label_id(self):
@@ -115,6 +102,29 @@ class AddLabelRequest(object):
             raise ValueError("Invalid value for `label_id`, must not be `None`")  # noqa: E501
 
         self._label_id = label_id
+
+    @property
+    def target_node_id(self):
+        """Gets the target_node_id of this AddLabelRequest.  # noqa: E501
+
+
+        :return: The target_node_id of this AddLabelRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._target_node_id
+
+    @target_node_id.setter
+    def target_node_id(self, target_node_id):
+        """Sets the target_node_id of this AddLabelRequest.
+
+
+        :param target_node_id: The target_node_id of this AddLabelRequest.  # noqa: E501
+        :type: str
+        """
+        if target_node_id is None:
+            raise ValueError("Invalid value for `target_node_id`, must not be `None`")  # noqa: E501
+
+        self._target_node_id = target_node_id
 
     def to_dict(self):
         """Returns the model properties as a dict"""

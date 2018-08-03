@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,17 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class ReadResponse(object):
+
+
+class ReadResponse():
+
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
 
     """
     Attributes:
@@ -34,17 +38,21 @@ class ReadResponse(object):
         'summary': 'summary'
     }
 
-    def __init__(self, items=None, summary=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """ReadResponse - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("ReadResponse got unexpected argument '%s'" % k)
 
         self._items = None
         self._summary = None
-        self.discriminator = None
 
-        if items is not None:
-            self.items = items
-        if summary is not None:
-            self.summary = summary
+
+        if "items" in kwargs:
+            self.items = kwargs["items"]
+        if "summary" in kwargs:
+            self.summary = kwargs["summary"]
 
     @property
     def items(self):

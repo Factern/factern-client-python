@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,17 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class StandardNodeResponse(object):
+
+
+class StandardNodeResponse():
+
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
 
     """
     Attributes:
@@ -25,117 +29,72 @@ class StandardNodeResponse(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'deleted': 'bool',
-        'timestamp': 'float',
-        'node_id': 'str',
         'agent': 'Agent',
-        'summary': 'Summary',
         'batch_id': 'str',
+        'deleted': 'bool',
         'fact_type': 'str',
-        'parent_id': 'str'
+        'node_id': 'str',
+        'parent_id': 'str',
+        'summary': 'Summary',
+        'timestamp': 'float'
     }
 
     attribute_map = {
-        'deleted': 'deleted',
-        'timestamp': 'timestamp',
-        'node_id': 'nodeId',
         'agent': 'agent',
-        'summary': 'summary',
         'batch_id': 'batchId',
+        'deleted': 'deleted',
         'fact_type': 'factType',
-        'parent_id': 'parentId'
+        'node_id': 'nodeId',
+        'parent_id': 'parentId',
+        'summary': 'summary',
+        'timestamp': 'timestamp'
     }
 
-    def __init__(self, deleted=None, timestamp=None, node_id=None, agent=None, summary=None, batch_id=None, fact_type=None, parent_id=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """StandardNodeResponse - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("StandardNodeResponse got unexpected argument '%s'" % k)
 
-        self._deleted = None
-        self._timestamp = None
-        self._node_id = None
         self._agent = None
-        self._summary = None
         self._batch_id = None
+        self._deleted = None
         self._fact_type = None
+        self._node_id = None
         self._parent_id = None
-        self.discriminator = None
-
-        if deleted is not None:
-            self.deleted = deleted
-        self.timestamp = timestamp
-        self.node_id = node_id
-        self.agent = agent
-        if summary is not None:
-            self.summary = summary
-        self.batch_id = batch_id
-        self.fact_type = fact_type
-        self.parent_id = parent_id
-
-    @property
-    def deleted(self):
-        """Gets the deleted of this StandardNodeResponse.  # noqa: E501
+        self._summary = None
+        self._timestamp = None
 
 
-        :return: The deleted of this StandardNodeResponse.  # noqa: E501
-        :rtype: bool
-        """
-        return self._deleted
+        if "agent" not in kwargs:
+            raise ValueError("StandardNodeResponse missing required argument: agent")
+        self._agent = kwargs["agent"]
 
-    @deleted.setter
-    def deleted(self, deleted):
-        """Sets the deleted of this StandardNodeResponse.
+        if "batch_id" not in kwargs:
+            raise ValueError("StandardNodeResponse missing required argument: batch_id")
+        self._batch_id = kwargs["batch_id"]
 
+        if "deleted" in kwargs:
+            self.deleted = kwargs["deleted"]
+        if "fact_type" not in kwargs:
+            raise ValueError("StandardNodeResponse missing required argument: fact_type")
+        self._fact_type = kwargs["fact_type"]
 
-        :param deleted: The deleted of this StandardNodeResponse.  # noqa: E501
-        :type: bool
-        """
+        if "node_id" not in kwargs:
+            raise ValueError("StandardNodeResponse missing required argument: node_id")
+        self._node_id = kwargs["node_id"]
 
-        self._deleted = deleted
+        if "parent_id" not in kwargs:
+            raise ValueError("StandardNodeResponse missing required argument: parent_id")
+        self._parent_id = kwargs["parent_id"]
 
-    @property
-    def timestamp(self):
-        """Gets the timestamp of this StandardNodeResponse.  # noqa: E501
+        if "summary" in kwargs:
+            self.summary = kwargs["summary"]
+        if "timestamp" not in kwargs:
+            raise ValueError("StandardNodeResponse missing required argument: timestamp")
+        self._timestamp = kwargs["timestamp"]
 
-
-        :return: The timestamp of this StandardNodeResponse.  # noqa: E501
-        :rtype: float
-        """
-        return self._timestamp
-
-    @timestamp.setter
-    def timestamp(self, timestamp):
-        """Sets the timestamp of this StandardNodeResponse.
-
-
-        :param timestamp: The timestamp of this StandardNodeResponse.  # noqa: E501
-        :type: float
-        """
-        if timestamp is None:
-            raise ValueError("Invalid value for `timestamp`, must not be `None`")  # noqa: E501
-
-        self._timestamp = timestamp
-
-    @property
-    def node_id(self):
-        """Gets the node_id of this StandardNodeResponse.  # noqa: E501
-
-
-        :return: The node_id of this StandardNodeResponse.  # noqa: E501
-        :rtype: str
-        """
-        return self._node_id
-
-    @node_id.setter
-    def node_id(self, node_id):
-        """Sets the node_id of this StandardNodeResponse.
-
-
-        :param node_id: The node_id of this StandardNodeResponse.  # noqa: E501
-        :type: str
-        """
-        if node_id is None:
-            raise ValueError("Invalid value for `node_id`, must not be `None`")  # noqa: E501
-
-        self._node_id = node_id
 
     @property
     def agent(self):
@@ -161,27 +120,6 @@ class StandardNodeResponse(object):
         self._agent = agent
 
     @property
-    def summary(self):
-        """Gets the summary of this StandardNodeResponse.  # noqa: E501
-
-
-        :return: The summary of this StandardNodeResponse.  # noqa: E501
-        :rtype: Summary
-        """
-        return self._summary
-
-    @summary.setter
-    def summary(self, summary):
-        """Sets the summary of this StandardNodeResponse.
-
-
-        :param summary: The summary of this StandardNodeResponse.  # noqa: E501
-        :type: Summary
-        """
-
-        self._summary = summary
-
-    @property
     def batch_id(self):
         """Gets the batch_id of this StandardNodeResponse.  # noqa: E501
 
@@ -203,6 +141,27 @@ class StandardNodeResponse(object):
             raise ValueError("Invalid value for `batch_id`, must not be `None`")  # noqa: E501
 
         self._batch_id = batch_id
+
+    @property
+    def deleted(self):
+        """Gets the deleted of this StandardNodeResponse.  # noqa: E501
+
+
+        :return: The deleted of this StandardNodeResponse.  # noqa: E501
+        :rtype: bool
+        """
+        return self._deleted
+
+    @deleted.setter
+    def deleted(self, deleted):
+        """Sets the deleted of this StandardNodeResponse.
+
+
+        :param deleted: The deleted of this StandardNodeResponse.  # noqa: E501
+        :type: bool
+        """
+
+        self._deleted = deleted
 
     @property
     def fact_type(self):
@@ -228,6 +187,29 @@ class StandardNodeResponse(object):
         self._fact_type = fact_type
 
     @property
+    def node_id(self):
+        """Gets the node_id of this StandardNodeResponse.  # noqa: E501
+
+
+        :return: The node_id of this StandardNodeResponse.  # noqa: E501
+        :rtype: str
+        """
+        return self._node_id
+
+    @node_id.setter
+    def node_id(self, node_id):
+        """Sets the node_id of this StandardNodeResponse.
+
+
+        :param node_id: The node_id of this StandardNodeResponse.  # noqa: E501
+        :type: str
+        """
+        if node_id is None:
+            raise ValueError("Invalid value for `node_id`, must not be `None`")  # noqa: E501
+
+        self._node_id = node_id
+
+    @property
     def parent_id(self):
         """Gets the parent_id of this StandardNodeResponse.  # noqa: E501
 
@@ -249,6 +231,50 @@ class StandardNodeResponse(object):
             raise ValueError("Invalid value for `parent_id`, must not be `None`")  # noqa: E501
 
         self._parent_id = parent_id
+
+    @property
+    def summary(self):
+        """Gets the summary of this StandardNodeResponse.  # noqa: E501
+
+
+        :return: The summary of this StandardNodeResponse.  # noqa: E501
+        :rtype: Summary
+        """
+        return self._summary
+
+    @summary.setter
+    def summary(self, summary):
+        """Sets the summary of this StandardNodeResponse.
+
+
+        :param summary: The summary of this StandardNodeResponse.  # noqa: E501
+        :type: Summary
+        """
+
+        self._summary = summary
+
+    @property
+    def timestamp(self):
+        """Gets the timestamp of this StandardNodeResponse.  # noqa: E501
+
+
+        :return: The timestamp of this StandardNodeResponse.  # noqa: E501
+        :rtype: float
+        """
+        return self._timestamp
+
+    @timestamp.setter
+    def timestamp(self, timestamp):
+        """Sets the timestamp of this StandardNodeResponse.
+
+
+        :param timestamp: The timestamp of this StandardNodeResponse.  # noqa: E501
+        :type: float
+        """
+        if timestamp is None:
+            raise ValueError("Invalid value for `timestamp`, must not be `None`")  # noqa: E501
+
+        self._timestamp = timestamp
 
     def to_dict(self):
         """Returns the model properties as a dict"""

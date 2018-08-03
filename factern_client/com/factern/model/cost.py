@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,17 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class Cost(object):
+
+
+class Cost():
+
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
 
     """
     Attributes:
@@ -25,25 +29,53 @@ class Cost(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'total': 'float',
-        'gas': 'GasCost'
+        'gas': 'GasCost',
+        'total': 'float'
     }
 
     attribute_map = {
-        'total': 'total',
-        'gas': 'gas'
+        'gas': 'gas',
+        'total': 'total'
     }
 
-    def __init__(self, total=None, gas=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """Cost - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("Cost got unexpected argument '%s'" % k)
 
-        self._total = None
         self._gas = None
-        self.discriminator = None
+        self._total = None
 
-        self.total = total
-        if gas is not None:
-            self.gas = gas
+
+        if "gas" in kwargs:
+            self.gas = kwargs["gas"]
+        if "total" not in kwargs:
+            raise ValueError("Cost missing required argument: total")
+        self._total = kwargs["total"]
+
+
+    @property
+    def gas(self):
+        """Gets the gas of this Cost.  # noqa: E501
+
+
+        :return: The gas of this Cost.  # noqa: E501
+        :rtype: GasCost
+        """
+        return self._gas
+
+    @gas.setter
+    def gas(self, gas):
+        """Sets the gas of this Cost.
+
+
+        :param gas: The gas of this Cost.  # noqa: E501
+        :type: GasCost
+        """
+
+        self._gas = gas
 
     @property
     def total(self):
@@ -67,27 +99,6 @@ class Cost(object):
             raise ValueError("Invalid value for `total`, must not be `None`")  # noqa: E501
 
         self._total = total
-
-    @property
-    def gas(self):
-        """Gets the gas of this Cost.  # noqa: E501
-
-
-        :return: The gas of this Cost.  # noqa: E501
-        :rtype: GasCost
-        """
-        return self._gas
-
-    @gas.setter
-    def gas(self, gas):
-        """Sets the gas of this Cost.
-
-
-        :param gas: The gas of this Cost.  # noqa: E501
-        :type: GasCost
-        """
-
-        self._gas = gas
 
     def to_dict(self):
         """Returns the model properties as a dict"""

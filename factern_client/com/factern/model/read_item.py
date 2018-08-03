@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,17 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class ReadItem(object):
+
+
+class ReadItem():
+
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
 
     """
     Attributes:
@@ -25,58 +29,63 @@ class ReadItem(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'field_id': 'str',
-        'data': 'str',
         'children': 'list[ReadStatusItem]',
+        'data': 'str',
+        'field_id': 'str',
         'node_id': 'str'
     }
 
     attribute_map = {
-        'field_id': 'fieldId',
-        'data': 'data',
         'children': 'children',
+        'data': 'data',
+        'field_id': 'fieldId',
         'node_id': 'nodeId'
     }
 
-    def __init__(self, field_id=None, data=None, children=None, node_id=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """ReadItem - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("ReadItem got unexpected argument '%s'" % k)
 
-        self._field_id = None
-        self._data = None
         self._children = None
+        self._data = None
+        self._field_id = None
         self._node_id = None
-        self.discriminator = None
 
-        self.field_id = field_id
-        if data is not None:
-            self.data = data
-        if children is not None:
-            self.children = children
-        if node_id is not None:
-            self.node_id = node_id
+
+        if "children" in kwargs:
+            self.children = kwargs["children"]
+        if "data" in kwargs:
+            self.data = kwargs["data"]
+        if "field_id" not in kwargs:
+            raise ValueError("ReadItem missing required argument: field_id")
+        self._field_id = kwargs["field_id"]
+
+        if "node_id" in kwargs:
+            self.node_id = kwargs["node_id"]
 
     @property
-    def field_id(self):
-        """Gets the field_id of this ReadItem.  # noqa: E501
+    def children(self):
+        """Gets the children of this ReadItem.  # noqa: E501
 
 
-        :return: The field_id of this ReadItem.  # noqa: E501
-        :rtype: str
+        :return: The children of this ReadItem.  # noqa: E501
+        :rtype: list[ReadStatusItem]
         """
-        return self._field_id
+        return self._children
 
-    @field_id.setter
-    def field_id(self, field_id):
-        """Sets the field_id of this ReadItem.
+    @children.setter
+    def children(self, children):
+        """Sets the children of this ReadItem.
 
 
-        :param field_id: The field_id of this ReadItem.  # noqa: E501
-        :type: str
+        :param children: The children of this ReadItem.  # noqa: E501
+        :type: list[ReadStatusItem]
         """
-        if field_id is None:
-            raise ValueError("Invalid value for `field_id`, must not be `None`")  # noqa: E501
 
-        self._field_id = field_id
+        self._children = children
 
     @property
     def data(self):
@@ -100,25 +109,27 @@ class ReadItem(object):
         self._data = data
 
     @property
-    def children(self):
-        """Gets the children of this ReadItem.  # noqa: E501
+    def field_id(self):
+        """Gets the field_id of this ReadItem.  # noqa: E501
 
 
-        :return: The children of this ReadItem.  # noqa: E501
-        :rtype: list[ReadStatusItem]
+        :return: The field_id of this ReadItem.  # noqa: E501
+        :rtype: str
         """
-        return self._children
+        return self._field_id
 
-    @children.setter
-    def children(self, children):
-        """Sets the children of this ReadItem.
+    @field_id.setter
+    def field_id(self, field_id):
+        """Sets the field_id of this ReadItem.
 
 
-        :param children: The children of this ReadItem.  # noqa: E501
-        :type: list[ReadStatusItem]
+        :param field_id: The field_id of this ReadItem.  # noqa: E501
+        :type: str
         """
+        if field_id is None:
+            raise ValueError("Invalid value for `field_id`, must not be `None`")  # noqa: E501
 
-        self._children = children
+        self._field_id = field_id
 
     @property
     def node_id(self):

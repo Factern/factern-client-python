@@ -1,11 +1,18 @@
+
+
 # Cost
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**total** | **float** |  | 
-**gas** | [**GasCost**](GasCost.md) |  | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+Name | Type | Required
+-------- | -------- | --------
+gas | [GasCost](GasCost.md) | optional
+total | float | required
 
 
+
+
+## Inheritance hierarchy
+
+
+* [Cost](Cost.md)

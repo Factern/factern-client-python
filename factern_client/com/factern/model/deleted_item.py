@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,17 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class DeletedItem(object):
+
+
+class DeletedItem():
+
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
 
     """
     Attributes:
@@ -25,105 +29,47 @@ class DeletedItem(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'node_id': 'str',
-        'nodes': 'list[DeletedItem]',
-        'field_id': 'str',
         'children': 'list[DeletedStatusItem]',
-        'deleted_node_id': 'str'
+        'deleted_node_id': 'str',
+        'field_id': 'str',
+        'node_id': 'str',
+        'nodes': 'list[DeletedItem]'
     }
 
     attribute_map = {
-        'node_id': 'nodeId',
-        'nodes': 'nodes',
-        'field_id': 'fieldId',
         'children': 'children',
-        'deleted_node_id': 'deletedNodeId'
+        'deleted_node_id': 'deletedNodeId',
+        'field_id': 'fieldId',
+        'node_id': 'nodeId',
+        'nodes': 'nodes'
     }
 
-    def __init__(self, node_id=None, nodes=None, field_id=None, children=None, deleted_node_id=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """DeletedItem - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("DeletedItem got unexpected argument '%s'" % k)
 
-        self._node_id = None
-        self._nodes = None
-        self._field_id = None
         self._children = None
         self._deleted_node_id = None
-        self.discriminator = None
-
-        if node_id is not None:
-            self.node_id = node_id
-        if nodes is not None:
-            self.nodes = nodes
-        self.field_id = field_id
-        if children is not None:
-            self.children = children
-        if deleted_node_id is not None:
-            self.deleted_node_id = deleted_node_id
-
-    @property
-    def node_id(self):
-        """Gets the node_id of this DeletedItem.  # noqa: E501
+        self._field_id = None
+        self._node_id = None
+        self._nodes = None
 
 
-        :return: The node_id of this DeletedItem.  # noqa: E501
-        :rtype: str
-        """
-        return self._node_id
+        if "children" in kwargs:
+            self.children = kwargs["children"]
+        if "deleted_node_id" in kwargs:
+            self.deleted_node_id = kwargs["deleted_node_id"]
+        if "field_id" not in kwargs:
+            raise ValueError("DeletedItem missing required argument: field_id")
+        self._field_id = kwargs["field_id"]
 
-    @node_id.setter
-    def node_id(self, node_id):
-        """Sets the node_id of this DeletedItem.
-
-
-        :param node_id: The node_id of this DeletedItem.  # noqa: E501
-        :type: str
-        """
-
-        self._node_id = node_id
-
-    @property
-    def nodes(self):
-        """Gets the nodes of this DeletedItem.  # noqa: E501
-
-
-        :return: The nodes of this DeletedItem.  # noqa: E501
-        :rtype: list[DeletedItem]
-        """
-        return self._nodes
-
-    @nodes.setter
-    def nodes(self, nodes):
-        """Sets the nodes of this DeletedItem.
-
-
-        :param nodes: The nodes of this DeletedItem.  # noqa: E501
-        :type: list[DeletedItem]
-        """
-
-        self._nodes = nodes
-
-    @property
-    def field_id(self):
-        """Gets the field_id of this DeletedItem.  # noqa: E501
-
-
-        :return: The field_id of this DeletedItem.  # noqa: E501
-        :rtype: str
-        """
-        return self._field_id
-
-    @field_id.setter
-    def field_id(self, field_id):
-        """Sets the field_id of this DeletedItem.
-
-
-        :param field_id: The field_id of this DeletedItem.  # noqa: E501
-        :type: str
-        """
-        if field_id is None:
-            raise ValueError("Invalid value for `field_id`, must not be `None`")  # noqa: E501
-
-        self._field_id = field_id
+        if "node_id" in kwargs:
+            self.node_id = kwargs["node_id"]
+        if "nodes" in kwargs:
+            self.nodes = kwargs["nodes"]
 
     @property
     def children(self):
@@ -166,6 +112,71 @@ class DeletedItem(object):
         """
 
         self._deleted_node_id = deleted_node_id
+
+    @property
+    def field_id(self):
+        """Gets the field_id of this DeletedItem.  # noqa: E501
+
+
+        :return: The field_id of this DeletedItem.  # noqa: E501
+        :rtype: str
+        """
+        return self._field_id
+
+    @field_id.setter
+    def field_id(self, field_id):
+        """Sets the field_id of this DeletedItem.
+
+
+        :param field_id: The field_id of this DeletedItem.  # noqa: E501
+        :type: str
+        """
+        if field_id is None:
+            raise ValueError("Invalid value for `field_id`, must not be `None`")  # noqa: E501
+
+        self._field_id = field_id
+
+    @property
+    def node_id(self):
+        """Gets the node_id of this DeletedItem.  # noqa: E501
+
+
+        :return: The node_id of this DeletedItem.  # noqa: E501
+        :rtype: str
+        """
+        return self._node_id
+
+    @node_id.setter
+    def node_id(self, node_id):
+        """Sets the node_id of this DeletedItem.
+
+
+        :param node_id: The node_id of this DeletedItem.  # noqa: E501
+        :type: str
+        """
+
+        self._node_id = node_id
+
+    @property
+    def nodes(self):
+        """Gets the nodes of this DeletedItem.  # noqa: E501
+
+
+        :return: The nodes of this DeletedItem.  # noqa: E501
+        :rtype: list[DeletedItem]
+        """
+        return self._nodes
+
+    @nodes.setter
+    def nodes(self, nodes):
+        """Sets the nodes of this DeletedItem.
+
+
+        :param nodes: The nodes of this DeletedItem.  # noqa: E501
+        :type: list[DeletedItem]
+        """
+
+        self._nodes = nodes
 
     def to_dict(self):
         """Returns the model properties as a dict"""

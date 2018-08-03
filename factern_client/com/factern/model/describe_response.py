@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,17 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class DescribeResponse(object):
+
+
+class DescribeResponse():
+
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
 
     """
     Attributes:
@@ -25,35 +29,84 @@ class DescribeResponse(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'node': 'StandardNode',
-        'summary': 'Summary',
         'children': 'NodeListing',
-        'member_ids': 'list[object]'
+        'member_ids': 'list[object]',
+        'node': 'StandardNode',
+        'summary': 'Summary'
     }
 
     attribute_map = {
-        'node': 'node',
-        'summary': 'summary',
         'children': 'children',
-        'member_ids': 'memberIds'
+        'member_ids': 'memberIds',
+        'node': 'node',
+        'summary': 'summary'
     }
 
-    def __init__(self, node=None, summary=None, children=None, member_ids=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """DescribeResponse - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("DescribeResponse got unexpected argument '%s'" % k)
 
-        self._node = None
-        self._summary = None
         self._children = None
         self._member_ids = None
-        self.discriminator = None
+        self._node = None
+        self._summary = None
 
-        self.node = node
-        if summary is not None:
-            self.summary = summary
-        if children is not None:
-            self.children = children
-        if member_ids is not None:
-            self.member_ids = member_ids
+
+        if "children" in kwargs:
+            self.children = kwargs["children"]
+        if "member_ids" in kwargs:
+            self.member_ids = kwargs["member_ids"]
+        if "node" not in kwargs:
+            raise ValueError("DescribeResponse missing required argument: node")
+        self._node = kwargs["node"]
+
+        if "summary" in kwargs:
+            self.summary = kwargs["summary"]
+
+    @property
+    def children(self):
+        """Gets the children of this DescribeResponse.  # noqa: E501
+
+
+        :return: The children of this DescribeResponse.  # noqa: E501
+        :rtype: NodeListing
+        """
+        return self._children
+
+    @children.setter
+    def children(self, children):
+        """Sets the children of this DescribeResponse.
+
+
+        :param children: The children of this DescribeResponse.  # noqa: E501
+        :type: NodeListing
+        """
+
+        self._children = children
+
+    @property
+    def member_ids(self):
+        """Gets the member_ids of this DescribeResponse.  # noqa: E501
+
+
+        :return: The member_ids of this DescribeResponse.  # noqa: E501
+        :rtype: list[object]
+        """
+        return self._member_ids
+
+    @member_ids.setter
+    def member_ids(self, member_ids):
+        """Sets the member_ids of this DescribeResponse.
+
+
+        :param member_ids: The member_ids of this DescribeResponse.  # noqa: E501
+        :type: list[object]
+        """
+
+        self._member_ids = member_ids
 
     @property
     def node(self):
@@ -98,48 +151,6 @@ class DescribeResponse(object):
         """
 
         self._summary = summary
-
-    @property
-    def children(self):
-        """Gets the children of this DescribeResponse.  # noqa: E501
-
-
-        :return: The children of this DescribeResponse.  # noqa: E501
-        :rtype: NodeListing
-        """
-        return self._children
-
-    @children.setter
-    def children(self, children):
-        """Sets the children of this DescribeResponse.
-
-
-        :param children: The children of this DescribeResponse.  # noqa: E501
-        :type: NodeListing
-        """
-
-        self._children = children
-
-    @property
-    def member_ids(self):
-        """Gets the member_ids of this DescribeResponse.  # noqa: E501
-
-
-        :return: The member_ids of this DescribeResponse.  # noqa: E501
-        :rtype: list[object]
-        """
-        return self._member_ids
-
-    @member_ids.setter
-    def member_ids(self, member_ids):
-        """Sets the member_ids of this DescribeResponse.
-
-
-        :param member_ids: The member_ids of this DescribeResponse.  # noqa: E501
-        :type: list[object]
-        """
-
-        self._member_ids = member_ids
 
     def to_dict(self):
         """Returns the model properties as a dict"""

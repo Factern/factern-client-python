@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,17 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class DeletedStatusItem(object):
+
+
+class DeletedStatusItem():
+
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
 
     """
     Attributes:
@@ -25,47 +29,34 @@ class DeletedStatusItem(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'status': 'int',
-        'deleted_item': 'DeletedItem'
+        'deleted_item': 'DeletedItem',
+        'status': 'int'
     }
 
     attribute_map = {
-        'status': 'status',
-        'deleted_item': 'deletedItem'
+        'deleted_item': 'deletedItem',
+        'status': 'status'
     }
 
-    def __init__(self, status=None, deleted_item=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """DeletedStatusItem - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("DeletedStatusItem got unexpected argument '%s'" % k)
 
-        self._status = None
         self._deleted_item = None
-        self.discriminator = None
-
-        self.status = status
-        self.deleted_item = deleted_item
-
-    @property
-    def status(self):
-        """Gets the status of this DeletedStatusItem.  # noqa: E501
+        self._status = None
 
 
-        :return: The status of this DeletedStatusItem.  # noqa: E501
-        :rtype: int
-        """
-        return self._status
+        if "deleted_item" not in kwargs:
+            raise ValueError("DeletedStatusItem missing required argument: deleted_item")
+        self._deleted_item = kwargs["deleted_item"]
 
-    @status.setter
-    def status(self, status):
-        """Sets the status of this DeletedStatusItem.
+        if "status" not in kwargs:
+            raise ValueError("DeletedStatusItem missing required argument: status")
+        self._status = kwargs["status"]
 
-
-        :param status: The status of this DeletedStatusItem.  # noqa: E501
-        :type: int
-        """
-        if status is None:
-            raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
-
-        self._status = status
 
     @property
     def deleted_item(self):
@@ -89,6 +80,29 @@ class DeletedStatusItem(object):
             raise ValueError("Invalid value for `deleted_item`, must not be `None`")  # noqa: E501
 
         self._deleted_item = deleted_item
+
+    @property
+    def status(self):
+        """Gets the status of this DeletedStatusItem.  # noqa: E501
+
+
+        :return: The status of this DeletedStatusItem.  # noqa: E501
+        :rtype: int
+        """
+        return self._status
+
+    @status.setter
+    def status(self, status):
+        """Sets the status of this DeletedStatusItem.
+
+
+        :param status: The status of this DeletedStatusItem.  # noqa: E501
+        :type: int
+        """
+        if status is None:
+            raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
+
+        self._status = status
 
     def to_dict(self):
         """Returns the model properties as a dict"""

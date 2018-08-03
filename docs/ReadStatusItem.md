@@ -1,11 +1,18 @@
+
+
 # ReadStatusItem
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**status** | **int** |  | 
-**read_item** | [**ReadItem**](ReadItem.md) |  | 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+Name | Type | Required
+-------- | -------- | --------
+read_item | [ReadItem](ReadItem.md) | required
+status | int | required
 
 
+
+
+## Inheritance hierarchy
+
+
+* [ReadStatusItem](ReadStatusItem.md)

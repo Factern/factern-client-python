@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,17 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class PriceDetails(object):
+
+
+class PriceDetails():
+
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
 
     """
     Attributes:
@@ -32,14 +36,18 @@ class PriceDetails(object):
         'value': 'value'
     }
 
-    def __init__(self, value=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """PriceDetails - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("PriceDetails got unexpected argument '%s'" % k)
 
         self._value = None
-        self.discriminator = None
 
-        if value is not None:
-            self.value = value
+
+        if "value" in kwargs:
+            self.value = kwargs["value"]
 
     @property
     def value(self):

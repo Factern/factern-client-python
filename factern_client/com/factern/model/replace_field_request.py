@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,38 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class ReplaceFieldRequest(object):
+
+
+parent_name = "BaseRequest"
+def get_parent():
+    # Lazy importing of parent means that loading the classes happens
+    # in the correct order.
+    if get_parent.cache is None:
+        parent_fname = "factern_client.com.factern.model.%s" % re.sub("([a-z])([A-Z])", "\\1_\\2", "BaseRequest").lower()
+        parent = importlib.import_module(parent_fname).BaseRequest
+        get_parent.cache = parent
+    return get_parent.cache
+get_parent.cache = None
+
+
+class ReplaceFieldRequest(get_parent()):
+
+    @staticmethod
+    def get_parent():
+        return get_parent()
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
+
+        get_parent().compute_parent_updates()
+
+        ReplaceFieldRequest.swagger_types.update(get_parent().swagger_types)
+        ReplaceFieldRequest.attribute_map.update(get_parent().attribute_map)
+
 
     """
     Attributes:
@@ -25,76 +50,40 @@ class ReplaceFieldRequest(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'include_summary': 'bool',
-        'storage_interface_id': 'str',
         'data': 'str',
-        'node_id': 'str'
+        'node_id': 'str',
+        'storage_interface_id': 'str'
     }
 
     attribute_map = {
-        'include_summary': 'includeSummary',
-        'storage_interface_id': 'storageInterfaceId',
         'data': 'data',
-        'node_id': 'nodeId'
+        'node_id': 'nodeId',
+        'storage_interface_id': 'storageInterfaceId'
     }
 
-    def __init__(self, include_summary=None, storage_interface_id=None, data=None, node_id=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """ReplaceFieldRequest - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("ReplaceFieldRequest got unexpected argument '%s'" % k)
+        get_parent().__init__(self, **kwargs)
 
-        self._include_summary = None
-        self._storage_interface_id = None
         self._data = None
         self._node_id = None
-        self.discriminator = None
-
-        if include_summary is not None:
-            self.include_summary = include_summary
-        if storage_interface_id is not None:
-            self.storage_interface_id = storage_interface_id
-        self.data = data
-        self.node_id = node_id
-
-    @property
-    def include_summary(self):
-        """Gets the include_summary of this ReplaceFieldRequest.  # noqa: E501
+        self._storage_interface_id = None
 
 
-        :return: The include_summary of this ReplaceFieldRequest.  # noqa: E501
-        :rtype: bool
-        """
-        return self._include_summary
+        if "data" not in kwargs:
+            raise ValueError("ReplaceFieldRequest missing required argument: data")
+        self._data = kwargs["data"]
 
-    @include_summary.setter
-    def include_summary(self, include_summary):
-        """Sets the include_summary of this ReplaceFieldRequest.
+        if "node_id" not in kwargs:
+            raise ValueError("ReplaceFieldRequest missing required argument: node_id")
+        self._node_id = kwargs["node_id"]
 
-
-        :param include_summary: The include_summary of this ReplaceFieldRequest.  # noqa: E501
-        :type: bool
-        """
-
-        self._include_summary = include_summary
-
-    @property
-    def storage_interface_id(self):
-        """Gets the storage_interface_id of this ReplaceFieldRequest.  # noqa: E501
-
-
-        :return: The storage_interface_id of this ReplaceFieldRequest.  # noqa: E501
-        :rtype: str
-        """
-        return self._storage_interface_id
-
-    @storage_interface_id.setter
-    def storage_interface_id(self, storage_interface_id):
-        """Sets the storage_interface_id of this ReplaceFieldRequest.
-
-
-        :param storage_interface_id: The storage_interface_id of this ReplaceFieldRequest.  # noqa: E501
-        :type: str
-        """
-
-        self._storage_interface_id = storage_interface_id
+        if "storage_interface_id" in kwargs:
+            self.storage_interface_id = kwargs["storage_interface_id"]
 
     @property
     def data(self):
@@ -141,6 +130,27 @@ class ReplaceFieldRequest(object):
             raise ValueError("Invalid value for `node_id`, must not be `None`")  # noqa: E501
 
         self._node_id = node_id
+
+    @property
+    def storage_interface_id(self):
+        """Gets the storage_interface_id of this ReplaceFieldRequest.  # noqa: E501
+
+
+        :return: The storage_interface_id of this ReplaceFieldRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._storage_interface_id
+
+    @storage_interface_id.setter
+    def storage_interface_id(self, storage_interface_id):
+        """Sets the storage_interface_id of this ReplaceFieldRequest.
+
+
+        :param storage_interface_id: The storage_interface_id of this ReplaceFieldRequest.  # noqa: E501
+        :type: str
+        """
+
+        self._storage_interface_id = storage_interface_id
 
     def to_dict(self):
         """Returns the model properties as a dict"""

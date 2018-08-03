@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,38 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class CreatePermissionResponse(object):
+
+
+parent_name = "BaseResponse"
+def get_parent():
+    # Lazy importing of parent means that loading the classes happens
+    # in the correct order.
+    if get_parent.cache is None:
+        parent_fname = "factern_client.com.factern.model.%s" % re.sub("([a-z])([A-Z])", "\\1_\\2", "BaseResponse").lower()
+        parent = importlib.import_module(parent_fname).BaseResponse
+        get_parent.cache = parent
+    return get_parent.cache
+get_parent.cache = None
+
+
+class CreatePermissionResponse(get_parent()):
+
+    @staticmethod
+    def get_parent():
+        return get_parent()
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
+
+        get_parent().compute_parent_updates()
+
+        CreatePermissionResponse.swagger_types.update(get_parent().swagger_types)
+        CreatePermissionResponse.attribute_map.update(get_parent().attribute_map)
+
 
     """
     Attributes:
@@ -25,239 +50,57 @@ class CreatePermissionResponse(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'deleted': 'bool',
-        'timestamp': 'float',
-        'node_id': 'str',
-        'agent': 'Agent',
-        'summary': 'Summary',
-        'batch_id': 'str',
-        'fact_type': 'str',
-        'parent_id': 'str',
+        'permission_interface_id': 'str',
         'policy': 'PermissionPolicyDocument',
-        'target_node_id': 'str',
-        'permission_interface_id': 'str'
+        'target_node_id': 'str'
     }
 
     attribute_map = {
-        'deleted': 'deleted',
-        'timestamp': 'timestamp',
-        'node_id': 'nodeId',
-        'agent': 'agent',
-        'summary': 'summary',
-        'batch_id': 'batchId',
-        'fact_type': 'factType',
-        'parent_id': 'parentId',
+        'permission_interface_id': 'permissionInterfaceId',
         'policy': 'policy',
-        'target_node_id': 'targetNodeId',
-        'permission_interface_id': 'permissionInterfaceId'
+        'target_node_id': 'targetNodeId'
     }
 
-    def __init__(self, deleted=None, timestamp=None, node_id=None, agent=None, summary=None, batch_id=None, fact_type=None, parent_id=None, policy=None, target_node_id=None, permission_interface_id=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """CreatePermissionResponse - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("CreatePermissionResponse got unexpected argument '%s'" % k)
+        get_parent().__init__(self, **kwargs)
 
-        self._deleted = None
-        self._timestamp = None
-        self._node_id = None
-        self._agent = None
-        self._summary = None
-        self._batch_id = None
-        self._fact_type = None
-        self._parent_id = None
+        self._permission_interface_id = None
         self._policy = None
         self._target_node_id = None
-        self._permission_interface_id = None
-        self.discriminator = None
 
-        if deleted is not None:
-            self.deleted = deleted
-        if timestamp is not None:
-            self.timestamp = timestamp
-        if node_id is not None:
-            self.node_id = node_id
-        if agent is not None:
-            self.agent = agent
-        if summary is not None:
-            self.summary = summary
-        if batch_id is not None:
-            self.batch_id = batch_id
-        if fact_type is not None:
-            self.fact_type = fact_type
-        if parent_id is not None:
-            self.parent_id = parent_id
-        if policy is not None:
-            self.policy = policy
-        if target_node_id is not None:
-            self.target_node_id = target_node_id
-        if permission_interface_id is not None:
-            self.permission_interface_id = permission_interface_id
+
+        if "permission_interface_id" in kwargs:
+            self.permission_interface_id = kwargs["permission_interface_id"]
+        if "policy" in kwargs:
+            self.policy = kwargs["policy"]
+        if "target_node_id" in kwargs:
+            self.target_node_id = kwargs["target_node_id"]
 
     @property
-    def deleted(self):
-        """Gets the deleted of this CreatePermissionResponse.  # noqa: E501
+    def permission_interface_id(self):
+        """Gets the permission_interface_id of this CreatePermissionResponse.  # noqa: E501
 
 
-        :return: The deleted of this CreatePermissionResponse.  # noqa: E501
-        :rtype: bool
-        """
-        return self._deleted
-
-    @deleted.setter
-    def deleted(self, deleted):
-        """Sets the deleted of this CreatePermissionResponse.
-
-
-        :param deleted: The deleted of this CreatePermissionResponse.  # noqa: E501
-        :type: bool
-        """
-
-        self._deleted = deleted
-
-    @property
-    def timestamp(self):
-        """Gets the timestamp of this CreatePermissionResponse.  # noqa: E501
-
-
-        :return: The timestamp of this CreatePermissionResponse.  # noqa: E501
-        :rtype: float
-        """
-        return self._timestamp
-
-    @timestamp.setter
-    def timestamp(self, timestamp):
-        """Sets the timestamp of this CreatePermissionResponse.
-
-
-        :param timestamp: The timestamp of this CreatePermissionResponse.  # noqa: E501
-        :type: float
-        """
-
-        self._timestamp = timestamp
-
-    @property
-    def node_id(self):
-        """Gets the node_id of this CreatePermissionResponse.  # noqa: E501
-
-
-        :return: The node_id of this CreatePermissionResponse.  # noqa: E501
+        :return: The permission_interface_id of this CreatePermissionResponse.  # noqa: E501
         :rtype: str
         """
-        return self._node_id
+        return self._permission_interface_id
 
-    @node_id.setter
-    def node_id(self, node_id):
-        """Sets the node_id of this CreatePermissionResponse.
+    @permission_interface_id.setter
+    def permission_interface_id(self, permission_interface_id):
+        """Sets the permission_interface_id of this CreatePermissionResponse.
 
 
-        :param node_id: The node_id of this CreatePermissionResponse.  # noqa: E501
+        :param permission_interface_id: The permission_interface_id of this CreatePermissionResponse.  # noqa: E501
         :type: str
         """
 
-        self._node_id = node_id
-
-    @property
-    def agent(self):
-        """Gets the agent of this CreatePermissionResponse.  # noqa: E501
-
-
-        :return: The agent of this CreatePermissionResponse.  # noqa: E501
-        :rtype: Agent
-        """
-        return self._agent
-
-    @agent.setter
-    def agent(self, agent):
-        """Sets the agent of this CreatePermissionResponse.
-
-
-        :param agent: The agent of this CreatePermissionResponse.  # noqa: E501
-        :type: Agent
-        """
-
-        self._agent = agent
-
-    @property
-    def summary(self):
-        """Gets the summary of this CreatePermissionResponse.  # noqa: E501
-
-
-        :return: The summary of this CreatePermissionResponse.  # noqa: E501
-        :rtype: Summary
-        """
-        return self._summary
-
-    @summary.setter
-    def summary(self, summary):
-        """Sets the summary of this CreatePermissionResponse.
-
-
-        :param summary: The summary of this CreatePermissionResponse.  # noqa: E501
-        :type: Summary
-        """
-
-        self._summary = summary
-
-    @property
-    def batch_id(self):
-        """Gets the batch_id of this CreatePermissionResponse.  # noqa: E501
-
-
-        :return: The batch_id of this CreatePermissionResponse.  # noqa: E501
-        :rtype: str
-        """
-        return self._batch_id
-
-    @batch_id.setter
-    def batch_id(self, batch_id):
-        """Sets the batch_id of this CreatePermissionResponse.
-
-
-        :param batch_id: The batch_id of this CreatePermissionResponse.  # noqa: E501
-        :type: str
-        """
-
-        self._batch_id = batch_id
-
-    @property
-    def fact_type(self):
-        """Gets the fact_type of this CreatePermissionResponse.  # noqa: E501
-
-
-        :return: The fact_type of this CreatePermissionResponse.  # noqa: E501
-        :rtype: str
-        """
-        return self._fact_type
-
-    @fact_type.setter
-    def fact_type(self, fact_type):
-        """Sets the fact_type of this CreatePermissionResponse.
-
-
-        :param fact_type: The fact_type of this CreatePermissionResponse.  # noqa: E501
-        :type: str
-        """
-
-        self._fact_type = fact_type
-
-    @property
-    def parent_id(self):
-        """Gets the parent_id of this CreatePermissionResponse.  # noqa: E501
-
-
-        :return: The parent_id of this CreatePermissionResponse.  # noqa: E501
-        :rtype: str
-        """
-        return self._parent_id
-
-    @parent_id.setter
-    def parent_id(self, parent_id):
-        """Sets the parent_id of this CreatePermissionResponse.
-
-
-        :param parent_id: The parent_id of this CreatePermissionResponse.  # noqa: E501
-        :type: str
-        """
-
-        self._parent_id = parent_id
+        self._permission_interface_id = permission_interface_id
 
     @property
     def policy(self):
@@ -300,27 +143,6 @@ class CreatePermissionResponse(object):
         """
 
         self._target_node_id = target_node_id
-
-    @property
-    def permission_interface_id(self):
-        """Gets the permission_interface_id of this CreatePermissionResponse.  # noqa: E501
-
-
-        :return: The permission_interface_id of this CreatePermissionResponse.  # noqa: E501
-        :rtype: str
-        """
-        return self._permission_interface_id
-
-    @permission_interface_id.setter
-    def permission_interface_id(self, permission_interface_id):
-        """Sets the permission_interface_id of this CreatePermissionResponse.
-
-
-        :param permission_interface_id: The permission_interface_id of this CreatePermissionResponse.  # noqa: E501
-        :type: str
-        """
-
-        self._permission_interface_id = permission_interface_id
 
     def to_dict(self):
         """Returns the model properties as a dict"""

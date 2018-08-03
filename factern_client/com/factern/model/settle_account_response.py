@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,17 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class SettleAccountResponse(object):
+
+
+class SettleAccountResponse():
+
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
 
     """
     Attributes:
@@ -32,13 +36,20 @@ class SettleAccountResponse(object):
         'settlement_id': 'settlementId'
     }
 
-    def __init__(self, settlement_id=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """SettleAccountResponse - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("SettleAccountResponse got unexpected argument '%s'" % k)
 
         self._settlement_id = None
-        self.discriminator = None
 
-        self.settlement_id = settlement_id
+
+        if "settlement_id" not in kwargs:
+            raise ValueError("SettleAccountResponse missing required argument: settlement_id")
+        self._settlement_id = kwargs["settlement_id"]
+
 
     @property
     def settlement_id(self):

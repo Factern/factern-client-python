@@ -1,10 +1,17 @@
+
+
 # LabelListMemberNode
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**label_list_id** | **str** |  | 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+Name | Type | Required
+-------- | -------- | --------
+label_list_id | str | required
 
 
+
+
+## Inheritance hierarchy
+
+
+* [LabelListMemberNode](LabelListMemberNode.md)

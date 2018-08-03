@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,38 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class ResetLoginCredentialsRequest(object):
+
+
+parent_name = "BaseResponse"
+def get_parent():
+    # Lazy importing of parent means that loading the classes happens
+    # in the correct order.
+    if get_parent.cache is None:
+        parent_fname = "factern_client.com.factern.model.%s" % re.sub("([a-z])([A-Z])", "\\1_\\2", "BaseResponse").lower()
+        parent = importlib.import_module(parent_fname).BaseResponse
+        get_parent.cache = parent
+    return get_parent.cache
+get_parent.cache = None
+
+
+class ResetLoginCredentialsRequest(get_parent()):
+
+    @staticmethod
+    def get_parent():
+        return get_parent()
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
+
+        get_parent().compute_parent_updates()
+
+        ResetLoginCredentialsRequest.swagger_types.update(get_parent().swagger_types)
+        ResetLoginCredentialsRequest.attribute_map.update(get_parent().attribute_map)
+
 
     """
     Attributes:
@@ -25,233 +50,42 @@ class ResetLoginCredentialsRequest(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'deleted': 'bool',
-        'timestamp': 'float',
-        'node_id': 'str',
-        'agent': 'Agent',
-        'summary': 'Summary',
-        'batch_id': 'str',
-        'fact_type': 'str',
-        'parent_id': 'str',
         'new_password': 'str',
+        'node_id': 'str',
         'old_password': 'str'
     }
 
     attribute_map = {
-        'deleted': 'deleted',
-        'timestamp': 'timestamp',
-        'node_id': 'nodeId',
-        'agent': 'agent',
-        'summary': 'summary',
-        'batch_id': 'batchId',
-        'fact_type': 'factType',
-        'parent_id': 'parentId',
         'new_password': 'newPassword',
+        'node_id': 'nodeId',
         'old_password': 'oldPassword'
     }
 
-    def __init__(self, deleted=None, timestamp=None, node_id=None, agent=None, summary=None, batch_id=None, fact_type=None, parent_id=None, new_password=None, old_password=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """ResetLoginCredentialsRequest - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("ResetLoginCredentialsRequest got unexpected argument '%s'" % k)
+        get_parent().__init__(self, **kwargs)
 
-        self._deleted = None
-        self._timestamp = None
-        self._node_id = None
-        self._agent = None
-        self._summary = None
-        self._batch_id = None
-        self._fact_type = None
-        self._parent_id = None
         self._new_password = None
+        self._node_id = None
         self._old_password = None
-        self.discriminator = None
-
-        if deleted is not None:
-            self.deleted = deleted
-        if timestamp is not None:
-            self.timestamp = timestamp
-        self.node_id = node_id
-        if agent is not None:
-            self.agent = agent
-        if summary is not None:
-            self.summary = summary
-        if batch_id is not None:
-            self.batch_id = batch_id
-        if fact_type is not None:
-            self.fact_type = fact_type
-        if parent_id is not None:
-            self.parent_id = parent_id
-        self.new_password = new_password
-        self.old_password = old_password
-
-    @property
-    def deleted(self):
-        """Gets the deleted of this ResetLoginCredentialsRequest.  # noqa: E501
 
 
-        :return: The deleted of this ResetLoginCredentialsRequest.  # noqa: E501
-        :rtype: bool
-        """
-        return self._deleted
+        if "new_password" not in kwargs:
+            raise ValueError("ResetLoginCredentialsRequest missing required argument: new_password")
+        self._new_password = kwargs["new_password"]
 
-    @deleted.setter
-    def deleted(self, deleted):
-        """Sets the deleted of this ResetLoginCredentialsRequest.
+        if "node_id" not in kwargs:
+            raise ValueError("ResetLoginCredentialsRequest missing required argument: node_id")
+        self._node_id = kwargs["node_id"]
 
+        if "old_password" not in kwargs:
+            raise ValueError("ResetLoginCredentialsRequest missing required argument: old_password")
+        self._old_password = kwargs["old_password"]
 
-        :param deleted: The deleted of this ResetLoginCredentialsRequest.  # noqa: E501
-        :type: bool
-        """
-
-        self._deleted = deleted
-
-    @property
-    def timestamp(self):
-        """Gets the timestamp of this ResetLoginCredentialsRequest.  # noqa: E501
-
-
-        :return: The timestamp of this ResetLoginCredentialsRequest.  # noqa: E501
-        :rtype: float
-        """
-        return self._timestamp
-
-    @timestamp.setter
-    def timestamp(self, timestamp):
-        """Sets the timestamp of this ResetLoginCredentialsRequest.
-
-
-        :param timestamp: The timestamp of this ResetLoginCredentialsRequest.  # noqa: E501
-        :type: float
-        """
-
-        self._timestamp = timestamp
-
-    @property
-    def node_id(self):
-        """Gets the node_id of this ResetLoginCredentialsRequest.  # noqa: E501
-
-
-        :return: The node_id of this ResetLoginCredentialsRequest.  # noqa: E501
-        :rtype: str
-        """
-        return self._node_id
-
-    @node_id.setter
-    def node_id(self, node_id):
-        """Sets the node_id of this ResetLoginCredentialsRequest.
-
-
-        :param node_id: The node_id of this ResetLoginCredentialsRequest.  # noqa: E501
-        :type: str
-        """
-        if node_id is None:
-            raise ValueError("Invalid value for `node_id`, must not be `None`")  # noqa: E501
-
-        self._node_id = node_id
-
-    @property
-    def agent(self):
-        """Gets the agent of this ResetLoginCredentialsRequest.  # noqa: E501
-
-
-        :return: The agent of this ResetLoginCredentialsRequest.  # noqa: E501
-        :rtype: Agent
-        """
-        return self._agent
-
-    @agent.setter
-    def agent(self, agent):
-        """Sets the agent of this ResetLoginCredentialsRequest.
-
-
-        :param agent: The agent of this ResetLoginCredentialsRequest.  # noqa: E501
-        :type: Agent
-        """
-
-        self._agent = agent
-
-    @property
-    def summary(self):
-        """Gets the summary of this ResetLoginCredentialsRequest.  # noqa: E501
-
-
-        :return: The summary of this ResetLoginCredentialsRequest.  # noqa: E501
-        :rtype: Summary
-        """
-        return self._summary
-
-    @summary.setter
-    def summary(self, summary):
-        """Sets the summary of this ResetLoginCredentialsRequest.
-
-
-        :param summary: The summary of this ResetLoginCredentialsRequest.  # noqa: E501
-        :type: Summary
-        """
-
-        self._summary = summary
-
-    @property
-    def batch_id(self):
-        """Gets the batch_id of this ResetLoginCredentialsRequest.  # noqa: E501
-
-
-        :return: The batch_id of this ResetLoginCredentialsRequest.  # noqa: E501
-        :rtype: str
-        """
-        return self._batch_id
-
-    @batch_id.setter
-    def batch_id(self, batch_id):
-        """Sets the batch_id of this ResetLoginCredentialsRequest.
-
-
-        :param batch_id: The batch_id of this ResetLoginCredentialsRequest.  # noqa: E501
-        :type: str
-        """
-
-        self._batch_id = batch_id
-
-    @property
-    def fact_type(self):
-        """Gets the fact_type of this ResetLoginCredentialsRequest.  # noqa: E501
-
-
-        :return: The fact_type of this ResetLoginCredentialsRequest.  # noqa: E501
-        :rtype: str
-        """
-        return self._fact_type
-
-    @fact_type.setter
-    def fact_type(self, fact_type):
-        """Sets the fact_type of this ResetLoginCredentialsRequest.
-
-
-        :param fact_type: The fact_type of this ResetLoginCredentialsRequest.  # noqa: E501
-        :type: str
-        """
-
-        self._fact_type = fact_type
-
-    @property
-    def parent_id(self):
-        """Gets the parent_id of this ResetLoginCredentialsRequest.  # noqa: E501
-
-
-        :return: The parent_id of this ResetLoginCredentialsRequest.  # noqa: E501
-        :rtype: str
-        """
-        return self._parent_id
-
-    @parent_id.setter
-    def parent_id(self, parent_id):
-        """Sets the parent_id of this ResetLoginCredentialsRequest.
-
-
-        :param parent_id: The parent_id of this ResetLoginCredentialsRequest.  # noqa: E501
-        :type: str
-        """
-
-        self._parent_id = parent_id
 
     @property
     def new_password(self):
@@ -275,6 +109,29 @@ class ResetLoginCredentialsRequest(object):
             raise ValueError("Invalid value for `new_password`, must not be `None`")  # noqa: E501
 
         self._new_password = new_password
+
+    @property
+    def node_id(self):
+        """Gets the node_id of this ResetLoginCredentialsRequest.  # noqa: E501
+
+
+        :return: The node_id of this ResetLoginCredentialsRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._node_id
+
+    @node_id.setter
+    def node_id(self, node_id):
+        """Sets the node_id of this ResetLoginCredentialsRequest.
+
+
+        :param node_id: The node_id of this ResetLoginCredentialsRequest.  # noqa: E501
+        :type: str
+        """
+        if node_id is None:
+            raise ValueError("Invalid value for `node_id`, must not be `None`")  # noqa: E501
+
+        self._node_id = node_id
 
     @property
     def old_password(self):

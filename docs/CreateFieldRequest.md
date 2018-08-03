@@ -1,16 +1,26 @@
+
+
 # CreateFieldRequest
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**include_summary** | **bool** |  | [optional] 
-**parent_id** | **str** |  | [optional] 
-**description** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
-**unique_by_parent** | **bool** |  | 
-**searchable** | **bool** |  | 
-**branch** | **bool** |  | 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+Name | Type | Required
+-------- | -------- | --------
+branch | bool | optional
+searchable | bool | optional
+unique_by_parent | bool | optional
+description | str | optional
+name | str | optional
+parent_id | str | optional
+include_summary | bool | optional
 
 
+
+
+## Inheritance hierarchy
+
+
+* [CreateFieldRequest](CreateFieldRequest.md)
+    * [CreateNamedRequest](CreateNamedRequest.md)
+        * [CreateChildRequest](CreateChildRequest.md)
+            * [BaseRequest](BaseRequest.md)

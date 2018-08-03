@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -253,7 +249,7 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
         return "Python SDK Debug Report:\n"\
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
-               "Version of the API: 2.0.0\n"\
-               "SDK Package Version: 1.0.5".\
+               "Version of the API: __VERSION__\n"\
+               "SDK Package Version: 1.0.4".\
                format(env=sys.platform, pyversion=sys.version)
 

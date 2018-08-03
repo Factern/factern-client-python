@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,38 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class CreateBidRequest(object):
+
+
+parent_name = "BaseRequest"
+def get_parent():
+    # Lazy importing of parent means that loading the classes happens
+    # in the correct order.
+    if get_parent.cache is None:
+        parent_fname = "factern_client.com.factern.model.%s" % re.sub("([a-z])([A-Z])", "\\1_\\2", "BaseRequest").lower()
+        parent = importlib.import_module(parent_fname).BaseRequest
+        get_parent.cache = parent
+    return get_parent.cache
+get_parent.cache = None
+
+
+class CreateBidRequest(get_parent()):
+
+    @staticmethod
+    def get_parent():
+        return get_parent()
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
+
+        get_parent().compute_parent_updates()
+
+        CreateBidRequest.swagger_types.update(get_parent().swagger_types)
+        CreateBidRequest.attribute_map.update(get_parent().attribute_map)
+
 
     """
     Attributes:
@@ -25,46 +50,28 @@ class CreateBidRequest(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'include_summary': 'bool',
         'price_id': 'str'
     }
 
     attribute_map = {
-        'include_summary': 'includeSummary',
         'price_id': 'priceId'
     }
 
-    def __init__(self, include_summary=None, price_id=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """CreateBidRequest - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("CreateBidRequest got unexpected argument '%s'" % k)
+        get_parent().__init__(self, **kwargs)
 
-        self._include_summary = None
         self._price_id = None
-        self.discriminator = None
-
-        if include_summary is not None:
-            self.include_summary = include_summary
-        self.price_id = price_id
-
-    @property
-    def include_summary(self):
-        """Gets the include_summary of this CreateBidRequest.  # noqa: E501
 
 
-        :return: The include_summary of this CreateBidRequest.  # noqa: E501
-        :rtype: bool
-        """
-        return self._include_summary
+        if "price_id" not in kwargs:
+            raise ValueError("CreateBidRequest missing required argument: price_id")
+        self._price_id = kwargs["price_id"]
 
-    @include_summary.setter
-    def include_summary(self, include_summary):
-        """Sets the include_summary of this CreateBidRequest.
-
-
-        :param include_summary: The include_summary of this CreateBidRequest.  # noqa: E501
-        :type: bool
-        """
-
-        self._include_summary = include_summary
 
     @property
     def price_id(self):

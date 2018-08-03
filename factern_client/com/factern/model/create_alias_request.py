@@ -1,7 +1,3 @@
-#
-# Template source downloaded from:
-# https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen/src/main/resources/python
-#
 # coding: utf-8
 
 """
@@ -13,9 +9,38 @@ import pprint
 import re  # noqa: F401
 
 import six
+import importlib
 
 
-class CreateAliasRequest(object):
+
+
+parent_name = "BaseRequest"
+def get_parent():
+    # Lazy importing of parent means that loading the classes happens
+    # in the correct order.
+    if get_parent.cache is None:
+        parent_fname = "factern_client.com.factern.model.%s" % re.sub("([a-z])([A-Z])", "\\1_\\2", "BaseRequest").lower()
+        parent = importlib.import_module(parent_fname).BaseRequest
+        get_parent.cache = parent
+    return get_parent.cache
+get_parent.cache = None
+
+
+class CreateAliasRequest(get_parent()):
+
+    @staticmethod
+    def get_parent():
+        return get_parent()
+
+    @staticmethod
+    def compute_parent_updates():
+        pass
+
+        get_parent().compute_parent_updates()
+
+        CreateAliasRequest.swagger_types.update(get_parent().swagger_types)
+        CreateAliasRequest.attribute_map.update(get_parent().attribute_map)
+
 
     """
     Attributes:
@@ -25,104 +50,45 @@ class CreateAliasRequest(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'include_summary': 'bool',
-        'target_node_id': 'str',
-        'local': 'bool',
         'description': 'str',
-        'name': 'str'
+        'local': 'bool',
+        'name': 'str',
+        'target_node_id': 'str'
     }
 
     attribute_map = {
-        'include_summary': 'includeSummary',
-        'target_node_id': 'targetNodeId',
-        'local': 'local',
         'description': 'description',
-        'name': 'name'
+        'local': 'local',
+        'name': 'name',
+        'target_node_id': 'targetNodeId'
     }
 
-    def __init__(self, include_summary=None, target_node_id=None, local=None, description=None, name=None):  # noqa: E501
+    def __init__(self, **kwargs):  # noqa: E501
         """CreateAliasRequest - a model defined in Swagger"""  # noqa: E501
+        self.compute_parent_updates()
+        for k in kwargs:
+            if k not in self.swagger_types:
+                raise ValueError("CreateAliasRequest got unexpected argument '%s'" % k)
+        get_parent().__init__(self, **kwargs)
 
-        self._include_summary = None
-        self._target_node_id = None
-        self._local = None
         self._description = None
+        self._local = None
         self._name = None
-        self.discriminator = None
-
-        if include_summary is not None:
-            self.include_summary = include_summary
-        self.target_node_id = target_node_id
-        if local is not None:
-            self.local = local
-        if description is not None:
-            self.description = description
-        self.name = name
-
-    @property
-    def include_summary(self):
-        """Gets the include_summary of this CreateAliasRequest.  # noqa: E501
+        self._target_node_id = None
 
 
-        :return: The include_summary of this CreateAliasRequest.  # noqa: E501
-        :rtype: bool
-        """
-        return self._include_summary
+        if "description" in kwargs:
+            self.description = kwargs["description"]
+        if "local" in kwargs:
+            self.local = kwargs["local"]
+        if "name" not in kwargs:
+            raise ValueError("CreateAliasRequest missing required argument: name")
+        self._name = kwargs["name"]
 
-    @include_summary.setter
-    def include_summary(self, include_summary):
-        """Sets the include_summary of this CreateAliasRequest.
+        if "target_node_id" not in kwargs:
+            raise ValueError("CreateAliasRequest missing required argument: target_node_id")
+        self._target_node_id = kwargs["target_node_id"]
 
-
-        :param include_summary: The include_summary of this CreateAliasRequest.  # noqa: E501
-        :type: bool
-        """
-
-        self._include_summary = include_summary
-
-    @property
-    def target_node_id(self):
-        """Gets the target_node_id of this CreateAliasRequest.  # noqa: E501
-
-
-        :return: The target_node_id of this CreateAliasRequest.  # noqa: E501
-        :rtype: str
-        """
-        return self._target_node_id
-
-    @target_node_id.setter
-    def target_node_id(self, target_node_id):
-        """Sets the target_node_id of this CreateAliasRequest.
-
-
-        :param target_node_id: The target_node_id of this CreateAliasRequest.  # noqa: E501
-        :type: str
-        """
-        if target_node_id is None:
-            raise ValueError("Invalid value for `target_node_id`, must not be `None`")  # noqa: E501
-
-        self._target_node_id = target_node_id
-
-    @property
-    def local(self):
-        """Gets the local of this CreateAliasRequest.  # noqa: E501
-
-
-        :return: The local of this CreateAliasRequest.  # noqa: E501
-        :rtype: bool
-        """
-        return self._local
-
-    @local.setter
-    def local(self, local):
-        """Sets the local of this CreateAliasRequest.
-
-
-        :param local: The local of this CreateAliasRequest.  # noqa: E501
-        :type: bool
-        """
-
-        self._local = local
 
     @property
     def description(self):
@@ -146,6 +112,27 @@ class CreateAliasRequest(object):
         self._description = description
 
     @property
+    def local(self):
+        """Gets the local of this CreateAliasRequest.  # noqa: E501
+
+
+        :return: The local of this CreateAliasRequest.  # noqa: E501
+        :rtype: bool
+        """
+        return self._local
+
+    @local.setter
+    def local(self, local):
+        """Sets the local of this CreateAliasRequest.
+
+
+        :param local: The local of this CreateAliasRequest.  # noqa: E501
+        :type: bool
+        """
+
+        self._local = local
+
+    @property
     def name(self):
         """Gets the name of this CreateAliasRequest.  # noqa: E501
 
@@ -167,6 +154,29 @@ class CreateAliasRequest(object):
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
+
+    @property
+    def target_node_id(self):
+        """Gets the target_node_id of this CreateAliasRequest.  # noqa: E501
+
+
+        :return: The target_node_id of this CreateAliasRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._target_node_id
+
+    @target_node_id.setter
+    def target_node_id(self, target_node_id):
+        """Sets the target_node_id of this CreateAliasRequest.
+
+
+        :param target_node_id: The target_node_id of this CreateAliasRequest.  # noqa: E501
+        :type: str
+        """
+        if target_node_id is None:
+            raise ValueError("Invalid value for `target_node_id`, must not be `None`")  # noqa: E501
+
+        self._target_node_id = target_node_id
 
     def to_dict(self):
         """Returns the model properties as a dict"""

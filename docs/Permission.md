@@ -1,19 +1,27 @@
+
+
 # Permission
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**deleted** | **bool** |  | [optional] 
-**timestamp** | **float** |  | 
-**node_id** | **str** |  | 
-**agent** | [**Agent**](Agent.md) |  | 
-**batch_id** | **str** |  | 
-**fact_type** | **str** |  | 
-**parent_id** | **str** |  | 
-**policy** | [**PermissionPolicyDocument**](PermissionPolicyDocument.md) |  | [optional] 
-**target_node_id** | **str** |  | [optional] 
-**permission_interface_id** | **str** |  | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+Name | Type | Required
+-------- | -------- | --------
+permission_interface_id | str | optional
+policy | [PermissionPolicyDocument](PermissionPolicyDocument.md) | optional
+target_node_id | str | optional
+agent | [Agent](Agent.md) | required
+batch_id | str | required
+deleted | bool | optional
+fact_type | str | required
+node_id | str | required
+parent_id | str | required
+timestamp | float | required
 
 
+
+
+## Inheritance hierarchy
+
+
+* [Permission](Permission.md)
+    * [StandardNode](StandardNode.md)

@@ -1,13 +1,20 @@
+
+
 # ReadItem
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**field_id** | **str** |  | 
-**data** | **str** |  | [optional] 
-**children** | [**list[ReadStatusItem]**](ReadStatusItem.md) |  | [optional] 
-**node_id** | **str** |  | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+Name | Type | Required
+-------- | -------- | --------
+children | [list[ReadStatusItem]](ReadStatusItem.md) | optional
+data | str | optional
+field_id | str | required
+node_id | str | optional
 
 
+
+
+## Inheritance hierarchy
+
+
+* [ReadItem](ReadItem.md)
