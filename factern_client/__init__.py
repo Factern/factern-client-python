@@ -156,6 +156,7 @@ from factern_client.com.factern.model.token_payment import TokenPayment
 from factern_client.com.factern.model.transform_element import TransformElement
 from factern_client.com.factern.model.update_application_request import UpdateApplicationRequest
 from factern_client.com.factern.model.update_application_response import UpdateApplicationResponse
+from factern_client.com.factern.model.update_interface_request import UpdateInterfaceRequest
 from factern_client.com.factern.model.update_status_request import UpdateStatusRequest
 from factern_client.com.factern.model.watch import Watch
 from factern_client.com.factern.model.watch_event import WatchEvent
