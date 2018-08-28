@@ -40,6 +40,7 @@ Method | HTTP request | Description
 [**settle_account**](FactsApi.md#settle_account) | **POST** /settleaccount | Settle Account
 [**update_application**](FactsApi.md#update_application) | **POST** /updateapplication | Resetting Application Secret
 [**update_status**](FactsApi.md#update_status) | **POST** /updatestatus | Enabling/Disabling Nodes
+[**updateinterface**](FactsApi.md#updateinterface) | **POST** /updateinterface | Updating interface endpoints
 [**watch**](FactsApi.md#watch) | **POST** /watch | Create Watch Trigger
 [**write**](FactsApi.md#write) | **POST** /write | Writing by Template
 
@@ -1852,6 +1853,58 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**StandardNodeResponse**](StandardNodeResponse.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **updateinterface**
+> CreateInterfaceResponse updateinterface(body, login=login, representing=representing)
+
+### Example
+```python
+from __future__ import print_function
+import time
+import factern_client
+from factern_client.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: OAuth2
+configuration = factern_client.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = factern_client.FactsApi(factern_client.ApiClient(configuration))
+login = 'login_example' # str |  (optional)
+representing = 'representing_example' # str |  (optional)
+update_interface_request = factern_client.UpdateInterfaceRequest() # UpdateInterfaceRequest |  (optional)
+
+try:
+    # Updating interface endpoints
+    api_response = api_instance.updateinterface(login=login, representing=representing, update_interface_request=update_interface_request)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling FactsApi->updateinterface: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **login** | **str**|  | [optional] 
+ **representing** | **str**|  | [optional] 
+ **update_interface_request** | [**UpdateInterfaceRequest**](UpdateInterfaceRequest.md)|  | [optional] 
+
+### Return type
+
+[**CreateInterfaceResponse**](CreateInterfaceResponse.md)
 
 ### Authorization
 
